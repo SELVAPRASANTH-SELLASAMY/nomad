@@ -1,0 +1,8 @@
+header{
+    z-index: 100;
+}
+header h1::after{
+    content: ".";
+    font-size: var(--font_3);
+    color: #ffffff;
+}
