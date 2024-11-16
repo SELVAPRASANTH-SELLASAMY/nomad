@@ -24,3 +24,7 @@
     /*Font weights*/
     --semibold: 500;
 }
+button{
+    cursor: pointer;
+    border: none;
+}

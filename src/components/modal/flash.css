@@ -1,0 +1,12 @@
+.fill-green svg{
+    color: var(--green);
+}
+.text-primary{
+    color: var(--green);
+}
+.size-5 svg{
+    font-size: 5rem;
+}
+dialog{
+    border: none;
+}
