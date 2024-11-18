@@ -41,11 +41,11 @@ function Login(){
             <form noValidate>
                 <label htmlFor="email" className="fs-4 d-iblock mtb-1">Email</label>
                 {formError.email && <p className="text-error mtb-1 fs-4 float-right">{formError.email}</p>}
-                <input onChange={(e)=>handleEmailInput(e)} type="text" id='email' name='email' placeholder='Enter your mail id' autoComplete='off'/>
+                <input onChange={handleEmailInput} type="text" id='email' name='email' placeholder='Enter your mail id' autoComplete='off'/>
 
                 <label htmlFor="password" className="fs-4 d-iblock mtb-1">Password</label>
                 {formError.password && <p className="text-error mtb-1 fs-4 float-right">{formError.password}</p>}
-                <input onChange={(e)=>handlePasswordInput(e)} type={check ? 'text' : 'password'} id='password' name='password' placeholder='Enter your password' autoComplete='off'/>
+                <input onChange={handlePasswordInput} type={check ? 'text' : 'password'} id='password' name='password' placeholder='Enter your password' autoComplete='off'/>
 
                 <div className="d-iflex center-y">
                     <input onChange={(e)=>setCheck(e.target.checked)} type="checkbox" id='show-password' name='show-password'/>

@@ -44,11 +44,11 @@ function Setnewpassword(){
             <form noValidate>
                 <label htmlFor="new-password" className="fs-4 d-iblock mtb-1">New password</label>
                 {formError.newPassword && <p className="text-error mtb-1 fs-4 float-right">{formError.newPassword}</p>}
-                <input onChange={(e)=>handleNewPasswordInput(e)} type={check ? "text" : "password"} id='new-password' name='new-password' placeholder='Enter your new password' autoComplete='off'/>
+                <input onChange={handleNewPasswordInput} type={check ? "text" : "password"} id='new-password' name='new-password' placeholder='Enter your new password' autoComplete='off'/>
 
                 <label htmlFor="confirm-password" className="fs-4 d-iblock mtb-1">Confirm password</label>
                 {formError.confirmPassword && <p className="text-error mtb-1 fs-4 float-right">{formError.confirmPassword}</p>}
-                <input onChange={(e)=>handleConfirmPasswordInput(e)} type={check ? "text" : "password"} id='confirm-password' name='confirm-password' placeholder='Confirm your new password' autoComplete='off'/>
+                <input onChange={handleConfirmPasswordInput} type={check ? "text" : "password"} id='confirm-password' name='confirm-password' placeholder='Confirm your new password' autoComplete='off'/>
 
                 <div className="d-iflex center-y">
                     <input onChange={(e)=>setCheck(e.target.checked)} type="checkbox" id='show-password' name='show-password'/>
