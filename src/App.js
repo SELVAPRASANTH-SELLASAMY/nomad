@@ -1,17 +1,12 @@
-import { createContext, useRef } from 'react';
 import './App.css';
-import { Header, Login, Flash } from './components';
-const AppContext = createContext();
-function App() {
-  const flashMessage = useRef();
-  return (
-    <AppContext.Provider value={flashMessage}>
+import { Header } from './components';
+import { Main } from './structure/Main';
+function App(){
+  return(
+    <>
       <Header/>
-      <Login/>
-      <Flash/>
-    </AppContext.Provider>
+      <Main/>
+    </>
   );
 }
-
 export default App;
-export { AppContext };

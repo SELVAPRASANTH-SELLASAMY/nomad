@@ -3,7 +3,7 @@ import { FiCheckCircle } from "react-icons/fi";
 import { BsEmojiFrown } from "react-icons/bs";
 import ReactDOM from 'react-dom';
 import { useContext,useImperativeHandle,useState } from 'react';
-import { AppContext } from '../../App';
+import { AppContext } from '../../structure/Main';
 function Flash(){
     const flashMessage = useContext(AppContext);
     const [flash,setFlash] = useState({
