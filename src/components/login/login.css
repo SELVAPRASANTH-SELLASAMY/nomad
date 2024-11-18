@@ -82,6 +82,9 @@
 .center-y{
     align-items: center;
 }
+.place-content-center{
+    place-content: center;
+}
 .middle{
     vertical-align: middle;
 }
@@ -216,6 +219,9 @@ a{
 .fixed{
     position: fixed;
 }
+.static{
+    position: static;
+}
 .top-0{
     top: 0;
 }
@@ -236,6 +242,34 @@ input:disabled,label[aria-disabled=true]{
 .bg-green{
     background-color: var(--green);
 }
+.bg-red{
+    background-color: #F32E2E;
+}
 .bg-tile-blue{
     background-color: var(--tileblue);
+}
+.bg-overlay{
+    background-color: #000000a2;
+}
+.bg-tile-blue-tr{
+    background-color: var(--black-pearl);
+}
+.bg-filter-5{
+    backdrop-filter: blur(5px);
+}
+.z-index-100{
+    z-index: 100;
+}
+
+.fluid-effect{
+    animation: fluid-effect 100ms linear 1;
+}
+/*Animation*/
+@keyframes fluid-effect {
+    From{
+        transform: scale(1);
+    }
+    To{
+        transform: scale(1.1);
+    }
 }
