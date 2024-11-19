@@ -17,6 +17,7 @@
     --font_1: .75rem;
     --font_125: 1rem;
     --font_15: 1.2rem;
+    --font_175: 1.5rem;
     --font_2: 1.75rem;
     --font_225: 2rem;
     --font_3: 2.5rem;
@@ -28,4 +29,7 @@
 button{
     cursor: pointer;
     border: none;
+}
+header svg{
+    cursor: pointer;
 }

@@ -1,6 +1,6 @@
 import { createContext, useRef } from 'react';
 import './App.css';
-import { Header, Login, Flash } from './components';
+import { Header, Login, Flash, Sidebar } from './components';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 const AppContext = createContext();
 function App(){
@@ -12,6 +12,9 @@ function App(){
         <Routes>
           <Route path='/' element={<Header/>}>
             <Route index element={<Login/>}/>
+            <Route path='/home' element={<Sidebar/>}>
+              <Route index element={<Login/>}/>
+            </Route>
           </Route>
         </Routes>
       </Router>

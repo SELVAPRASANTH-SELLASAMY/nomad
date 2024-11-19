@@ -55,11 +55,11 @@ function Resetpassword() {
             <form onReset={handleFormreset} ref={resetPasswordForm} noValidate>
                 <label htmlFor="email" className="fs-4 d-iblock mtb-1">Email</label>
                 {formError.email && <p className="text-error mtb-1 fs-4 float-right">{formError.email}</p>}
-                <input onChange={handleEmailInput} type="text" id='email' name='email' placeholder='Enter your mail id' autoComplete='off'/>
+                <input onChange={handleEmailInput} className='fs-4 w-100 ptb-1 plr-15 rounded-100px border-grey-01 trans-border-250 no-outline bg-tile-blue text-white' type="text" id='email' name='email' placeholder='Enter your mail id' autoComplete='off'/>
 
                 <label aria-disabled={!enableOtp} htmlFor="otp" className="fs-4 d-iblock mtb-1">One time password</label>
                 {formError.otp && <p className="text-error mtb-1 fs-4 float-right">{formError.otp}</p>}
-                <input disabled={!enableOtp} onChange={handleOtpInput} className='ltr-spacing-2' type="text" maxLength="6" id='otp' name='otp' placeholder='Enter OTP that you received in your mail' autoComplete='off'/>
+                <input disabled={!enableOtp} onChange={handleOtpInput} className='fs-4 w-100 ptb-1 plr-15 rounded-100px border-grey-01 trans-border-250 no-outline bg-tile-blue text-white ltr-spacing-2' type="text" maxLength="6" id='otp' name='otp' placeholder='Enter OTP that you received in your mail' autoComplete='off'/>
 
                 <p className='fs-4 d-iblock mtb-1'>Not received the OTP yet? <a href='/' role='button' onClick={(e)=>resendOtp(e)}>Resend</a> or <a href="/" role='button' onClick={(e)=>{e.preventDefault(); resetPasswordForm.current.reset()}}>Use a different email</a></p>
 
