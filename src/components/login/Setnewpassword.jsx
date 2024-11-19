@@ -1,6 +1,6 @@
 import './login.css';
 import { mainContext } from './Main';
-import { AppContext } from '../../structure/Main';
+import { AppContext } from '../../App';
 import { useContext, useState } from 'react';
 import { useEvalPassword } from '../customhooks/validation';
 import { debounce } from 'lodash';
