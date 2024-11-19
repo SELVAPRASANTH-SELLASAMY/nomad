@@ -1,12 +1,12 @@
 import { IoIosHome, IoIosAddCircleOutline, IoIosAnalytics } from "react-icons/io";
 import { BiCategory } from "react-icons/bi";
 import { Outlet } from "react-router-dom";
-function Sidebar(){
+function Sidebar({showNavbar}){
     return(
         <>
-            <nav className="w-13rem h-100 bg-tile-blue plr-1 fixed left-0 top-0">
-                <div className="mt-5">
-                    <a href="/home" className="text-black fs-6 d-flex center-y gap-05 rounded-05 ptb-05 plr-1 mtb-1 bg-green">
+            {showNavbar && 
+                <nav className="w-13rem h-100 bg-tile-blue plr-1 fixed left-0 top-0">
+                    <a href="/home" className="text-black fs-6 d-flex center-y gap-05 rounded-05 ptb-05 plr-1 mt-5 mtb-1 bg-green">
                         <IoIosHome/>
                         <span className="fs-4">Home</span>
                     </a>
@@ -22,8 +22,8 @@ function Sidebar(){
                         <IoIosAnalytics/>
                         <span className="fs-4">Analytics</span>
                     </a>
-                </div>
-            </nav>
+                </nav>
+            }
             <Outlet/>
         </>
     );

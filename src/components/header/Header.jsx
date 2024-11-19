@@ -5,13 +5,13 @@ import Searchinput from '../searchinput/Searchinput';
 import { BiBell } from "react-icons/bi";
 import { MdOutlineSettings, MdOutlineLogout } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
-function Header(){
+function Header({setShowNavbar}){
     const location = useLocation();
     const [controls,showControls] = useState(false);
     return(
         <>
             <header className={`w-100 ptb-025 plr-25 fixed left-0 top-0 d-flex center-y ${location.pathname !== '/' && 'bg-tile-blue border-bottom-grey-01'}`}>
-                <h1 className='text-primary fs-7 uppercase mr-2'>nomad</h1>
+                <h1 onClick={()=>setShowNavbar((prevState)=>!prevState)} className='text-primary fs-7 uppercase mr-2 pointer'>nomad</h1>
                 {location.pathname !== '/' &&
                     <>
                         <Searchinput/>
