@@ -109,6 +109,9 @@
 .middle{
     vertical-align: middle;
 }
+.middle svg{
+    vertical-align: middle;
+}
 .gap-025{
     gap: .25rem;
 }
@@ -216,6 +219,9 @@
 }
 .w-13rem{
     width: 13rem;
+}
+.w-15rem{
+    width: 15rem;
 }
 .w-20rem{
     width: 20rem;
@@ -397,6 +403,10 @@ input:disabled,label[aria-disabled=true]{
 }
 .hover-blue:hover{
     background-color: var(--background);
+}
+.hover-green:hover{
+    background-color: var(--green);
+    color: #000000;
 }
 .list-style-none{
     list-style: none;

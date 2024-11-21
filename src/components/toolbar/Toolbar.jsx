@@ -1,22 +1,21 @@
-import Select from "./Select";
-import Option from "./Option";
+import { Select, Option } from "../select";
 function Toolbar(){
     return(
-        <section className="w-fit d-flex gap-2 mtb-05">
+        <div className="mt-05 d-flex gap-2 text-no-wrap">
             <Select name="Sort by">
                 <Option value="publish date"/>
-                <Option value="Popular"/>
+                <Option value="popular"/>
                 <Option value="name"/>
                 <Option value="view count"/>
             </Select>
 
             <Select name="Category">
                 <Option value="All"/>
-                <Option value="Technology"/>
-                <Option value="Programming"/>
-                <Option value="General"/>
+                <Option value="programming"/>
+                <Option value="technology"/>
+                <Option value="general"/>
             </Select>
-        </section>
+        </div>
     );
 }
 export default Toolbar;

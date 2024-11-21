@@ -1,9 +1,9 @@
-import { selectContext } from "./Select";
 import { useContext } from "react";
+import { selectContext } from "./Select";
 function Option({value}){
     const setValue = useContext(selectContext);
     return(
-        <li className="plr-1 ptb-05 capitalize hover-blue pointer" onClick={()=>setValue(value)}>{value}</li>
+        <li onClick={()=>setValue(value)} className="bg-tile-blue ptb-025 plr-1 hover-blue">{value}</li>
     );
 }
 export default Option;
