@@ -3,6 +3,7 @@ import { mainContext } from './Main';
 import { useContext, useState } from 'react';
 import { useEvalEmail } from '../customhooks/validation';
 import { debounce } from 'lodash';
+import PrimaryInput from '../../sharedUi/PrimaryInput';
 function Requestaccess(){
     const setFormState = useContext(mainContext);
     const [userInput,setUserInput] = useState({
@@ -30,9 +31,14 @@ function Requestaccess(){
             <h3 className="text-secondary font-weight-500 fs-5 italic">Please enter your valid email address.</h3>
 
             <form noValidate>
-                <label htmlFor="email" className="fs-4 d-iblock mtb-1">Email</label>
-                {formError.email && <p className="text-error mtb-1 fs-4 float-right">{formError.email}</p>}
-                <input onChange={handleEmailInput} className='fs-4 w-100 ptb-1 plr-15 rounded-100px border-grey-01 trans-border-250 no-outline bg-tile-blue text-white' type="text" id='email' name='email' placeholder='Enter your mail id' autoComplete='off'/>
+                <PrimaryInput
+                    labelName="Email"
+                    id="email"
+                    type="text"
+                    placeholder="Enter your mail id"
+                    response_message={formError.email}
+                    inputHandler={handleEmailInput}
+                />
 
                 <button onClick={handleSubmit} type='button' className='btn-primary w-100 fs-4 mt-2'>send access request</button>
 
