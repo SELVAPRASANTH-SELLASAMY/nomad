@@ -3,6 +3,7 @@ import { mainContext } from './Main';
 import { useContext, useRef, useState } from 'react';
 import { debounce } from 'lodash';
 import { useEvalEmail, useEvalotp } from '../customhooks/validation';
+import PrimaryInput from '../../sharedUi/PrimaryInput';
 function Resetpassword() {
     const setFormState = useContext(mainContext);
     const [userInput,setUserInput] = useState({
@@ -53,13 +54,24 @@ function Resetpassword() {
             <h3 className="text-secondary font-weight-500 fs-5 italic">Please enter your email to reset your password.</h3>
 
             <form onReset={handleFormreset} ref={resetPasswordForm} noValidate>
-                <label htmlFor="email" className="fs-4 d-iblock mtb-1">Email</label>
-                {formError.email && <p className="text-error mtb-1 fs-4 float-right">{formError.email}</p>}
-                <input onChange={handleEmailInput} className='fs-4 w-100 ptb-1 plr-15 rounded-100px border-grey-01 trans-border-250 no-outline bg-tile-blue text-white' type="text" id='email' name='email' placeholder='Enter your mail id' autoComplete='off'/>
+                <PrimaryInput
+                    labelName="Email"
+                    id="email"
+                    type="text"
+                    placeholder="Enter your mail id"
+                    response_message={formError.email}
+                    inputHandler={handleEmailInput}
+                />
 
-                <label aria-disabled={!enableOtp} htmlFor="otp" className="fs-4 d-iblock mtb-1">One time password</label>
-                {formError.otp && <p className="text-error mtb-1 fs-4 float-right">{formError.otp}</p>}
-                <input disabled={!enableOtp} onChange={handleOtpInput} className='fs-4 w-100 ptb-1 plr-15 rounded-100px border-grey-01 trans-border-250 no-outline bg-tile-blue text-white ltr-spacing-2' type="text" maxLength="6" id='otp' name='otp' placeholder='Enter OTP that you received in your mail' autoComplete='off'/>
+                <PrimaryInput
+                    labelName="One time password"
+                    id="otp"
+                    type="text"
+                    placeholder="Enter OTP that you received in your mail"
+                    response_message={formError.otp}
+                    inputHandler={handleOtpInput}
+                    disabled={!enableOtp}
+                />
 
                 <p className='fs-4 d-iblock mtb-1'>Not received the OTP yet? <a href='/' role='button' onClick={(e)=>resendOtp(e)}>Resend</a> or <a href="/" role='button' onClick={(e)=>{e.preventDefault(); resetPasswordForm.current.reset()}}>Use a different email</a></p>
 

@@ -1,6 +1,6 @@
 import { createContext, useRef, useState } from 'react';
 import './App.css';
-import { Header, Login, Flash, Sidebar, Home } from './components';
+import { Header, Login, Flash, Sidebar, Home, Newpost } from './components';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 const AppContext = createContext();
 function App(){
@@ -13,8 +13,9 @@ function App(){
         <Routes>
           <Route path='/' element={<Header setShowNavbar={setShowNavbar}/>}>
             <Route index element={<Login/>}/>
-            <Route path='/home' element={<Sidebar showNavbar={showNavbar}/>}>
+            <Route path='home' element={<Sidebar showNavbar={showNavbar}/>}>
               <Route index element={<Home/>}/>
+              <Route path='newpost' element={<Newpost/>}/>
             </Route>
           </Route>
         </Routes>

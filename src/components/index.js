@@ -3,3 +3,4 @@ export { default as Login } from './login/Main';
 export { default as Flash } from './modal/Flash';
 export { default as Sidebar } from './sidebar/Sidebar';
 export { default as Home } from './home/Home';
+export { default as Newpost } from './newpost/Newpost';

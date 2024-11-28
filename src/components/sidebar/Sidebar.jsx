@@ -10,7 +10,7 @@ function Sidebar({showNavbar}){
                         <IoIosHome/>
                         <span className="fs-4">Home</span>
                     </a>
-                    <a href="/new" className="text-white fs-6 d-flex center-y gap-05 rounded-05 ptb-05 plr-1 mtb-1">
+                    <a href="home/newpost" className="text-white fs-6 d-flex center-y gap-05 rounded-05 ptb-05 plr-1 mtb-1">
                         <IoIosAddCircleOutline/>
                         <span className="fs-4">New post</span>
                     </a>

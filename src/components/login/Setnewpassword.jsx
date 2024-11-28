@@ -4,6 +4,7 @@ import { AppContext } from '../../App';
 import { useContext, useState } from 'react';
 import { useEvalPassword } from '../customhooks/validation';
 import { debounce } from 'lodash';
+import PrimaryInput from '../../sharedUi/PrimaryInput';
 function Setnewpassword(){
     const setFormState = useContext(mainContext);
     const flashMessage = useContext(AppContext);
@@ -42,13 +43,23 @@ function Setnewpassword(){
             <h3 className="text-secondary font-weight-500 fs-5 italic">Please enter strong password to ensure security.</h3>
 
             <form noValidate>
-                <label htmlFor="new-password" className="fs-4 d-iblock mtb-1">New password</label>
-                {formError.newPassword && <p className="text-error mtb-1 fs-4 float-right">{formError.newPassword}</p>}
-                <input onChange={handleNewPasswordInput} className='fs-4 w-100 ptb-1 plr-15 rounded-100px border-grey-01 trans-border-250 no-outline bg-tile-blue text-white' type={check ? "text" : "password"} id='new-password' name='new-password' placeholder='Enter your new password' autoComplete='off'/>
+                <PrimaryInput
+                    labelName="New password"
+                    id="new-password"
+                    type={check ? 'text' : 'password'}
+                    placeholder="Enter your new password"
+                    response_message={formError.newPassword}
+                    inputHandler={handleNewPasswordInput}
+                />
 
-                <label htmlFor="confirm-password" className="fs-4 d-iblock mtb-1">Confirm password</label>
-                {formError.confirmPassword && <p className="text-error mtb-1 fs-4 float-right">{formError.confirmPassword}</p>}
-                <input onChange={handleConfirmPasswordInput} className='fs-4 w-100 ptb-1 plr-15 rounded-100px border-grey-01 trans-border-250 no-outline bg-tile-blue text-white' type={check ? "text" : "password"} id='confirm-password' name='confirm-password' placeholder='Confirm your new password' autoComplete='off'/>
+                <PrimaryInput
+                    labelName="Confirm password"
+                    id="confirm-password"
+                    type={check ? 'text' : 'password'}
+                    placeholder="Confirm your new password"
+                    response_message={formError.confirmPassword}
+                    inputHandler={handleConfirmPasswordInput}
+                />
 
                 <div className="d-iflex center-y">
                     <input onChange={(e)=>setCheck(e.target.checked)} type="checkbox" id='show-password' name='show-password'/>
