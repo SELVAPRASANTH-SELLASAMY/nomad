@@ -5,7 +5,7 @@ function Select({name,children}){
     const [value,setValue] = useState(children[0].props.value);
     const [focus,setFocus] = useState(false);
     return(
-        <div className="w-15rem">
+        <div className="w-15rem relative">
             <div className="fs-4 bg-tile-blue d-iflex ptb-025 plr-1 rounded-05 center-y gap-025 border-grey-01 w-100">
                 { 
                     name === "Sort by" && 
@@ -18,7 +18,7 @@ function Select({name,children}){
             </div>
             {
                 focus &&
-                <ul className="list-style-none lowercase rounded-05 hide-overflow mt-025 border-grey-01 pointer">
+                <ul className="list-style-none lowercase rounded-05 hide-overflow border-grey-01 pointer absolute w-100 mt-025">
                     <selectContext.Provider value={setValue}>
                         {children}
                     </selectContext.Provider>

@@ -5,7 +5,7 @@ function Sidebar({showNavbar}){
     return(
         <>
             {showNavbar && 
-                <nav className="w-13rem h-100 bg-tile-blue plr-1 fixed left-0 top-0">
+                <nav className="w-13rem h-100 bg-tile-blue plr-1 fixed left-0 top-0 z-index-90">
                     <a href="/home" className="text-black fs-6 d-flex center-y gap-05 rounded-05 ptb-05 plr-1 mt-5 mtb-1 bg-green">
                         <IoIosHome/>
                         <span className="fs-4">Home</span>
