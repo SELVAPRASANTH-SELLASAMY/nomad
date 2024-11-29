@@ -1,7 +1,7 @@
 import './login.css';
 import { mainContext } from './Main';
 import { useContext, useRef, useState } from 'react';
-import { useEvalEmail, useEvalotp } from '../customhooks/validation';
+import { useEvalEmail, useEvalotp } from '../../customhooks/validation';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
 function Resetpassword() {
     const setFormState = useContext(mainContext);

@@ -2,7 +2,7 @@ import './login.css';
 import { mainContext } from './Main';
 import { AppContext } from '../../App';
 import { useContext, useState } from 'react';
-import { useEvalPassword } from '../customhooks/validation';
+import { useEvalPassword } from '../../customhooks/validation';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
 function Setnewpassword(){
     const setFormState = useContext(mainContext);
