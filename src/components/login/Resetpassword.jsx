@@ -1,7 +1,6 @@
 import './login.css';
 import { mainContext } from './Main';
 import { useContext, useRef, useState } from 'react';
-import { debounce } from 'lodash';
 import { useEvalEmail, useEvalotp } from '../customhooks/validation';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
 function Resetpassword() {
@@ -18,12 +17,6 @@ function Resetpassword() {
     const emailValidation = useEvalEmail(userInput.email);
     const otpValidation = useEvalotp(userInput.otp);
     const resetPasswordForm = useRef();
-    const handleEmailInput = debounce((e)=>{
-        setUserInput({...userInput,email:e.target.value});
-    },1000);
-    const handleOtpInput = debounce((e)=>{
-        setUserInput({...userInput,otp:e.target.value});
-    },1000);
     const resendOtp = (e) => {
         e.preventDefault();
         //Logic to resend OTP;
@@ -60,7 +53,7 @@ function Resetpassword() {
                     type="text"
                     placeholder="Enter your mail id"
                     response_message={formError.email}
-                    inputHandler={handleEmailInput}
+                    setValue={setUserInput}
                 />
 
                 <PrimaryInput
@@ -69,7 +62,7 @@ function Resetpassword() {
                     type="text"
                     placeholder="Enter OTP that you received in your mail"
                     response_message={formError.otp}
-                    inputHandler={handleOtpInput}
+                    setValue={setUserInput}
                     disabled={!enableOtp}
                 />
 

@@ -3,7 +3,6 @@ import { mainContext } from './Main';
 import { AppContext } from '../../App';
 import { useContext, useState } from 'react';
 import { useEvalPassword } from '../customhooks/validation';
-import { debounce } from 'lodash';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
 function Setnewpassword(){
     const setFormState = useContext(mainContext);
@@ -18,12 +17,6 @@ function Setnewpassword(){
     });
     const passwordValidation = useEvalPassword(userInput.newPassword);
     const [check,setCheck] = useState(false); // For checkbox input to display password input.
-    const handleNewPasswordInput = debounce((e)=>{
-        setUserInput({...userInput,newPassword:e.target.value});
-    },1000);
-    const handleConfirmPasswordInput = debounce((e)=>{
-        setUserInput({...userInput,confirmPassword:e.target.value});
-    },1000);
     const validateInput = (input) => {
         const isEqual = input.newPassword === input.confirmPassword;
         setFormError({...formError,newPassword:input.newPassword === '' ? 'This field is required!' : passwordValidation ? '' : "Password doesn't meet the required criteria!",confirmPassword:input.confirmPassword === '' ? 'This field is required!' : isEqual ? '' :"Password's doesn't match!"});
@@ -45,20 +38,20 @@ function Setnewpassword(){
             <form noValidate>
                 <PrimaryInput
                     labelName="New password"
-                    id="new-password"
+                    id="newPassword"
                     type={check ? 'text' : 'password'}
                     placeholder="Enter your new password"
                     response_message={formError.newPassword}
-                    inputHandler={handleNewPasswordInput}
+                    setValue={setUserInput}
                 />
 
                 <PrimaryInput
                     labelName="Confirm password"
-                    id="confirm-password"
+                    id="confirmPassword"
                     type={check ? 'text' : 'password'}
                     placeholder="Confirm your new password"
                     response_message={formError.confirmPassword}
-                    inputHandler={handleConfirmPasswordInput}
+                    setValue={setUserInput}
                 />
 
                 <div className="d-iflex center-y">

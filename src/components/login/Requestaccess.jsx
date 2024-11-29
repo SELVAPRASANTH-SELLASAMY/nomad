@@ -2,7 +2,6 @@ import './login.css';
 import { mainContext } from './Main';
 import { useContext, useState } from 'react';
 import { useEvalEmail } from '../customhooks/validation';
-import { debounce } from 'lodash';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
 function Requestaccess(){
     const setFormState = useContext(mainContext);
@@ -13,9 +12,6 @@ function Requestaccess(){
         email:''
     });
     const emailValidation = useEvalEmail(userInput.email);
-    const handleEmailInput = debounce((e) => {
-        setUserInput({...userInput,email:e.target.value});
-    },1000);
     const validateInput = (input) => {
         setFormError({...formError,email:(input.email === '' ? 'This field is required!' : emailValidation ? '' : 'Invaid email!')});
         return emailValidation;
@@ -37,7 +33,7 @@ function Requestaccess(){
                     type="text"
                     placeholder="Enter your mail id"
                     response_message={formError.email}
-                    inputHandler={handleEmailInput}
+                    setValue={setUserInput}
                 />
 
                 <button onClick={handleSubmit} type='button' className='btn-primary w-100 fs-4 mt-2'>send access request</button>

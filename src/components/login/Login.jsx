@@ -2,7 +2,6 @@ import './login.css';
 import { mainContext } from './Main';
 import { useContext, useState } from 'react';
 import { useEvalEmail, useEvalPassword } from '../customhooks/validation';
-import { debounce } from 'lodash';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
 function Login(){
     const setFormState = useContext(mainContext);
@@ -21,12 +20,6 @@ function Login(){
         setFormError({...formError,email:(input.email === '' ? 'This field is required!' : emailValidation ? '' : 'Invaid email!'),password:(input.password === '' ? 'This field is required!' : passwordValidation ? '' : 'Invalid password!')});
         return emailValidation && passwordValidation;
     }
-    const handleEmailInput = debounce((e)=>{
-        setUserInput({...userInput,email:e.target.value});
-    },1000);
-    const handlePasswordInput = debounce((e)=>{
-        setUserInput({...userInput,password:e.target.value});
-    },1000);
     const handleLogin = () => {
         if(validateInput(userInput)){
             console.log("Logged in...");
@@ -46,7 +39,7 @@ function Login(){
                     type="text"
                     placeholder="Enter your mail id"
                     response_message={formError.email}
-                    inputHandler={handleEmailInput}
+                    setValue={setUserInput}
                 />
 
                 <PrimaryInput
@@ -55,7 +48,7 @@ function Login(){
                     type={check ? 'text' : 'password'}
                     placeholder="Enter your mail id"
                     response_message={formError.password}
-                    inputHandler={handlePasswordInput}
+                    setValue={setUserInput}
                 />
 
                 <div className="d-iflex center-y">
