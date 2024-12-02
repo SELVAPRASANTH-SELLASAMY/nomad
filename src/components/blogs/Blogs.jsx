@@ -4,7 +4,7 @@ function Blogs(){
         {},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
     ]
     return(
-        <section className="d-grid grid-auto-fill gap-2 mtb-15 mt-10">
+        <section className="d-grid grid-auto-fill gap-2 mtb-15 mt-120">
             {
                 blogs.map((_,index)=>(
                     <Blogtile key={index}/>
