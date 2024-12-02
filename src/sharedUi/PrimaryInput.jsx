@@ -8,7 +8,7 @@ function PrimaryInput({labelName, id, type, placeholder, response_message, setVa
     },1000);
     return(
         <>
-            <label aria-disabled={disabled} htmlFor={id} className="fs-4 d-iblock mtb-1">{labelName}</label>
+            <label htmlFor={id} className={`fs-4 d-iblock mtb-1 ${disabled && "disabled-label"}`}>{labelName}</label>
             {response_message && <p className="text-error mtb-1 fs-4 float-right">{response_message}</p>}
             <input 
                 onChange={handleInput} 

@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Option } from "../../sharedUi/select";
 import { RiDraftLine, RiSave3Line, RiUploadCloud2Line, RiDeleteBin6Line } from "react-icons/ri";
 function ActionButton(){
     const actions = [
@@ -6,25 +8,20 @@ function ActionButton(){
         {icon:<RiUploadCloud2Line/>,name:"Publish"},
         {icon:<RiDeleteBin6Line/>,name:"Discard"}
     ];
+
+    const [value, setValue] = useState(actions[0].name);
+    const [expand,setExpand] = useState(false);
+
     return(
-        <>
-            <div role="button" tabIndex="0" className="d-flex bg-green no-border fs-4 font-weight-600 plr-05 ptb-025 rounded-05 text-black uppercase gap-05 justify-center">
-                <p>Value</p>
-                <span className="pointer">| &#9660;</span>
-            </div>
-            <ul className="list-style-none hide-overflow rounded-05 mt-025 border-grey-01 fs-4">
-                {
-                    actions.map((action,index)=>(
-                        <li key={index} className="bg-tile-blue ptb-025 plr-1 hover-blue pointer d-flex gap-05">
-                            <span className="fs-4 mt-025">
-                                {action.icon}
-                            </span>
-                            <button className="button-appearance-none" type="button" id={action.name}>{action.name}</button>
-                        </li>
-                    ))
-                }
-            </ul>
-        </>
+        <div className="w-15rem relative ml-auto">
+            <button type="button" className='fs-4 bg-green rounded-05 ptb-025 plr-1 text-black font-weight-600 d-flex center-y gap-05 w-fit justify-center pointer uppercase ml-auto text-no-wrap'>
+                <span>{value}</span>
+                <span tabIndex="0" onFocus={()=>setExpand(true)} onBlur={()=>setExpand(false)}>| &#9660;</span>
+            </button>
+            {expand &&
+                <Option actions={actions} setValue={setValue} value={value}/>
+            }
+        </div>
     );
 }
 export default ActionButton;

@@ -37,6 +37,12 @@
 .capitalize{
     text-transform: capitalize;
 }
+.cap-first-letter::first-letter{
+    text-transform: uppercase;
+}
+.no-user-select{
+    user-select: none;
+}
 .italic{
     font-style: italic;
 }
@@ -413,7 +419,7 @@ a{
     top: 2.5rem;
 }
 
-input:disabled,label[aria-disabled=true]{
+input:disabled,label.disabled-label{
     opacity: .5;
     user-select: none;
 }
