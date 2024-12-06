@@ -1,10 +1,7 @@
 import { Select } from '../../sharedUi/select';
 import ActionButton from './ActionButton';
-import PrimaryInput from '../../sharedUi/PrimaryInput';
-import { useState } from 'react';
+import Editor from '../editor/Editor';
 function Newpost(){
-    const [heading,setHeading] = useState();
-    const [error,setError] = useState();
     return(
         <>
             <section className="fixed top-0 left-0 bg-common-blue w-100 pb-15 plr-25">
@@ -17,16 +14,7 @@ function Newpost(){
                     <ActionButton/>
                 </div>
             </section>
-            <section className="mtb-15 mt-120">
-                <PrimaryInput
-                    id="heading"
-                    type="text"
-                    placeholder="Enter your heading here..."
-                    response_message={error}
-                    setValue={heading}
-                    rect
-                />
-            </section>
+            <Editor/>
         </>
     );
 }
