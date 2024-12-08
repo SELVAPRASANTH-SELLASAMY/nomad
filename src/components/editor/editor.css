@@ -216,3 +216,10 @@
     text-decoration: none;
     cursor: pointer;
 }
+.ql-toggleFullScreen svg{
+    color: #ffffff;
+    font-size: var(--font_175);
+}
+.ql-toggleFullScreen svg:hover{
+    color: #06c;
+}

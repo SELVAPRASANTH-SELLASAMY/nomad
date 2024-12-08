@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React,{ useEffect, useRef, useState } from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 // import TextComposer from "../textcomposer/TextComposer";
@@ -11,6 +11,14 @@ function Editor(){
         error:'',
         edit:false
     });
+    const QuillRef = useRef();
+    useEffect(()=>{
+        const toolbar = QuillRef.current.getEditor().getModule('toolbar');
+        const toggleFSbutton = toolbar.container.querySelector('.ql-toggleFullScreen');
+        if(toggleFSbutton){
+            toggleFSbutton.innerHTML = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M5 5h5V3H3v7h2zm5 14H5v-5H3v7h7zm11-5h-2v5h-5v2h7zm-2-4h2V3h-7v2h5z"></path></svg>`
+        }
+    },[]);
     const handleInput = (e) => {
         setBlogTitle({...blogTitle,title:e.target.value});
     }
@@ -35,7 +43,7 @@ function Editor(){
                         <span className="bottom-line"></span>
                     </h2>
             }
-            <ReactQuill modules={modules} theme="snow" value={value} onChange={setValue} />
+            <ReactQuill ref={QuillRef} modules={modules} theme="snow" value={value} onChange={setValue} />
         </section>
     );
 }
