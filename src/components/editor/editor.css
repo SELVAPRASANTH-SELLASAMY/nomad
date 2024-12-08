@@ -1,3 +1,11 @@
+.ql-toolbar{
+    position: sticky;
+    top: 11.8rem;
+    z-index: 10;
+}
+.ql-toolbar.ql-snow{
+    background-color: var(--background);
+}
 .ql-toolbar.ql-snow, .ql-container.ql-snow{
     border: .1rem solid var(--lightgrey);
     border-radius: .5rem;
@@ -90,8 +98,8 @@
     border-radius: .5rem;
     position: absolute;
     left: 0 !important;
-    top: unset !important;
-    bottom: -6rem !important;
+    top: -4.5rem !important;
+    z-index: 85;
 }
 .ql-snow .ql-tooltip{
     background-color: var(--tileblue);
@@ -132,13 +140,79 @@
 .ql-snow .ql-tooltip.ql-editing a.ql-remove{
     display: inline-block;
 }
-.ql-editor ul li,.text_composer li{
-    list-style-position: inside !important;
-}
 .ql-editor ul li::marker,.text_composer li::marker{
+    color: var(--green) !important;
+    font-size: var(--font_15);
+}
+.ql-editor ol li::marker{
     color: var(--green) !important;
 }
 .ql-editor{
     min-height: 5rem;
     resize: vertical;
+}
+.ql-editor p:has(img){
+    display: flex;
+    flex-direction: column;
+}
+.ql-snow .ql-editor img{
+    max-width: 950px;
+    border-radius: .5rem;
+    margin: 0 auto;
+}
+.ql-snow .ql-editor h3{
+    font-size: var(--font_2);
+}
+.ql-snow .ql-editor h4{
+    font-size: var(--font_175);
+}
+.ql-snow .ql-editor h5{
+    font-size: var(--font_15);
+}
+.ql-snow .ql-editor h6{
+    font-size: var(--font_125);
+}
+.ql-snow .ql-editor h3,.ql-snow .ql-editor h4,.ql-snow .ql-editor h5,.ql-snow .ql-editor h6{
+    font-weight: 500;
+}
+.ql-editor strong{
+    font-weight: 600;
+}
+.ql-editor ul li:not(.ql-direction-rtl),.ql-editor ol li:not(.ql-direction-rtl){
+    padding-left: unset;
+}
+.ql-editor li:not(.ql-direction-rtl)::before{
+    text-align: center;
+}
+.ql-editor ul > li{
+    list-style-type: disc;
+}
+.ql-editor ol > li{
+    list-style-type: decimal;
+}
+.ql-editor ol li{
+    list-style-position: inside !important;
+}
+.ql-editor ul > li::before,.ql-editor ol > li::before{
+    content: unset;
+}
+.ql-editor{
+    line-height: 2rem;
+    letter-spacing: 1px;
+}
+.ql-editor ul li{
+    list-style-position: outside !important;
+}
+.ql-editor ul li,.ql-editor ol li,.ql-editor p{
+    color: var(--lightblue);
+}
+.ql-snow .ql-editor blockquote{
+    border-color: var(--green);
+    border-radius: .5rem;
+    background-color: var(--tileblue);
+    padding: 1rem 2rem;
+}
+.ql-snow .ql-editor a{
+    text-decoration: none;
+    cursor: pointer;
 }
