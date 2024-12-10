@@ -1,6 +1,5 @@
 import { Select } from '../../sharedUi/select';
 import ActionButton from './ActionButton';
-import Editor from '../editor/Editor';
 function Newpost(){
     return(
         <>
@@ -14,7 +13,6 @@ function Newpost(){
                     <ActionButton/>
                 </div>
             </section>
-            <Editor/>
         </>
     );
 }
