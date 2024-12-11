@@ -6,6 +6,13 @@
 .ql-editor{
     resize: vertical;
     min-height: 5rem;
+    line-height: 2rem;
+}
+.ql-toolbar{
+    position: sticky;
+    top: 189.5px;
+    z-index: 10;
+    background-color: var(--background);
 }
 .ql-toolbar.ql-snow{
     font-family: unset;
@@ -118,6 +125,15 @@
 }
 .ql-snow .ql-tooltip.ql-editing a.ql-remove{
     display: unset;
+}
+.ql-snow .ql-editor img{
+    max-width: 950px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: .5rem;
+}
+.ql-snow .ql-editor p:has(img){
+    text-align: center;
 }
 
 
