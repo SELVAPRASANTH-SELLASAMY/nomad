@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import 'quill/dist/quill.snow.css';
 import Quill from "quill";
 import { QuillConfig } from './editorConfig';
+import './editor.css';
 function Editor(){
     const editorRef = useRef(null);
     const quillInstance = useRef(null);
