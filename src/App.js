@@ -8,7 +8,7 @@ function App(){
   const [showNavbar,setShowNavbar] = useState(false);
   return(
     <AppContext.Provider value={flashMessage}>
-      <Router>
+      <Router future={{v7_startTransition: true, v7_relativeSplatPath: true}}>
         <Flash/> {/*To display errors and success messages*/}
         <Routes>
           <Route path='/' element={<Header setShowNavbar={setShowNavbar}/>}>

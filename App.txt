@@ -1,4 +1,5 @@
 useState
+useEffect
 useRef
 useImperativeHandle
 useContext
@@ -7,4 +8,5 @@ useEvalPassword, useEvalEmail, useEvalOtp (custom hooks)
 
 React.memo
 debounce
+QuillJs
 Conditional rendering

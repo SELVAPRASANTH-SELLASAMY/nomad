@@ -8,6 +8,8 @@ function Newpost(){
         content:'',
         published:false
     });
+    const categoryOptions = ["All","programming","technology","general"];
+    const [category,setCategory] = useState(categoryOptions[0]);
     return(
         <>
             <section className="fixed top-0 left-0 bg-common-blue w-100 pb-15 plr-25 z-index-90">
@@ -15,9 +17,11 @@ function Newpost(){
                 <div className="toolbar d-flex gap-2 w-100 mt-05">
                     <Select
                         name="Category"
-                        options={["All","programming","technology","general"]}
+                        options={categoryOptions}
+                        value={category}
+                        setValue={setCategory}
                     />
-                    <ActionButton content={content} setContent={setContent}/>
+                    <ActionButton content={{...content,category}} setContent={setContent}/>
                 </div>
             </section>
             <Editor content={content} setContent={setContent}/>

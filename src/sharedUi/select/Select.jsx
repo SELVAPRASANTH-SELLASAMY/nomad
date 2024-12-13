@@ -1,9 +1,8 @@
 import { RiArrowUpDownFill } from "react-icons/ri";
 import Option from "./Option";
 import { useState } from "react";
-function Select({name,options,Styles}){
+function Select({name,options,Styles,value,setValue}){
     const [expand,setExpand] = useState(false);
-    const [value,setValue] = useState(options[0]);
     return(
        <div role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="OptionList" className="w-15rem relative no-user-select">
             <div className={`fs-4 bg-tile-blue ptb-025 plr-1 rounded-05 border-grey-01 d-flex center-y gap-025 ${Styles && Styles}`}>
