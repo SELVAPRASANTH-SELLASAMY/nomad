@@ -14,7 +14,13 @@ function Editor(){
     const quillInstance = useRef(null);
     useEffect(()=>{
         if(!quillInstance.current && editorRef.current){
-            quillInstance.current = new Quill(editorRef.current, QuillConfig);
+            quillInstance.current = new Quill(editorRef.current, QuillConfig(quillInstance));
+
+            const toolbar = quillInstance.current.getModule('toolbar').container;
+            if(toolbar){
+                toolbar.querySelector('.ql-fullscreen-mode').innerHTML = `<svg class='ql-stroke' stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M5 5h5V3H3v7h2zm5 14H5v-5H3v7h7zm11-5h-2v5h-5v2h7zm-2-4h2V3h-7v2h5z"></path></svg>`;
+            }
+            
             quillInstance.current.on('text-change',debounce(()=>{
                 setContent({...content,content:quillInstance.current.root.innerHTML});
             },1000));
@@ -39,10 +45,12 @@ function Editor(){
                         value={content.title}
                     /> 
                     :
-                    <h2 onClick={()=>setEditTitle(true)} className="fs-7 font-weight-600 text-centered uppercase">{content.title || "Click here to edit the title..."}</h2>
+                    <h2 onClick={()=>setEditTitle(true)} className="fs-7 font-weight-600 text-centered uppercase pointer">{content.title || "Click here to edit the title..."}</h2>
             }
             <br />
-            <div ref={editorRef}/>
+            <div className="quill-element mb-25">
+                <div ref={editorRef}/>
+            </div>
         </section>
     );
 }
