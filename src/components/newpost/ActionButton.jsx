@@ -1,9 +1,23 @@
 import { useState } from "react";
 import { Option } from "../../sharedUi/select";
 import { RiDraftLine, RiSave3Line, RiUploadCloud2Line, RiDeleteBin6Line } from "react-icons/ri";
+import Axios from "axios";
 function ActionButton({content,setContent}){
     const saveBlog = () => {
-        console.log("Integrate API to save the blog in Database...");
+        Axios.post("http://localhost:3001/nomad/addblog",content)
+        .then((res)=>{
+            if(res.status !== 200){
+                console.error(res.data.response);
+                console.error(res.data.error);
+            }
+            else{
+                console.log(res.data.response);
+            }
+        })
+        .catch((error)=>{
+            console.log("Something went wrong...");
+            console.error(error.response.data.error.message);
+        })
     }
     const saveAsDraft = () => {
         const stringContent = JSON.stringify(content);

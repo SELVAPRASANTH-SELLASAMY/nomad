@@ -1,6 +1,6 @@
 import { createContext, useRef, useState } from 'react';
 import './App.css';
-import { Header, Login, Flash, Sidebar, Home, Newpost } from './components';
+import { Header, Login, Flash, Sidebar, Home, Newpost, TextComposer } from './components';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 const AppContext = createContext();
 function App(){
@@ -16,6 +16,7 @@ function App(){
             <Route path='home' element={<Sidebar showNavbar={showNavbar}/>}>
               <Route index element={<Home/>}/>
               <Route path='newpost' element={<Newpost/>}/>
+              <Route path='blog' element={<TextComposer/>}/>
             </Route>
           </Route>
         </Routes>
