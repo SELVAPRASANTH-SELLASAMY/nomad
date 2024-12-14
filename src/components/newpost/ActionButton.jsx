@@ -28,18 +28,25 @@ function ActionButton({content,setContent}){
     }
 
     const actions = [
-        {icon:<RiSave3Line/>,name:"Save",functionality:saveBlog},
-        {icon:<RiDraftLine/>,name:"Draft",functionality:saveAsDraft},
-        {icon:<RiUploadCloud2Line/>,name:"Publish",functionality:publishBlog},
-        {icon:<RiDeleteBin6Line/>,name:"Discard",functionality:discardBlog}
+        {icon:<RiSave3Line/>,name:"Save"},
+        {icon:<RiDraftLine/>,name:"Draft"},
+        {icon:<RiUploadCloud2Line/>,name:"Publish"},
+        {icon:<RiDeleteBin6Line/>,name:"Discard"}
     ];
+
+    const functionality = {
+        "Save":saveBlog,
+        "Draft":saveAsDraft,
+        "Publish":publishBlog,
+        "Discard":discardBlog
+    }
 
     const [value, setValue] = useState(actions[0]);
     const [expand,setExpand] = useState(false);
 
     return(
         <div className="w-10rem relative ml-auto">
-            <button onClick={value.functionality} type="button" className='fs-4 bg-green rounded-05 ptb-025 plr-1 text-black font-weight-600 d-flex center-y gap-05 w-fit justify-center pointer uppercase ml-auto text-no-wrap'>
+            <button onClick={functionality[value.name]} type="button" className='fs-4 bg-green rounded-05 ptb-025 plr-1 text-black font-weight-600 d-flex center-y gap-05 w-fit justify-center pointer uppercase ml-auto text-no-wrap'>
                 <span>{value.name}</span>
                 <span tabIndex="0" onClick={(e)=>e.stopPropagation()} onFocus={()=>setExpand(true)} onBlur={()=>setExpand(false)}>| &#9660;</span>
             </button>
