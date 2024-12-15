@@ -16,8 +16,8 @@ function App(){
             <Route path='home' element={<Sidebar showNavbar={showNavbar}/>}>
               <Route index element={<Home/>}/>
               <Route path='newpost' element={<Newpost/>}/>
-              <Route path='blog' element={<TextComposer/>}/>
             </Route>
+            <Route path='blog' element={<TextComposer/>}/>
           </Route>
         </Routes>
       </Router>

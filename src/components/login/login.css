@@ -282,6 +282,9 @@
 .w-fit{
     width: fit-content;
 }
+.w-015rem{
+    width: 1.5rem;
+}
 .w-2rem{
     width: 2rem;
 }
@@ -333,8 +336,8 @@
 .aspect-ratio-equal{
     aspect-ratio: 1/1;
 }
-.aspect-ratio-15{
-    aspect-ratio: 1.5/1;
+.aspect-ratio-21{
+    aspect-ratio: 2/1;
 }
 .lh-3{
     line-height: 3rem;
@@ -435,6 +438,17 @@ a{
 .static{
     position: static;
 }
+.webkit-vbox{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.line-clamp-2{
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+}
+.ellipsis{
+    text-overflow: ellipsis;
+}
 .top-0{
     top: 0;
 }
@@ -518,6 +532,12 @@ input:disabled,label.disabled-label{
 }
 
 /*Animation*/
+.zoom-onHover-101{
+    transition: 500ms;
+}
+.zoom-onHover-101:hover{
+    transform: scale(1.025);
+}
 .fluid-effect{
     animation: fluid-effect 100ms linear 1;
 }
