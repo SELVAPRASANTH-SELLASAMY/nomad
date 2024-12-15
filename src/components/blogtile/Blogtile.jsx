@@ -4,7 +4,7 @@ function Blogtile({blog}){
     }
     return(
         <div className='bg-tile-blue p-1 rounded-1 d-flex flex-col gap-025'>
-            <img onClick={gotoBlog} className='w-100 aspect-ratio-15 rounded-top-1' src={blog.content} alt="Blog" />
+            <img onClick={gotoBlog} className='w-100 aspect-ratio-15 rounded-top-1' src={blog.content} alt={`${blog.title} thumbnail`} />
             <h6 className='fs-4 font-weight-500'>{blog.title}</h6>
             <div className='fs-4 d-iflex justify-space-between'>
                 <p className='text-gold'><span className='fs-5 mr-025'>&#9733;</span>4.5</p>

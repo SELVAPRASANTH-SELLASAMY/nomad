@@ -42,3 +42,15 @@
     border-left: .25rem solid var(--green);
     border-radius: .25rem;
 }
+.ql-snow .ql-editor img{
+    max-width: 965px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: .5rem;
+}
+.ql-snow .ql-editor p:has(img){
+    text-align: center;
+}
+.ql-snow a{
+    color: var(--green);
+}

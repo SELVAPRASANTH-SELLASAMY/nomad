@@ -14,7 +14,7 @@ function Header({setShowNavbar}){
                 <h1 onClick={()=>setShowNavbar((prevState)=>!prevState)} className='text-primary fs-7 uppercase mr-2 pointer'>nomad</h1>
                 {location.pathname !== '/' &&
                     <>
-                        <Searchinput/>
+                        {location.pathname === '/home' && <Searchinput/>}
                         <div className='fs-6 d-flex gap-2 center-y ml-auto'>
                             <TbNotes/>
                             <BiBell/>
