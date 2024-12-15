@@ -6,7 +6,7 @@ function ActionButton({content,setContent}){
     const saveBlog = () => {
         Axios.post("http://localhost:3001/nomad/addblog",content)
         .then((res)=>{
-            if(res.status !== 200){
+            if(res.status !== 201){
                 console.error(res.data.response);
                 console.error(res.data.error);
             }

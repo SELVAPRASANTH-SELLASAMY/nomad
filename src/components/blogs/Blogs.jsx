@@ -7,6 +7,10 @@ function Blogs(){
         Axios.get("http://localhost:3001/nomad/fetchblogs")
         .then((res)=>{
             if(res.status !== 200){
+                if(res.status === 404){
+                    console.log("No blogs found");
+                    return;
+                }
                 console.error(res.data.response);
                 console.error(res.data.error);
             }

@@ -8,6 +8,10 @@ function TextComposer(){
         Axios.get(`http://localhost:3001/nomad/getcontent?id=${queryParams.get("id")}`)
         .then((res)=>{
             if(res.status !== 200){
+                if(res.status === 404){
+                    console.log("Requested content no found");
+                    return;
+                }
                 console.error(res.data.response);
                 console.error(res.data.error);
             }
