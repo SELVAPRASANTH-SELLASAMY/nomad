@@ -5,10 +5,10 @@ import { Confirm } from './modals';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 const AppContext = createContext();
 function App(){
-  const Flashalert = useRef();
+  const FlashConfirm = useRef();
   const [showNavbar,setShowNavbar] = useState(false);
   return(
-    <AppContext.Provider value={Flashalert}>
+    <AppContext.Provider value={{FlashConfirm}}>
       <Router future={{v7_startTransition: true, v7_relativeSplatPath: true}}>
         <Confirm/>
         <Routes>
