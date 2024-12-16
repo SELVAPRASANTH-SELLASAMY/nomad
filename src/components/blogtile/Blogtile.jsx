@@ -3,8 +3,15 @@ function Blogtile({blog}){
     const gotoBlog = () => {
         window.location.href = `blog?id=${blog._id}`;
     }
+    const setDate = () => {
+        const date = new Date(blog.createdAt);
+        const day = String(date.getDate()).padStart(2,'0');
+        const month = String(date.getMonth() + 1).padStart(2,'0');
+        const year = String(date.getFullYear()).padStart(2,'0');
+        return `${day}-${month}-${year}`;
+    }
     return(
-        <div onClick={gotoBlog} className='bg-tile-blue p-1 rounded-1 d-flex flex-col gap-05 pointer zoom-onHover-101'>
+        <div onClick={gotoBlog} className='bg-tile-blue p-1 rounded-1 d-flex flex-col gap-05 pointer'>
             <Lazyimage 
                 componentClass={'w-100 aspect-ratio-21 rounded-top-1'} 
                 placeholder={blog.lazyImage} 
@@ -17,8 +24,8 @@ function Blogtile({blog}){
                 <p className='text-secondary'><span className='mr-025'>&#x1F441;</span>4500</p>
             </div>
             <div className='fs-3 d-iflex justify-space-between'>
-                <p className='text-secondary'>Technology</p>
-                <p className='text-secondary'>15-12-2024</p>
+                <p className='text-secondary'>{blog.category}</p>
+                <p className='text-secondary'>{setDate()}</p>
             </div>
             <hr className='border-grey-005 mtb-025'></hr>
             <div id='author' className='d-flex center-y gap-05'>
