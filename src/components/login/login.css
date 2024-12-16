@@ -582,6 +582,25 @@ input:disabled,label.disabled-label{
     transition: transform 250ms;
     transform: rotate(90deg);
 }
+dialog.flashmessage .status-image{
+    grid-area: dialog-image;
+}
+dialog.flashmessage .status-image svg{
+    font-size: 3rem;
+}
+dialog.flashmessage h3{
+    grid-area: dialog-heading;
+}
+dialog.flashmessage p{
+    grid-area: dialog-text;
+}
+dialog.flashmessage{
+    inset-inline-start: unset;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "dialog-image dialog-heading"
+                         "dialog-image dialog-text";
+    column-gap: 1rem;
+}
 
 /*Animation*/
 .zoom-onHover-101{
