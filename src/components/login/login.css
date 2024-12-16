@@ -97,6 +97,9 @@
 .flex-col{
     flex-direction: column;
 }
+.flex-row-rev{
+    flex-direction: row-reverse;
+}
 .d-grid{
     display: grid;
 }
@@ -464,6 +467,12 @@ a{
 .top-25{
     top: 2.5rem;
 }
+.top-8p{
+    top: 8%;
+}
+.right-8p{
+    right: 8%;
+}
 
 input:disabled,label.disabled-label{
     opacity: .5;
@@ -530,6 +539,16 @@ input:disabled,label.disabled-label{
     font: unset;
     color: unset;
 }
+.click-scale-down{
+    transition: 250ms;
+}
+.click-scale-down:active{
+    transform: scale(.9);
+}
+.rotate-90deg{
+    transition: transform 250ms;
+    transform: rotate(90deg);
+}
 
 /*Animation*/
 .zoom-onHover-101{
@@ -537,6 +556,18 @@ input:disabled,label.disabled-label{
 }
 .zoom-onHover-101:hover{
     transform: scale(1.025);
+}
+.button-opa-effect{
+    animation: bt-fluid 250ms linear 1 forwards;
+    opacity: 0;
+}
+@keyframes bt-fluid {
+    From{
+        opacity: 0;
+    }
+    To{
+        opacity: 1;
+    }
 }
 .fluid-effect{
     animation: fluid-effect 100ms linear 1;
