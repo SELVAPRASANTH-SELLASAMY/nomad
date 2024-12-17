@@ -8,7 +8,7 @@ function Newpost(){
         content:'',
         published:false
     });
-    const categoryOptions = ["All","programming","technology","general"];
+    const categoryOptions = ["programming","Frontend","Backend","Database","technology","general"];
     const [category,setCategory] = useState(categoryOptions[0]);
     return(
         <>

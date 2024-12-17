@@ -4,7 +4,7 @@ import { useState } from "react";
 function Home(){
     const sortOptions = ["publish date","popular","name","view count"];
     const [sort,setSort] = useState(sortOptions[0]);
-    const categoryOptions = ["All","programming","technology","general"];
+    const categoryOptions = ["All","programming","Frontend","Backend","Database","technology","general"]
     const [category,setCategory] = useState(categoryOptions[0]);
     return(
         <>
