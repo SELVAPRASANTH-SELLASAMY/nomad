@@ -10,7 +10,7 @@ function Sidebar({showNavbar}){
             icon:<IoIosHome/>
         },
         {
-            path:'/home/newpost',
+            path:'/home/editor',
             name:'New Post',
             icon:<IoMdAddCircleOutline/>
         },
