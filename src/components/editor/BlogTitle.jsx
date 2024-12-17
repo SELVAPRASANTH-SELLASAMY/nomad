@@ -12,12 +12,13 @@ function BlogTitle({content,setContent}){
             {
                 editTitle ?
                     <input 
+                        style={{marginBlockEnd:'.75em'}}
                         type="text"
                         id="blog-title"
                         name="blog-title"
                         placeholder="Enter the blog title..."
                         onChange={handleTitleChange}
-                        className="fs-4 w-100 ptb-1 plr-15 rounded-05 border-grey-01 trans-border-250 no-outline bg-tile-blue text-white mtb-1"
+                        className="w-100 no-outline no-border no-bg text-white fs-7 font-weight-600 text-centered uppercase pointer"
                         onBlur={()=>setEditTitle(false)}
                         autoFocus
                         value={content.title}

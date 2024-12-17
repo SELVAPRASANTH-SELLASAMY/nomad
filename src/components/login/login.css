@@ -499,6 +499,9 @@ input:disabled,label.disabled-label{
     opacity: .5;
     user-select: none;
 }
+.no-bg{
+    background-color: unset;
+}
 .bg-green{
     background-color: var(--green);
 }
