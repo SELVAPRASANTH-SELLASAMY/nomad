@@ -13,7 +13,7 @@ function Blogtile({blog}){
     }
     return(
         <div onClick={gotoBlog} className='bg-tile-blue p-1 rounded-1 d-flex flex-col gap-05 relative'>
-            <BlogOptions/>
+            <BlogOptions id={blog._id}/>
             <Lazyimage 
                 componentClass={'w-100 aspect-ratio-21 rounded-top-1'} 
                 placeholder={blog.lazyImage} 

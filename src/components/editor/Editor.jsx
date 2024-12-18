@@ -5,9 +5,38 @@ import { QuillConfig } from './editorConfig';
 import './editor.css';
 import { debounce } from "lodash";
 import BlogTitle from "./BlogTitle";
+import { useSearchParams } from "react-router-dom";
+import Axios from 'axios';
 function Editor({content,setContent}){
     const editorRef = useRef(null);
     const quillInstance = useRef(null);
+    const [queryParams] = useSearchParams();
+
+    useEffect(()=>{
+        const edit = queryParams.get("edit");
+        if(edit){
+            Axios.get(`http://localhost:3001/nomad/getcontent?id=${edit}`)
+            .then((res)=>{
+                if(res.status !== 200){
+                    if(res.status === 404){
+                        console.log("Requested content not found");
+                        return;
+                    }
+                    console.error(res.data.response);
+                    console.error(res.data.error);
+                }
+                else{
+                    setContent(res.data.response);
+                    quillInstance.current.root.innerHTML = res.data.response.content;
+                }
+            })
+            .catch((error) => {
+                console.log("Something went wrong...");
+                console.error(error.response);
+            })
+        }
+    },[queryParams,setContent]);
+
     useEffect(()=>{
         if(!quillInstance.current && editorRef.current){
             quillInstance.current = new Quill(editorRef.current, QuillConfig(quillInstance));
@@ -25,6 +54,7 @@ function Editor({content,setContent}){
             },1000));
         }
     },[setContent]);
+    
     return(
         <section className="nomad-editor mt-120">
             <BlogTitle content={content} setContent={setContent}/>
