@@ -17,22 +17,28 @@ function Editor({content,setContent}){
         if(edit){
             Axios.get(`http://localhost:3001/nomad/getcontent?id=${edit}`)
             .then((res)=>{
-                if(res.status !== 200){
-                    if(res.status === 404){
-                        console.log("Requested content not found");
-                        return;
-                    }
-                    console.error(res.data.response);
-                    console.error(res.data.error);
-                }
-                else{
-                    setContent(res.data.response);
-                    quillInstance.current.root.innerHTML = res.data.response.content;
+                if(res.status === 200){
+                    setContent(res.data);
+                    quillInstance.current.root.innerHTML = res.data.content;
                 }
             })
-            .catch((error) => {
-                console.log("Something went wrong...");
-                console.error(error.response);
+            .catch((err) => {
+                if(err.response){
+                    const { status, data } = err.response;
+                    if(status === 500){
+                        const { message, error } = data;
+                        console.log(message+" "+error);
+                    }
+                    else{
+                        console.log(data);
+                    }
+                }
+                else if(err.request){
+                    console.log(err.request);
+                }
+                else{
+                    console.log(err.message);
+                }
             })
         }
     },[queryParams,setContent]);

@@ -6,17 +6,27 @@ function ActionButton({content,setContent}){
     const saveBlog = () => {
         Axios.post("http://localhost:3001/nomad/addblog",content)
         .then((res)=>{
-            if(res.status !== 201){
-                console.error(res.data.response);
-                console.error(res.data.error);
-            }
-            else{
-                console.log(res.data.response);
+            if(res.status === 201){
+                console.log(res.data);
             }
         })
-        .catch((error)=>{
-            console.log("Something went wrong...");
-            console.error(error.response.data.error.message);
+        .catch((err)=>{
+            if(err.response){
+                const { status, data } = err.response;
+                if(status === 500){
+                    const { message, error } = data;
+                    console.log(message+" "+error);
+                }
+                else{
+                    console.log(data);
+                }
+            }
+            else if(err.request){
+                console.log(err.request);
+            }
+            else{
+                console.log(err.message);
+            }
         })
     }
     const saveAsDraft = () => {
