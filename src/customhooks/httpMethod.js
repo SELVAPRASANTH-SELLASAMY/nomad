@@ -1,24 +1,38 @@
-import Axios from 'axios';
-import { useEffect } from 'react';
+import Axios from "axios";
+import { useEffect, useState } from "react";
+
 const useFetch = (url) => {
+    const [data,setData] = useState(null);
     useEffect(() => {
+        if(!url){
+            return;
+        }
         Axios.get(url)
         .then((res) => {
-            switch(res.status){
-                case 200:
-                    return [res.data.response,200];
-                case 404:
-                    return ["Requested source not found!",404];
-                default:
-                    console.log(res.data.response);
-                    return ["Something went wrong!",500];
+            if(res.status === 200){
+                setData(res.data);
             }
         })
-        .catch((error) => {
-            console.log(error);
-            return ["Something went wrong!",500];
+        .catch((err) => {
+            if(err.response){
+                const { status, data } = err.response;
+                if(status === 500){
+                    const { message, error } = data;
+                    console.log(message+" "+error);
+                }
+                else{
+                    console.log(data);
+                }
+            }
+            else if(err.request){
+                console.log(err.request);
+            }
+            else{
+                console.log(err.message);
+            }
         })
     },[url]);
+    return data;
 }
 
 export { useFetch };
