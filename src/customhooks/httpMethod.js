@@ -1,5 +1,9 @@
-import Axios from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react";
+
+const Axios = axios.create({
+    baseURL: 'http://localhost:3001/nomad'
+});
 
 const useFetch = (url) => {
     const [data,setData] = useState(null);
@@ -35,4 +39,34 @@ const useFetch = (url) => {
     return data;
 }
 
-export { useFetch };
+const usePost = (url) => {
+    const post = (data) => {
+        Axios.post(url,data)
+        .then((res)=>{
+            if(res.status === 201){
+                console.log(res.data);
+            }
+        })
+        .catch((err)=>{
+            if(err.response){
+                const { status, data } = err.response;
+                if(status === 500){
+                    const { message, error } = data;
+                    console.log(message+" "+error);
+                }
+                else{
+                    console.log(data);
+                }
+            }
+            else if(err.request){
+                console.log(err.request);
+            }
+            else{
+                console.log(err.message);
+            }
+        })
+    }
+    return { post };
+}
+
+export { useFetch, usePost };

@@ -16,7 +16,7 @@ function Newpost(){
     const [queryParams] = useSearchParams();
 
     const edit = queryParams.get("edit");
-    const data = useFetch(edit ? `http://localhost:3001/nomad/getcontent?id=${edit}` : null);
+    const data = useFetch(edit ? `/getcontent?id=${edit}` : null);
     useEffect(()=>{
         if(data){
             setContent(data);

@@ -1,34 +1,13 @@
 import { useState } from "react";
 import { Option } from "../../sharedUi/select";
 import { RiDraftLine, RiSave3Line, RiUploadCloud2Line, RiDeleteBin6Line } from "react-icons/ri";
-import Axios from "axios";
+import { usePost } from "../../customhooks/httpMethod";
 function ActionButton({content,setContent}){
+    const { post } = usePost('/addblog');
     const saveBlog = () => {
-        Axios.post("http://localhost:3001/nomad/addblog",content)
-        .then((res)=>{
-            if(res.status === 201){
-                console.log(res.data);
-            }
-        })
-        .catch((err)=>{
-            if(err.response){
-                const { status, data } = err.response;
-                if(status === 500){
-                    const { message, error } = data;
-                    console.log(message+" "+error);
-                }
-                else{
-                    console.log(data);
-                }
-            }
-            else if(err.request){
-                console.log(err.request);
-            }
-            else{
-                console.log(err.message);
-            }
-        })
+        post(content);
     }
+
     const saveAsDraft = () => {
         const stringContent = JSON.stringify(content);
         localStorage.setItem('blogDraft',stringContent);

@@ -1,7 +1,7 @@
 import Blogtile from "../blogtile/Blogtile";
 import { useFetch } from "../../customhooks/httpMethod";
 function Blogs(){
-    const blogs = useFetch("http://localhost:3001/nomad/fetchblogs");
+    const blogs = useFetch("/fetchblogs");
     return(
         <section className="d-grid grid-auto-fill gap-2 mtb-15 mt-120">
             {
