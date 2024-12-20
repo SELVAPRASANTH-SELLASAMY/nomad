@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { MdEdit, MdDelete } from "react-icons/md";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
+import { useDelete } from '../../customhooks/httpMethod';
 const BlogOptions = ({id}) => {
     const [showOptions,setShowOptions] = useState(false);
+    const { erase } = useDelete(`/deleteBlog?id=${id}`);
     const handleMenuClick = (e) => {
         e.stopPropagation();
         setShowOptions(!showOptions);
@@ -11,9 +13,13 @@ const BlogOptions = ({id}) => {
         e.stopPropagation();
         window.location.href = `home/editor?edit=${id}`;
     }
+    const handleDelete = (e) => {
+        e.stopPropagation();
+        erase();
+    }
     const options = [
         {name:'Edit',icon:<MdEdit/>,clickHandler:handleEdit},
-        {name:'Delete',icon:<MdDelete/>,clickHandler:(e) => {e.stopPropagation()}}
+        {name:'Delete',icon:<MdDelete/>,clickHandler:handleDelete}
     ];
     return(
         <div className='absolute top-8p right-8p d-flex flex-row-rev gap-05'>

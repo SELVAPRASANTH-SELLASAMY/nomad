@@ -5,6 +5,25 @@ const Axios = axios.create({
     baseURL: 'http://localhost:3001/nomad'
 });
 
+const error = (err) => {
+    if(err.response){
+        const { status, data } = err.response;
+        if(status === 500){
+            const { message, error } = data;
+            console.log(message+" "+error);
+        }
+        else{
+            console.log(data);
+        }
+    }
+    else if(err.request){
+        console.log(err.request);
+    }
+    else{
+        console.log(err.message);
+    }
+}
+
 const useFetch = (url) => {
     const [data,setData] = useState(null);
     useEffect(() => {
@@ -18,22 +37,7 @@ const useFetch = (url) => {
             }
         })
         .catch((err) => {
-            if(err.response){
-                const { status, data } = err.response;
-                if(status === 500){
-                    const { message, error } = data;
-                    console.log(message+" "+error);
-                }
-                else{
-                    console.log(data);
-                }
-            }
-            else if(err.request){
-                console.log(err.request);
-            }
-            else{
-                console.log(err.message);
-            }
+            error(err);
         })
     },[url]);
     return data;
@@ -48,25 +52,25 @@ const usePost = (url) => {
             }
         })
         .catch((err)=>{
-            if(err.response){
-                const { status, data } = err.response;
-                if(status === 500){
-                    const { message, error } = data;
-                    console.log(message+" "+error);
-                }
-                else{
-                    console.log(data);
-                }
-            }
-            else if(err.request){
-                console.log(err.request);
-            }
-            else{
-                console.log(err.message);
-            }
+            error(err);
         })
     }
     return { post };
 }
 
-export { useFetch, usePost };
+const useDelete = (url) => {
+    const erase = () => {
+        Axios.delete(url)
+        .then((res)=>{
+            if(res.status === 200){
+                console.log("Blog deleted");
+            }
+        })
+        .catch((err)=>{
+            error(err);
+        })
+    }
+    return { erase };
+}
+
+export { useFetch, usePost, useDelete };
