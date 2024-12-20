@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Select } from '../../sharedUi/select';
 import ActionButton from './ActionButton';
 import Editor from '../editor/Editor';
+import { useSearchParams } from "react-router-dom";
+import { useFetch } from "../../customhooks/httpMethod";
 function Newpost(){
     const [content,setContent] = useState({
         title:'',
@@ -10,6 +12,17 @@ function Newpost(){
     });
     const categoryOptions = ["programming","Frontend","Backend","Database","technology","general"];
     const [category,setCategory] = useState(categoryOptions[0]);
+
+    const [queryParams] = useSearchParams();
+
+    const edit = queryParams.get("edit");
+    const data = useFetch(edit ? `http://localhost:3001/nomad/getcontent?id=${edit}` : null);
+    useEffect(()=>{
+        if(data){
+            setContent(data);
+        }
+    },[data]);
+
     return(
         <>
             <section className="fixed top-0 left-0 bg-common-blue w-100 pb-15 plr-25 z-index-90">

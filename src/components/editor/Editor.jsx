@@ -5,18 +5,16 @@ import { QuillConfig } from './editorConfig';
 import './editor.css';
 import { debounce } from "lodash";
 import BlogTitle from "./BlogTitle";
-import { useSearchParams } from "react-router-dom";
-import { useFetch } from "../../customhooks/httpMethod";
 function Editor({content,setContent}){
     const editorRef = useRef(null);
     const quillInstance = useRef(null);
-    const [queryParams] = useSearchParams();
 
-    const edit = queryParams.get("edit");
-    const data = useFetch(edit ? `http://localhost:3001/nomad/getcontent?id=${edit}` : null);
-    if(data){
-        setContent(data);
-    }
+    useEffect(()=>{
+        const data = content.content;
+        if(data){
+            quillInstance.current.root.innerHTML = data;
+        }
+    },[content,quillInstance]);
 
     useEffect(()=>{
         if(!quillInstance.current && editorRef.current){
