@@ -19,7 +19,7 @@ function Confirm(){
                 open:true
             }));
             return new Promise((resolve) => {
-                setAction(resolve);
+                setAction(() => resolve);
             });
         }
     }),[]);
