@@ -27,7 +27,7 @@ const error = (err,alert) => {
         if(status === 500){
             const { message, error } = data;
             alert(message,false);
-            console.log(message+" "+error);
+            console.log(error);
         }
         else{
             alert(data,false);
