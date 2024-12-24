@@ -4,17 +4,17 @@ import { useFetch } from "../../customhooks/httpMethod";
 function TextComposer(){
     const [queryParams] = useSearchParams();
     const Id = queryParams.get("id"); //TODO: If the id isn't valid it should go to the 404 page
-    const content = useFetch(`/getcontent?id=${Id}`);
+    const {data} = useFetch(`/getcontent?id=${Id}`);
     return(
         <section className="text_composer">
             {
-                content && 
+                data && 
                     <>
                         <h2>
-                            {content.title}
+                            {data.title}
                             <span className="bottomline"></span>
                         </h2>
-                        <div dangerouslySetInnerHTML={{__html:content.content}}></div>
+                        <div dangerouslySetInnerHTML={{__html:data.content}}></div>
                     </>
             }
         </section>
