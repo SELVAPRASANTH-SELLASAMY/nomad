@@ -26,20 +26,20 @@ const error = (err,alert) => {
         const { status, data } = err.response;
         if(status === 500){
             const { message, error } = data;
-            alert(message);
+            alert(message,false);
             console.log(message+" "+error);
         }
         else{
-            alert(data);
+            alert(data,false);
             console.log(data);
         }
     }
     else if(err.request){
-        alert(err.request);
+        alert(err.request,false);
         console.log(err.request);
     }
     else{
-        alert(err.message);
+        alert(err.message,false);
         console.log(err.message);
     }
 }
@@ -62,7 +62,7 @@ const useFetch = (url) => {
         })
         //eslint-disable-next-line react-hooks/exhaustive-deps
     },[url]);
-    return data;
+    return { data, setData };
 }
 
 const usePost = (url) => {
@@ -71,7 +71,6 @@ const usePost = (url) => {
         Axios.post(url,data)
         .then((res)=>{
             if(res.status === 201){
-                console.log(res.data);
                 alert(res.data);
             }
         })
@@ -85,7 +84,7 @@ const usePost = (url) => {
 const useDelete = (url) => {
     const alert = useMessage();
     const confirm = useConfirm();
-    const erase = async() => {
+    const erase = async(cb) => {
         const action = await confirm("Are you sure want to delete","Changes can't be undone");
         if(!action){
             return;
@@ -94,7 +93,9 @@ const useDelete = (url) => {
         .then((res)=>{
             if(res.status === 200){
                 alert(res.data);
-                console.log("Blog deleted");
+                if(cb){
+                    cb();
+                }
             }
         })
         .catch((err)=>{

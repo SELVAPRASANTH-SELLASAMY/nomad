@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { MdEdit, MdDelete } from "react-icons/md";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { useDelete } from '../../customhooks/httpMethod';
+import { BlogContext } from '../blogs/Blogs';
 const BlogOptions = ({id}) => {
     const [showOptions,setShowOptions] = useState(false);
+    const setData = useContext(BlogContext);
     const { erase } = useDelete(`/deleteBlog?id=${id}`);
     const handleMenuClick = (e) => {
         e.stopPropagation();
@@ -15,7 +17,9 @@ const BlogOptions = ({id}) => {
     }
     const handleDelete = (e) => {
         e.stopPropagation();
-        erase();
+        erase(() => {
+            setData((prevBlogs) => prevBlogs.filter((blog) => blog._id !== id));
+        });
     }
     const options = [
         {name:'Edit',icon:<MdEdit/>,clickHandler:handleEdit},
