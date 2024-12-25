@@ -6,7 +6,7 @@ import { BlogContext } from '../blogs/Blogs';
 const BlogOptions = ({id}) => {
     const [showOptions,setShowOptions] = useState(false);
     const setData = useContext(BlogContext);
-    const { erase } = useDelete(`/deleteBlog?id=${id}`);
+    const { erase } = useDelete(`/delete?id=${id}`);
     const handleMenuClick = (e) => {
         e.stopPropagation();
         setShowOptions(!showOptions);

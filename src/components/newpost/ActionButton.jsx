@@ -3,7 +3,7 @@ import { Option } from "../../sharedUi/select";
 import { RiDraftLine, RiSave3Line, RiUploadCloud2Line, RiDeleteBin6Line } from "react-icons/ri";
 import { usePost } from "../../customhooks/httpMethod";
 function ActionButton({content,setContent}){
-    const { post } = usePost('/addblog');
+    const { post } = usePost('/add');
     const saveBlog = () => {
         post(content);
     }

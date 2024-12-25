@@ -3,7 +3,7 @@ import { useFetch } from "../../customhooks/httpMethod";
 import { createContext } from "react";
 const BlogContext = createContext();
 function Blogs(){
-    const {data,setData} = useFetch("/fetchblogs");
+    const {data,setData} = useFetch("/fetch");
     return(
         <section className="d-grid grid-auto-fill gap-2 mtb-15 mt-120">
             <BlogContext.Provider value={setData}>

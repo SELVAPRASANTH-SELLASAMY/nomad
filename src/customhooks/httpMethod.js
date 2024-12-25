@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { AppContext } from "../App";
 
 const Axios = axios.create({
-    baseURL: 'http://localhost:3001/nomad'
+    baseURL: 'http://localhost:3001/nomad/blog'
 });
 
 const useConfirm = () => {
@@ -22,6 +22,7 @@ const useMessage = () => {
 }
 
 const error = (err,alert) => {
+    console.log(err);
     if(err.response){
         const { status, data } = err.response;
         if(status === 500){
