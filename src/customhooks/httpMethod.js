@@ -82,6 +82,30 @@ const usePost = (url) => {
     return { post };
 }
 
+const useUpdate = (url) => {
+    const alert = useMessage();
+    const confirm = useConfirm();
+    const update = async(data) => {
+        if(!url){
+            return;
+        }
+        const action = await confirm("Are you sure want to save","Changes can't be undone");
+        if(!action){
+            return;
+        }
+        Axios.patch(url,data)
+        .then((res)=>{
+            if(res.status === 200){
+                alert(res.data);
+            }
+        })
+        .catch((err)=>{
+            error(err,alert);
+        })
+    }
+    return { update };
+}
+
 const useDelete = (url) => {
     const alert = useMessage();
     const confirm = useConfirm();
@@ -106,4 +130,4 @@ const useDelete = (url) => {
     return { erase };
 }
 
-export { useFetch, usePost, useDelete };
+export { useFetch, usePost, useDelete, useUpdate };

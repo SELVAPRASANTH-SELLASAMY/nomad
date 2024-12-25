@@ -19,9 +19,9 @@ function Newpost(){
     const { data } = useFetch(edit ? `/getcontent?id=${edit}` : null);
     useEffect(()=>{
         if(data){
-            setContent(data);
+            setContent({...data,copy:data,id:edit});
         }
-    },[data]);
+    },[data,edit]);
 
     return(
         <>

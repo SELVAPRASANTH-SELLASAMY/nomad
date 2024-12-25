@@ -7,7 +7,7 @@ function Option({options,actions,setValue,value}){
                     <li onMouseDown={()=>setValue(option)} role="option" aria-selected={(value === option) || (value.name === option.name)} key={index} className="hover-blue plr-1 ptb-025 cap-first-letter pointer d-flex gap-05">
                         {
                             option.icon && 
-                            <span className="fs-4 mt-025">
+                            <span className="fs-4 d-flex center-y">
                                 {option.icon}
                             </span>
                         }

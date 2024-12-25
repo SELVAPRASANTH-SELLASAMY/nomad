@@ -1,13 +1,26 @@
 import { useState } from "react";
 import { Option } from "../../sharedUi/select";
 import { RiDraftLine, RiSave3Line, RiUploadCloud2Line, RiDeleteBin6Line } from "react-icons/ri";
-import { usePost } from "../../customhooks/httpMethod";
+import { usePost, useUpdate } from "../../customhooks/httpMethod";
 function ActionButton({content,setContent}){
     const { post } = usePost('/add');
+    const { update } = useUpdate(content.id ? `/update?id=${content.id}` : null);
     const saveBlog = () => {
-        post(content);
+        if("copy" in content){
+            let updatedContent = {};
+            Object.keys(content.copy).forEach((key) => {
+                if(content[key] !== content.copy[key]){
+                    updatedContent[key] = content[key];
+                }
+            })
+            if((Object.keys(updatedContent).length) > 0){
+                update(updatedContent);
+            }
+        }
+        else{
+            post(content);
+        }
     }
-
     const saveAsDraft = () => {
         const stringContent = JSON.stringify(content);
         localStorage.setItem('blogDraft',stringContent);
