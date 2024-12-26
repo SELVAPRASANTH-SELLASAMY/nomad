@@ -1,5 +1,4 @@
 const error = (err,alert) => {
-    console.log(err);
     if(err.response){
         const { status, data } = err.response;
         if(status === 500){
@@ -12,13 +11,9 @@ const error = (err,alert) => {
             console.log(data);
         }
     }
-    else if(err.request){
-        alert(err.request,false);
-        console.log(err.request);
-    }
     else{
         alert(err.message,false);
-        console.log(err.message);
+        console.log(err);
     }
 }
 export { error };
