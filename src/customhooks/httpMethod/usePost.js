@@ -1,9 +1,14 @@
-import { useMessage } from "../flash";
+import { useConfirm, useMessage } from "../flash";
 import Axios from './utils/Axios';
 import { error } from "./utils/error";
 const usePost = (url) => {
+    const confirm = useConfirm();
     const alert = useMessage();
-    const post = (data) => {
+    const post = async(data) => {
+        const action = await confirm("Are you sure want to save","Changes can't be undone");
+        if(!action){
+            return;
+        }
         Axios.post(url,data)
         .then((res)=>{
             if(res.status === 201){
