@@ -3,15 +3,15 @@ import { useMessage } from '../flash';
 import Axios from './utils/Axios';
 import { error } from './utils/error';
 import { debounce } from "lodash";
-const useFetch = (url) => {
+const useFetch = (url,page) => {
     const [data,setData] = useState(null);
     const alert = useMessage();
     useEffect(() => {
         if(!url){
             return;
         }
-        const deboucing = debounce(() => {
-            Axios.get(url)
+        const debouncer = debounce(() => {
+            Axios.get(`${url}${page ? `?page=${page}` : ''}`)
             .then((res) => {
                 if(res.status === 200){
                     setData(res.data);
@@ -22,11 +22,11 @@ const useFetch = (url) => {
             })
         },[1000]);
 
-        deboucing();
+        debouncer();
 
-        return () => deboucing.cancel();
+        return () => debouncer.cancel();
         //eslint-disable-next-line react-hooks/exhaustive-deps
-    },[url]);
-    return { data, setData };
+    },[url,page]);
+    return { data };
 }
 export default useFetch;
