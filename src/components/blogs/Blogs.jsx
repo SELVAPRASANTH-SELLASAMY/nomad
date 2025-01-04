@@ -1,49 +1,68 @@
 import Blogtile from "../blogtile/Blogtile";
 import { useFetch } from "../../customhooks/httpMethod";
-import { createContext, useEffect, useRef, useState } from "react";
-const BlogContext = createContext();
+import { useEffect, useRef, useState } from "react";
+import { debounce } from "lodash";
+import TileLoadingAnimation from '../../sharedUi/select/TileLoadingAnimation/TileLoadingAnimation';
 function Blogs(){
     const bottomMargin = useRef(null);
-    const [page,setPage] = useState(1);
-    const {data} = useFetch("/fetch",page);
 
-    const [blogs,setData] = useState([]);
+    const [State,setState] = useState({
+        isPending:true,
+        blogs:[],
+        page:1
+    })
+
+    const {data} = useFetch("/fetch",State.page);
 
     useEffect(() => {
         if(data && data.hasMore){
-            const Observer = new IntersectionObserver((entries) => {
+            const Observer = new IntersectionObserver(debounce((entries) => {
                 if(entries[0].isIntersecting){
-                    setPage((prev) => prev + 1);
+                    setState((prevState) => {
+                        const copy = {...prevState};
+                        copy.isPending = true;
+                        copy.page = (prevState.page + 1);
+                        return copy;
+                    })
                     Observer.unobserve(entries[0].target);
                 }
-            });
+            },1000));
             bottomMargin.current && Observer.observe(bottomMargin.current);
             return () => Observer.disconnect();
         }
-    },[data]);
+    },[data,setState]);
 
     useEffect(() => {
-        if(data && data.data){
-            setData((prevBlogs) => {
-                return [...prevBlogs,...(data.data)];
+        if(data?.data){
+            setState((prevState) => {
+                const copy = {...prevState};
+                copy.blogs = [...(prevState.blogs),...(data.data)];
+                copy.isPending = false;
+                return copy;
             });
         }
-    },[data]);
+    },[data,setState]);
 
     return(
         <>
             <section className="d-grid grid-auto-fill gap-2 mtb-15 mt-120">
-                <BlogContext.Provider value={setData}>
-                    {
-                        (blogs.length > 0) && blogs.map((blog)=>(
-                            <Blogtile key={blog._id} blog={blog}/>
-                        ))
-                    }
-                </BlogContext.Provider>
+                {
+                    (State.blogs).map((blog)=>(
+                        <Blogtile key={blog._id} blog={blog} setState={setState}/>
+                    ))
+                }
+                {
+                    State.isPending && 
+                    Array.from({length:5},(_,index) => (
+                        <TileLoadingAnimation key={index}/>
+                    ))
+                }
             </section>
-            {(data && data.data) && <div className="bottom_margin h-25 rounded-100px no-bg" ref={bottomMargin} style={{height:".25rem"}}></div>}
+            {
+                (data?.data) && 
+                <div className="bottom_margin h-25 rounded-100px no-bg" ref={bottomMargin} style={{height:".25rem"}}></div>
+            }
         </>
     )
 }
 export default Blogs;
-export { BlogContext };

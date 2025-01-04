@@ -1,9 +1,10 @@
 import Lazyimage from '../lazyimage/Lazyimage';
 import BlogOptions from './Manageblog';
-function Blogtile({blog}){
+function Blogtile({blog, setState}){
     const gotoBlog = () => {
         window.location.href = `blog?id=${blog._id}`;
     }
+
     const setDate = () => {
         const date = new Date(blog.createdAt);
         const day = String(date.getDate()).padStart(2,'0');
@@ -11,9 +12,10 @@ function Blogtile({blog}){
         const year = String(date.getFullYear()).padStart(2,'0');
         return `${day}-${month}-${year}`;
     }
+    
     return(
-        <div onClick={gotoBlog} className='bg-tile-blue p-1 rounded-1 d-flex flex-col gap-05 relative'>
-            <BlogOptions id={blog._id}/>
+        <div onClick={gotoBlog} className='bg-tile-blue p-1 rounded-1 d-flex flex-col gap-05 relative border-grey-005'>
+            <BlogOptions id={blog._id} setState={setState}/>
             <Lazyimage 
                 componentClass={'w-100 aspect-ratio-21 rounded-top-1'} 
                 placeholder={blog.lazyImage} 
