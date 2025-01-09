@@ -1,54 +1,73 @@
 import Blogtile from "../blogtile/Blogtile";
 import { useFetch } from "../../customhooks/httpMethod";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import { debounce } from "lodash";
-import TileLoadingAnimation from '../../sharedUi/select/TileLoadingAnimation/TileLoadingAnimation';
-function Blogs(){
+import TileLoadingAnimation from '../../sharedUi/TileLoadingAnimation/TileLoadingAnimation';
+function Blogs({ascending,sort}){
     const bottomMargin = useRef(null);
 
-    const [State,setState] = useState({
+    const blogReducer = (state,action) => {
+        switch(action.type){
+            case "SET_BLOGS":
+                return{
+                    ...state,
+                    blogs: [...state.blogs,...action.payload],
+                    isPending: false
+                };
+            case "DEL_BLOG":
+                return{
+                    ...state,
+                    blogs: [...state.blogs].filter((blog) => blog._id !== action.id)
+                };
+            case "LOADING":
+                return{
+                    ...state,
+                    isPending: true
+                };
+            case "INC_PAGE":
+                return{
+                    ...state,
+                    page: state.page + 1
+                };
+            default:
+                return state;
+        }
+    }
+
+    const [State,dispatch] = useReducer(blogReducer,{
         isPending:true,
         blogs:[],
         page:1
-    })
+    });
 
-    const {data} = useFetch("/fetch",State.page);
+    const { data } = useFetch(`/fetch?page=${State.page}&sortby=${sort}&ascending=${ascending}`);
 
     useEffect(() => {
         if(data && data.hasMore){
             const Observer = new IntersectionObserver(debounce((entries) => {
                 if(entries[0].isIntersecting){
-                    setState((prevState) => {
-                        const copy = {...prevState};
-                        copy.isPending = true;
-                        copy.page = (prevState.page + 1);
-                        return copy;
-                    })
+                    dispatch({type:"LOADING"});
+                    dispatch({type:"INC_PAGE"});
                     Observer.unobserve(entries[0].target);
                 }
-            },1000));
+            },500));
             bottomMargin.current && Observer.observe(bottomMargin.current);
             return () => Observer.disconnect();
         }
-    },[data,setState]);
+    },[data]);
 
     useEffect(() => {
         if(data?.data){
-            setState((prevState) => {
-                const copy = {...prevState};
-                copy.blogs = [...(prevState.blogs),...(data.data)];
-                copy.isPending = false;
-                return copy;
-            });
+            dispatch({type:"SET_BLOGS",payload:data.data});
         }
-    },[data,setState]);
+    },[data]);
 
     return(
         <>
             <section className="d-grid grid-auto-fill gap-2 mtb-15 mt-120">
                 {
                     (State.blogs).map((blog)=>(
-                        <Blogtile key={blog._id} blog={blog} setState={setState}/>
+                        <Blogtile key={blog._id} blog={blog} blogDispatcher={dispatch}/>
                     ))
                 }
                 {

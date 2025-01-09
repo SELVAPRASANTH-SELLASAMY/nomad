@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MdEdit, MdDelete } from "react-icons/md";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { useDelete } from '../../customhooks/httpMethod';
-const BlogOptions = ({id, setState}) => {
+const BlogOptions = ({id, blogDispatcher}) => {
     const [showOptions,setShowOptions] = useState(false);
 
     const { erase } = useDelete(`/delete?id=${id}`);
@@ -20,11 +20,7 @@ const BlogOptions = ({id, setState}) => {
     const handleDelete = (e) => {
         e.stopPropagation();
         erase(() => {
-            setState((prevState) => {
-                const copy = {...prevState};
-                copy.blogs = (prevState.blogs).filter((blog) => blog._id !== id);
-                return copy;
-            });
+            blogDispatcher({type:"DEL_BLOG",id:id});
         });
     }
 

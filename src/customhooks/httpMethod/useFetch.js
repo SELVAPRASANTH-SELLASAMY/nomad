@@ -11,7 +11,7 @@ const useFetch = (url,page) => {
             return;
         }
         const debouncer = debounce(() => {
-            Axios.get(`${url}${page ? `?page=${page}` : ''}`)
+            Axios.get(url)
             .then((res) => {
                 if(res.status === 200){
                     setData(res.data);

@@ -11,7 +11,7 @@ function Option({options,actions,setValue,value}){
                                 {option.icon}
                             </span>
                         }
-                        {option.name || option}
+                        {option.name || option.label || option}
                     </li>
                 ))
             }

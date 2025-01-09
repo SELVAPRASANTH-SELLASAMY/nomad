@@ -2,8 +2,14 @@ import Blogs from "../blogs/Blogs";
 import { Select } from '../../sharedUi/select';
 import { useState } from "react";
 function Home(){
-    const sortOptions = ["publish date","popular","name","view count"];
+    const sortOptions = [
+        {label:"name",value:"title"},
+        {label:"publish date",value:"createdAt"},
+        // {label:"popular",value:""},
+        // {label:"view count",value:""}
+    ];
     const [sort,setSort] = useState(sortOptions[0]);
+    const [ascending,setAscending] = useState(1);
     const categoryOptions = ["All","programming","Frontend","Backend","Database","technology","general"]
     const [category,setCategory] = useState(categoryOptions[0]);
     return(
@@ -16,6 +22,8 @@ function Home(){
                         options={sortOptions}
                         value={sort}
                         setValue={setSort}
+                        setAscending={setAscending}
+                        ascending={ascending}
                     />
                     <Select
                         name="Category"
@@ -25,7 +33,7 @@ function Home(){
                     />
                 </div>
             </section>
-            <Blogs/>
+            <Blogs ascending={ascending} sort={sort.value}/>
         </>
     );
 }

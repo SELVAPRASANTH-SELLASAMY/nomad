@@ -1,6 +1,6 @@
 import Lazyimage from '../lazyimage/Lazyimage';
 import BlogOptions from './Manageblog';
-function Blogtile({blog, setState}){
+function Blogtile({blog, blogDispatcher}){
     const gotoBlog = () => {
         window.location.href = `blog?id=${blog._id}`;
     }
@@ -15,13 +15,15 @@ function Blogtile({blog, setState}){
     
     return(
         <div onClick={gotoBlog} className='bg-tile-blue p-1 rounded-1 d-flex flex-col gap-05 relative border-grey-005'>
-            <BlogOptions id={blog._id} setState={setState}/>
+            <BlogOptions id={blog._id} blogDispatcher={blogDispatcher}/>
+
             <Lazyimage 
                 componentClass={'w-100 aspect-ratio-21 rounded-top-1'} 
                 placeholder={blog.lazyImage} 
                 source={blog.content}
                 altText={`${blog.title} thumbnail`}
             />
+
             <h6 title={blog.title} className='fs-4 font-weight-500 webkit-vbox line-clamp-2 hide-overflow ellipsis'>{blog.title}</h6>
             <div className='fs-3 d-iflex justify-space-between'>
                 <p className='text-gold'><span className='mr-025'>&#9733;</span>4.5</p>
