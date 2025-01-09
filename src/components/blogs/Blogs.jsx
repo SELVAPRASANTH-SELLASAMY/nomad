@@ -29,6 +29,13 @@ function Blogs({ascending,sort}){
                     ...state,
                     page: state.page + 1
                 };
+            case "RESET_BLOGS":
+                return{
+                    ...state,
+                    isPending:true,
+                    blogs:[],
+                    page:1
+                }
             default:
                 return state;
         }
@@ -43,7 +50,7 @@ function Blogs({ascending,sort}){
     const { data } = useFetch(`/fetch?page=${State.page}&sortby=${sort}&ascending=${ascending}`);
 
     useEffect(() => {
-        if(data && data.hasMore){
+        if(data?.hasMore){
             const Observer = new IntersectionObserver(debounce((entries) => {
                 if(entries[0].isIntersecting){
                     dispatch({type:"LOADING"});
@@ -61,6 +68,10 @@ function Blogs({ascending,sort}){
             dispatch({type:"SET_BLOGS",payload:data.data});
         }
     },[data]);
+
+    useEffect(() => {
+        dispatch({type:"RESET_BLOGS"});
+    },[ascending,sort]);
 
     return(
         <>

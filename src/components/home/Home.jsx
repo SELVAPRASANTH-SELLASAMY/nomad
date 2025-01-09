@@ -33,7 +33,10 @@ function Home(){
                     />
                 </div>
             </section>
-            <Blogs ascending={ascending} sort={sort.value}/>
+            <Blogs 
+                ascending={ascending} 
+                sort={sort.value}
+            />
         </>
     );
 }
