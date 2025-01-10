@@ -2,7 +2,7 @@ import Blogtile from "../blogtile/Blogtile";
 import { useFetch } from "../../customhooks/httpMethod";
 import { useEffect, useReducer, useRef } from "react";
 import { debounce } from "lodash";
-import TileLoadingAnimation from '../../sharedUi/shimmerEffect/ShimmerEffect';
+import ShimmerEffect from '../../sharedUi/shimmerEffect/ShimmerEffect';
 function Blogs({ascending,sort}){
     const bottomMargin = useRef(null);
 
@@ -84,7 +84,7 @@ function Blogs({ascending,sort}){
                 {
                     State.isPending && 
                     Array.from({length:5},(_,index) => (
-                        <TileLoadingAnimation key={index}/>
+                        <ShimmerEffect key={index}/>
                     ))
                 }
             </section>
