@@ -1,5 +1,5 @@
 import "./loading.css";
-function TileLoadingAnimation(){
+function ShimmerEffect(){
     return(
         <div className="bg-tile-blue p-1 rounded-1 d-flex flex-col gap-05 justify-space-between border-grey-005">
             <div className="w-100 aspect-ratio-21 rounded-top-1 loading-tile"></div>
@@ -20,4 +20,4 @@ function TileLoadingAnimation(){
         </div>
     );
 }
-export default TileLoadingAnimation;
+export default ShimmerEffect;

@@ -2,7 +2,7 @@ import Blogtile from "../blogtile/Blogtile";
 import { useFetch } from "../../customhooks/httpMethod";
 import { useEffect, useReducer, useRef } from "react";
 import { debounce } from "lodash";
-import TileLoadingAnimation from '../../sharedUi/TileLoadingAnimation/TileLoadingAnimation';
+import TileLoadingAnimation from '../../sharedUi/shimmerEffect/ShimmerEffect';
 function Blogs({ascending,sort}){
     const bottomMargin = useRef(null);
 
