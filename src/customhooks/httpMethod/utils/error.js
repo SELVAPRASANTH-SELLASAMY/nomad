@@ -4,16 +4,16 @@ const error = (err,alert) => {
         if(status === 500){
             const { message, error } = data;
             alert(message,false);
-            console.log(error);
+            console.error(error);
         }
         else{
             alert(data,false);
-            console.log(data);
+            console.error(data);
         }
     }
     else{
         alert(err.message,false);
-        console.log(err);
+        console.error(err);
     }
 }
 export { error };

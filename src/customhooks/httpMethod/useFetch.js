@@ -3,7 +3,7 @@ import { useMessage } from '../flash';
 import Axios from './utils/Axios';
 import { error } from './utils/error';
 import { debounce } from "lodash";
-const useFetch = (url,page) => {
+const useFetch = (url) => {
     const [data,setData] = useState(null);
     const alert = useMessage();
     useEffect(() => {
@@ -18,7 +18,12 @@ const useFetch = (url,page) => {
                 }
             })
             .catch((err) => {
-                error(err,alert);
+                if(err.response?.status === 404){
+                    setData({error:true})
+                }
+                else{
+                    error(err,alert);
+                }
             })
         },[1000]);
 
@@ -26,7 +31,7 @@ const useFetch = (url,page) => {
 
         return () => debouncer.cancel();
         //eslint-disable-next-line react-hooks/exhaustive-deps
-    },[url,page]);
+    },[url]);
     return { data };
 }
 export default useFetch;

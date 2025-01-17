@@ -3,7 +3,7 @@ import { useFetch } from "../../customhooks/httpMethod";
 import { useEffect, useReducer, useRef } from "react";
 import { debounce } from "lodash";
 import ShimmerEffect from '../../sharedUi/shimmerEffect/ShimmerEffect';
-function Blogs({ascending,sort}){
+function Blogs({ascending,sort,category}){
     const bottomMargin = useRef(null);
 
     const blogReducer = (state,action) => {
@@ -24,6 +24,11 @@ function Blogs({ascending,sort}){
                     ...state,
                     isPending: true
                 };
+            case "NOT_FOUND":
+                return{
+                    ...state,
+                    isPending: false
+                }
             case "INC_PAGE":
                 return{
                     ...state,
@@ -47,7 +52,7 @@ function Blogs({ascending,sort}){
         page:1
     });
 
-    const { data } = useFetch(`/fetch?page=${State.page}&sortby=${sort}&ascending=${ascending}`);
+    const { data } = useFetch(`/fetch?page=${State.page}&sortby=${sort}&ascending=${ascending}&category=${category}`);
 
     useEffect(() => {
         if(data?.hasMore){
@@ -67,11 +72,14 @@ function Blogs({ascending,sort}){
         if(data?.data){
             dispatch({type:"SET_BLOGS",payload:data.data});
         }
+        else if(data?.error){
+            dispatch({type:"NOT_FOUND"});
+        }
     },[data]);
 
     useEffect(() => {
         dispatch({type:"RESET_BLOGS"});
-    },[ascending,sort]);
+    },[ascending,sort,category]);
 
     return(
         <>
@@ -82,10 +90,11 @@ function Blogs({ascending,sort}){
                     ))
                 }
                 {
-                    State.isPending && 
+                    State.isPending ? 
                     Array.from({length:5},(_,index) => (
                         <ShimmerEffect key={index}/>
                     ))
+                    : (!State.isPending) && (State.blogs.length === 0) && <p className="fs-5_5 font-weight-600 uppercase text-secondary">No blogs found!</p>
                 }
             </section>
             {

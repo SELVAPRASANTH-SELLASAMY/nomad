@@ -36,6 +36,7 @@ function Home(){
             <Blogs 
                 ascending={ascending} 
                 sort={sort.value}
+                category={category}
             />
         </>
     );
