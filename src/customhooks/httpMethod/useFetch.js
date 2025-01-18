@@ -1,28 +1,54 @@
-import { useState, useEffect } from "react";
-import { useMessage } from '../flash';
+import { useEffect, useReducer } from "react";
 import Axios from './utils/Axios';
-import { error } from './utils/error';
 import { debounce } from "lodash";
 const useFetch = (url) => {
-    const [data,setData] = useState(null);
-    const alert = useMessage();
+    const reducer = (state,action) => {
+        switch(action.type){
+            case "SET_DATA":
+                return {...state, data:action.payload, isPending:false};
+            case "SET_ERROR":
+                return {...state, error:action.error, isPending:false};
+            case "RESET":
+                return{...state, data:null, error:null, isPending:true};
+            default:
+                return state;
+        }
+    }
+
+    const [res,dispatch] = useReducer(reducer,{
+        data:null,
+        error:null,
+        isPending:true
+    });
+    
     useEffect(() => {
         if(!url){
             return;
         }
+        dispatch({type:"RESET"});
         const debouncer = debounce(() => {
             Axios.get(url)
             .then((res) => {
                 if(res.status === 200){
-                    setData(res.data);
+                    dispatch({type:"SET_DATA",payload:res.data});
                 }
             })
             .catch((err) => {
-                if(err.response?.status === 404){
-                    setData({error:true})
+                if(err.response){
+                    const { status, data } = err.response;
+                    if(status === 500){
+                        const { message, error } = data;
+                        dispatch({type:"SET_ERROR",error:message});
+                        console.error(error);
+                    }
+                    else{
+                        dispatch({type:"SET_ERROR",error:data});
+                        console.error(data);
+                    }
                 }
                 else{
-                    error(err,alert);
+                    dispatch({type:"SET_ERROR",error:err.message});
+                    console.error(err);
                 }
             })
         },[1000]);
@@ -30,8 +56,10 @@ const useFetch = (url) => {
         debouncer();
 
         return () => debouncer.cancel();
-        //eslint-disable-next-line react-hooks/exhaustive-deps
+        
     },[url]);
-    return { data };
+
+    return { data:res.data, error:res.error, isPending:res.isPending };
 }
+
 export default useFetch;

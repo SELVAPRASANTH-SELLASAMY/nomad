@@ -12,23 +12,12 @@ function Blogs({ascending,sort,category}){
                 return{
                     ...state,
                     blogs: [...state.blogs,...action.payload],
-                    isPending: false
                 };
             case "DEL_BLOG":
                 return{
                     ...state,
                     blogs: [...state.blogs].filter((blog) => blog._id !== action.id)
                 };
-            case "LOADING":
-                return{
-                    ...state,
-                    isPending: true
-                };
-            case "NOT_FOUND":
-                return{
-                    ...state,
-                    isPending: false
-                }
             case "INC_PAGE":
                 return{
                     ...state,
@@ -37,7 +26,6 @@ function Blogs({ascending,sort,category}){
             case "RESET_BLOGS":
                 return{
                     ...state,
-                    isPending:true,
                     blogs:[],
                     page:1
                 }
@@ -47,18 +35,16 @@ function Blogs({ascending,sort,category}){
     }
 
     const [State,dispatch] = useReducer(blogReducer,{
-        isPending:true,
         blogs:[],
         page:1
     });
 
-    const { data } = useFetch(`/fetch?page=${State.page}&sortby=${sort}&ascending=${ascending}&category=${category}`);
+    const { data, error, isPending } = useFetch(`/fetch?page=${State.page}&sortby=${sort}&ascending=${ascending}&category=${category}`);
 
     useEffect(() => {
         if(data?.hasMore){
             const Observer = new IntersectionObserver(debounce((entries) => {
                 if(entries[0].isIntersecting){
-                    dispatch({type:"LOADING"});
                     dispatch({type:"INC_PAGE"});
                     Observer.unobserve(entries[0].target);
                 }
@@ -71,9 +57,6 @@ function Blogs({ascending,sort,category}){
     useEffect(() => {
         if(data?.data){
             dispatch({type:"SET_BLOGS",payload:data.data});
-        }
-        else if(data?.error){
-            dispatch({type:"NOT_FOUND"});
         }
     },[data]);
 
@@ -90,11 +73,11 @@ function Blogs({ascending,sort,category}){
                     ))
                 }
                 {
-                    State.isPending ? 
+                    isPending ? 
                     Array.from({length:5},(_,index) => (
                         <ShimmerEffect key={index}/>
                     ))
-                    : (!State.isPending) && (State.blogs.length === 0) && <p className="fs-5_5 font-weight-600 uppercase text-secondary">No blogs found!</p>
+                    : error && <p className="fs-5_5 font-weight-600 uppercase text-secondary">{error}!</p>
                 }
             </section>
             {
