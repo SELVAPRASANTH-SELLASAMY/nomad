@@ -5,7 +5,7 @@ import Searchinput from '../searchinput/Searchinput';
 import { BiBell } from "react-icons/bi";
 import { MdOutlineSettings, MdOutlineLogout } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
-function Header({setShowNavbar}){
+function Header({setShowNavbar,setSearch}){
     const location = useLocation();
     const [controls,showControls] = useState(false);
     return(
@@ -14,7 +14,7 @@ function Header({setShowNavbar}){
                 <h1 onClick={()=>setShowNavbar((prevState)=>!prevState)} className='text-primary fs-7 uppercase mr-2 pointer'>nomad</h1>
                 {location.pathname !== '/' &&
                     <>
-                        {location.pathname === '/home' && <Searchinput/>}
+                        {location.pathname === '/home' && <Searchinput setSearch={setSearch}/>}
                         <div className='fs-6 d-flex gap-2 center-y ml-auto'>
                             <TbNotes/>
                             <BiBell/>

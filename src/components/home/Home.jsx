@@ -1,7 +1,7 @@
 import Blogs from "../blogs/Blogs";
 import { Select } from '../../sharedUi/select';
 import { useState } from "react";
-function Home(){
+function Home({search}){
     const sortOptions = [
         {label:"name",value:"title"},
         {label:"publish date",value:"createdAt"},
@@ -37,6 +37,7 @@ function Home(){
                 ascending={ascending} 
                 sort={sort.value}
                 category={category}
+                search={search}
             />
         </>
     );

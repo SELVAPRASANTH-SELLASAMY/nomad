@@ -3,7 +3,7 @@ import { useFetch } from "../../customhooks/httpMethod";
 import { useEffect, useReducer, useRef } from "react";
 import { debounce } from "lodash";
 import ShimmerEffect from '../../sharedUi/shimmerEffect/ShimmerEffect';
-function Blogs({ascending,sort,category}){
+function Blogs({ascending,sort,category,search}){
     const bottomMargin = useRef(null);
 
     const blogReducer = (state,action) => {
@@ -39,7 +39,7 @@ function Blogs({ascending,sort,category}){
         page:1
     });
 
-    const { data, error, isPending } = useFetch(`/fetch?page=${State.page}&sortby=${sort}&ascending=${ascending}&category=${category}`);
+    const { data, error, isPending } = useFetch(`/fetch?page=${State.page}&sortby=${sort}&ascending=${ascending}&category=${category}&search=${search}`);
 
     useEffect(() => {
         if(data?.hasMore){
@@ -62,7 +62,7 @@ function Blogs({ascending,sort,category}){
 
     useEffect(() => {
         dispatch({type:"RESET_BLOGS"});
-    },[ascending,sort,category]);
+    },[ascending,sort,category,search]);
 
     return(
         <>

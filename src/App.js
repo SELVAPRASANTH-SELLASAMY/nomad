@@ -8,16 +8,17 @@ function App(){
   const FlashConfirm = useRef();
   const FlashMsg = useRef();
   const [showNavbar,setShowNavbar] = useState(false);
+  const [search,setSearch] = useState('');
   return(
     <AppContext.Provider value={{FlashConfirm,FlashMsg}}>
       <Router future={{v7_startTransition: true, v7_relativeSplatPath: true}}>
         <Confirm/>
         <Message/>
         <Routes>
-          <Route path='/' element={<Header setShowNavbar={setShowNavbar}/>}>
+          <Route path='/' element={<Header setSearch={setSearch} setShowNavbar={setShowNavbar}/>}>
             <Route index element={<Login/>}/>
             <Route path='home' element={<Sidebar showNavbar={showNavbar}/>}>
-              <Route index element={<Home/>}/>
+              <Route index element={<Home search={search}/>}/>
               <Route path='editor' element={<Newpost/>}/>
             </Route>
             <Route path='blog' element={<TextComposer/>}/>
