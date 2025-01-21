@@ -4,19 +4,16 @@
     color: var(--lightblue);
 }
 .quill-element{
-    --stick-top: 189.5px;
-    --editor-resize: vertical;
     transition: 250ms;
+    --max-height: calc(100vh - 12rem);
 }
 .ql-editor{
-    resize: var(--editor-resize);
-    min-height: 5rem;
+    resize: none;
+    min-height: 20rem;
+    max-height: var(--max-height);
     line-height: 2rem;
 }
 .ql-toolbar{
-    position: sticky;
-    top: var(--stick-top);
-    z-index: 10;
     background-color: var(--background);
 }
 .ql-toolbar.ql-snow{
@@ -129,8 +126,7 @@
     display: unset;
 }
 .editor-fullscreen{
-    --stick-top: 0;
-    --editor-resize: none;
+    --max-height: unset;
     position: fixed;
     top: 0;
     left: 0;

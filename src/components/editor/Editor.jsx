@@ -35,7 +35,7 @@ function Editor({content,setContent}){
     },[setContent]);
     
     return(
-        <section className="nomad-editor mt-120">
+        <section className="nomad-editor">
             <BlogTitle content={content} setContent={setContent}/>
             <br />
             <div className="quill-element mb-25">
