@@ -547,6 +547,9 @@ input:disabled,label.disabled-label{
 .z-index-85{
     z-index: 85;
 }
+.z-index-1{
+    z-index: 1;
+}
 .pointer{
     cursor: pointer;
 }
