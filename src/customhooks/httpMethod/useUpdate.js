@@ -4,7 +4,7 @@ import { error } from "./utils/error";
 const useUpdate = (url) => {
     const alert = useMessage();
     const confirm = useConfirm();
-    const update = async(data) => {
+    const update = async(data,cb) => {
         if(!url){
             return;
         }
@@ -15,6 +15,9 @@ const useUpdate = (url) => {
         Axios.patch(url,data)
         .then((res)=>{
             if(res.status === 200){
+                if(cb){
+                    cb();
+                }
                 alert(res.data);
             }
         })

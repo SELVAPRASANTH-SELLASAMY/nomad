@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Option } from "../../sharedUi/select";
-import { RiSave3Line, RiUploadCloud2Line, RiDeleteBin6Line } from "react-icons/ri";
+import { RiSave3Line, RiUploadCloud2Line, RiDownloadCloud2Line } from "react-icons/ri";
 import { usePost, useUpdate } from "../../customhooks/httpMethod";
 import { validateContent } from "./Validation";
 import { useMessage } from "../../customhooks/flash";
@@ -13,12 +13,18 @@ function ActionButton({content,setContent}){
         if("copy" in content){
             let updatedContent = {};
             Object.keys(content.copy).forEach((key) => {
-                if(content[key] !== content.copy[key]){
+                if(key !== "published" && (content[key] !== content.copy[key])){
                     updatedContent[key] = content[key];
                 }
-            })
+            });
             if((Object.keys(updatedContent).length) > 0){
-                update(updatedContent);
+                update(updatedContent,() => {
+                    setContent((prev) => {
+                        const {title, content, category} = prev;
+                        prev.copy = {title, content, category};
+                        return {...prev};
+                    });
+                });
             }
         }
         else{
@@ -26,35 +32,25 @@ function ActionButton({content,setContent}){
         }
     }
 
-    const publishBlog = () => {
-        setContent((prevState)=>({
-            ...prevState,
-            published:true
-        }))
-    }
-    
-    const discardBlog = () => {
-        const draftBlog = localStorage.getItem('blogDraft');
-        if(draftBlog){
-            localStorage.removeItem('blogDraft');
-        }
-        setContent({
-            title:'',
-            content:'',
-            published:false
+    const handlePublish = () => {
+        update({published:!(content.published)},() => {
+            setContent((prev) => ({
+                ...prev,
+                published:!(prev.published)
+            }));
         });
     }
 
     const actions = [
         {icon:<RiSave3Line/>,name:"Save"},
-        {icon:<RiUploadCloud2Line/>,name:"Publish"},
-        {icon:<RiDeleteBin6Line/>,name:"Discard"}
+        {icon:content.published ? <RiDownloadCloud2Line/> : <RiUploadCloud2Line/>,
+              name:content.published ? "Un publish" : "Publish"}
     ];
 
     const functionality = {
         "Save":saveBlog,
-        "Publish":publishBlog,
-        "Discard":discardBlog
+        "Publish":handlePublish,
+        "Un publish":handlePublish
     }
 
     const handleAction = (cb) => {
@@ -69,7 +65,7 @@ function ActionButton({content,setContent}){
         }
     }
 
-    const [value, setValue] = useState(actions[0]);
+    const [value,setValue] = useState(actions[0]);
     const [expand,setExpand] = useState(false);
 
     return(

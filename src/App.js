@@ -17,7 +17,7 @@ function App(){
         <Routes>
           <Route path='/' element={<Header setSearch={setSearch} setShowNavbar={setShowNavbar}/>}>
             <Route index element={<Login/>}/>
-            <Route path='home' element={<Sidebar showNavbar={showNavbar}/>}>
+            <Route path='home' element={<Sidebar showNavbar={showNavbar} setShowNavbar={setShowNavbar}/>}>
               <Route index element={<Home search={search}/>}/>
               <Route path='editor' element={<Newpost/>}/>
             </Route>

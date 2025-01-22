@@ -12,7 +12,7 @@ function Editor({content,setContent}){
     useEffect(()=>{
         const data = content.content;
         if(data){
-            quillInstance.current.root.innerHTML = data;
+            quillInstance?.current && (quillInstance.current.root.innerHTML = data);
         }
     },[content,quillInstance]);
 
