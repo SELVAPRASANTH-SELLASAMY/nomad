@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { MdEdit, MdDelete } from "react-icons/md";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { useDelete } from '../../customhooks/httpMethod';
+import { useNavigate } from 'react-router-dom';
 const BlogOptions = ({id, blogDispatcher}) => {
     const [showOptions,setShowOptions] = useState(false);
+    const navigate = useNavigate();
 
     const { erase } = useDelete(`/delete?id=${id}`);
 
@@ -14,7 +16,7 @@ const BlogOptions = ({id, blogDispatcher}) => {
 
     const handleEdit = (e) => {
         e.stopPropagation();
-        window.location.href = `home/editor?edit=${id}`;
+        navigate(`editor?edit=${id}`);
     }
 
     const handleDelete = (e) => {

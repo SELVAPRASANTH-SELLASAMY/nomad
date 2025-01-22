@@ -1,8 +1,10 @@
 import Lazyimage from '../lazyimage/Lazyimage';
 import BlogOptions from './Manageblog';
+import { useNavigate } from 'react-router-dom';
 function Blogtile({blog, blogDispatcher}){
+    const navigate = useNavigate();
     const gotoBlog = () => {
-        window.location.href = `blog?id=${blog._id}`;
+        navigate(`/blog?id=${blog._id}`);
     }
 
     const setDate = () => {
