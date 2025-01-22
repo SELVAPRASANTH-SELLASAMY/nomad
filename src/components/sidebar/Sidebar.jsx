@@ -1,6 +1,6 @@
 import { IoIosHome, IoMdAddCircleOutline, IoIosAnalytics } from "react-icons/io";
 import { BiCategory } from "react-icons/bi";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, Link } from "react-router-dom";
 function Sidebar({showNavbar}){
     const location = useLocation();
     const navigations = [
@@ -31,10 +31,10 @@ function Sidebar({showNavbar}){
                 <nav className="w-13rem h-100 bg-tile-blue plr-1 fixed left-0 top-0 z-index-91 pt-5">
                     {
                         navigations.map((nav,index)=>(
-                            <a key={index} href={nav.path} className={`fs-6 d-flex center-y gap-05 rounded-05 ptb-05 plr-1 mtb-1 ${location.pathname === nav.path ? 'bg-green text-black' : 'text-white'}`}>
+                            <Link to={nav.path} key={index} className={`fs-6 d-flex center-y gap-05 rounded-05 ptb-05 plr-1 mtb-1 ${location.pathname === nav.path ? 'bg-green text-black' : 'text-white'}`}>
                                 {nav.icon}
                                 <span className="fs-4">{nav.name}</span>
-                            </a>
+                            </Link>
                         ))
                     }
                 </nav>
