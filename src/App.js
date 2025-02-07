@@ -1,6 +1,6 @@
 import { createContext, useRef, useState } from 'react';
 import './App.css';
-import { Header, Login, Sidebar, Home, Newpost, TextComposer } from './components';
+import { Header, Login, Sidebar, Home, Newpost, TextComposer, Settings } from './components';
 import { Confirm, Message } from './modals';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 const AppContext = createContext();
@@ -22,6 +22,7 @@ function App(){
               <Route path='editor' element={<Newpost/>}/>
             </Route>
             <Route path='blog' element={<TextComposer/>}/>
+            <Route path='settings' element={<Settings/>}/>
           </Route>
         </Routes>
       </Router>
