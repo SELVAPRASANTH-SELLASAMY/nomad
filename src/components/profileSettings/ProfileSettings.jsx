@@ -1,30 +1,49 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
-import { useEvalPhone, useEvalEmail , useEvalUserName } from '../../customhooks/validation';
+import { useEvalPhone, useEvalEmail , useEvalName } from '../../customhooks/validation';
 function ProfileSettings(){
     const [input,setInput] = useState({
-        userName:'',
+        name:'',
         email:'',
-        phone:''
+        phone:'',
+        image:null
     });
     const [inputError,setInputError] = useState({
-        userName:'',
+        name:'',
         email:'',
         phone:''
     });
+    const fileInputRef = useRef(null);
 
-    const isValidUserName = useEvalUserName(input.userName);
-    const isValidEmail = useEvalEmail(input.userName);
+    const isValidName = useEvalName(input.name);
+    const isValidEmail = useEvalEmail(input.email);
     const isValidPhone = useEvalPhone(input.phone);
+
+    const handleImgInput = (e) => {
+        const img = e.target.files[0];
+        if(img){
+            const url = URL.createObjectURL(img);
+            setInput((prev) => ({...prev,image:url}));
+        }
+    }
+
+    const handleImgInputClick = () => {
+        fileInputRef?.current?.click();
+    }
+
+    const handleImgDelete = () => {
+        //Server logic to delete the image from the server
+        setInput((prev) => ({...prev,image:null}));
+    }
 
     const validateInput = () => {
         setInputError({...inputError,
-            userName:(input.userName === '' ? 'This field is required!' : isValidUserName ? '' : 'Invalid user name!'),
+            name:(input.name === '' ? 'This field is required!' : isValidName ? '' : 'Invalid user name!'),
             email:(input.email === '' ? 'This field is required!' : isValidEmail ? '' : 'Invalid email!'),
             phone:(input.phone === '' ? 'This field is required!' : isValidPhone ? '' : 'Invalid phone number!')
         });
         //Server logic
-        return isValidUserName && isValidEmail && isValidPhone;
+        return isValidName && isValidEmail && isValidPhone;
     }
 
     const handleSubmit = () => {
@@ -32,22 +51,23 @@ function ProfileSettings(){
     }
 
     const handleCancel = () => {
-        setInputError({userName:'',email:'',phone:''});
-        setInput({userName:'',email:'',phone:''}); //TODO: Have to populate existing saved password
+        setInputError({name:'',email:'',phone:''});
+        setInput({name:'',email:'',phone:''}); //TODO: Have to populate existing saved password
     }
 
     const InputConfig = [
-        {Name:'User Name',id:'userName',type:'text',placeholder:'Enter the username',response_message:inputError.userName},
+        {Name:'Name',id:'name',type:'text',placeholder:'Enter your name',response_message:inputError.name},
         {Name:'Email',id:'email',type:'email',placeholder:'Enter your email',response_message:inputError.email},
-        {Name:'Phone Number',id:'phone',type:'tel',placeholder:'Enter your phone number',response_message:inputError.phone}
+        {Name:'Phone Number',id:'phone',type:'number',placeholder:'Enter your phone number',response_message:inputError.phone}
     ];
 
     return(
         <section className="mt-2">
             <div className="d-flex center-y gap-2">
-                <canvas className="h-7rem aspect-ratio-equal border-green-01 rounded-100px bg-lgreen"></canvas>
-                <button className="bg-green fs-4 ptb-025 plr-15 rounded-05 font-weight-500 uppercase">Upload new picture</button>
-                <button className="bg-lgreen fs-4 ptb-025 plr-15 text-white rounded-05 font-weight-500 uppercase outline-green-01">Delete</button>
+                <input ref={fileInputRef} onChange={handleImgInput} type="file" accept="image/*" style={{display:"none"}}/>
+                <img src={input.image} alt="" className="h-7rem aspect-ratio-equal border-green-01 rounded-100px bg-lgreen"></img>
+                <button onClick={handleImgInputClick} className="bg-green fs-4 ptb-025 plr-15 rounded-05 font-weight-500 uppercase">Upload new picture</button>
+                <button onClick={handleImgDelete} className="bg-lgreen fs-4 ptb-025 plr-15 text-white rounded-05 font-weight-500 uppercase outline-green-01">Delete</button>
             </div>
             <div className="mtb-1 w-max-600">
                 <form noValidate>

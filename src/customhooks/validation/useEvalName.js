@@ -1,5 +1,5 @@
 const useEvalUserName = (userName) => {
-    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{5,}$/;
+    const pattern = /^[A-Za-z_ ]{5,10}$/;
     return pattern.test(userName);
 }
 export default useEvalUserName;
