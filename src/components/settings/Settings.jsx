@@ -1,12 +1,28 @@
 import { useState } from "react";
 import ProfileSettings from "../profileSettings/ProfileSettings";
 import PasswordSettings from "../passwordSettings/PasswordSettings";
+import Admin from "../admin/Admin";
+
+function Page({activePage}){
+    switch(activePage){
+        case "profile":
+            return <ProfileSettings/>;
+        case "password":
+            return <PasswordSettings/>;
+        case "admin":
+            return <Admin/>
+        default:
+            return <p>Page Not Found!</p>;
+    }
+}
+
 function Settings(){
     const [activePage,setActivePage] = useState('profile');
 
     const options = [
         {label:"Profile settings",value:"profile",clickEvent:() => setActivePage('profile')},
-        {label:"Password",value:"password",clickEvent:() => setActivePage('password')}
+        {label:"Password",value:"password",clickEvent:() => setActivePage('password')},
+        {label:"Administration",value:"admin",clickEvent:() => setActivePage('admin')}
     ];
     
     return(
@@ -24,9 +40,9 @@ function Settings(){
                         ))
                     }
                 </aside>
-                <div className="ml-13 mt-10">
+                <div className="ml-13 mt-10 w-100">
                 {
-                    activePage === 'profile' ? <ProfileSettings/> : <PasswordSettings/>
+                    <Page activePage={activePage}/>
                 }
                 </div>
             </div>
