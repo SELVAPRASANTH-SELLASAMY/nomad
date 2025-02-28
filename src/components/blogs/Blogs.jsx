@@ -39,7 +39,7 @@ function Blogs({ascending,sort,category,search}){
         page:1
     });
 
-    const { data, error, isPending } = useFetch(`/fetch?page=${State.page}&sortby=${sort}&ascending=${ascending}&category=${category}&search=${search}`);
+    const { data, error, isPending } = useFetch(`blog/fetch?page=${State.page}&sortby=${sort}&ascending=${ascending}&category=${category}&search=${search}`);
 
     useEffect(() => {
         if(data?.hasMore){

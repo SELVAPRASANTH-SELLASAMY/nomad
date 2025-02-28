@@ -12,20 +12,16 @@ function Message(){
     const { FlashMsg } = useContext(AppContext);
     useImperativeHandle(FlashMsg,() => ({
         show: (message,success=true) => {
-            setFlash((prevFlash) => ({
-                ...prevFlash,
-                message:message,
-                success:success,
-                open:true
-            }));
+            setFlash({message, success, open:true}); //We are changing the values of the entire object. So, there is no need of ...flash
             setTimeout(()=>{
-                setFlash((prevFlash) => ({
-                    ...prevFlash,
+                setFlash({
+                    ...flash,
                     open:false
-                }));
+                });
             },3000);
         }
-    }),[]);
+    }),[flash]);
+
     if(flash.open){
         return ReactDOM.createPortal(
             <dialog style={{boxShadow:'none',border:'.15rem groove var(--lightgrey)'}} open={flash.open} className="flashmessage fixed top-05 right-05 ptb-1 plr-25 rounded-05 w-min-500px bg-tile-blue blur-10 text-white z-index-100 center-y d-grid">

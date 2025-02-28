@@ -6,8 +6,8 @@ import { validateContent } from "./Validation";
 import { useMessage } from "../../customhooks/flash";
 function ActionButton({content,setContent}){
     const alert = useMessage();
-    const { post } = usePost('/add');
-    const { update } = useUpdate(content.id ? `/update?id=${content.id}` : null);
+    const { post } = usePost('blog/add');
+    const { update } = useUpdate(content.id ? `blog/update?id=${content.id}` : null);
 
     const saveBlog = () => {
         if("copy" in content){

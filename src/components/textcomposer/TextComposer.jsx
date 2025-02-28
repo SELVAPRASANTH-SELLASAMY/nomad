@@ -4,7 +4,7 @@ import { useFetch } from "../../customhooks/httpMethod";
 function TextComposer(){
     const [queryParams] = useSearchParams();
     const Id = queryParams.get("id");
-    const { data, error, isPending } = useFetch(`/getcontent?id=${Id}`);
+    const { data, error, isPending } = useFetch(`blog/getcontent?id=${Id}`);
     return(
         <section className="text_composer">
             {

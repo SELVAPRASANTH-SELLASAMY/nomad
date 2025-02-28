@@ -18,7 +18,7 @@ function Newpost(){
     const [queryParams] = useSearchParams();
 
     const edit = queryParams.get("edit");
-    const { data, error, isPending } = useFetch(edit ? `/getcontent?id=${edit}` : null);
+    const { data, error, isPending } = useFetch(edit ? `blog/getcontent?id=${edit}` : null);
 
     useEffect(()=>{
         if(data){

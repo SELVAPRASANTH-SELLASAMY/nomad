@@ -7,7 +7,7 @@ const BlogOptions = ({id, blogDispatcher}) => {
     const [showOptions,setShowOptions] = useState(false);
     const navigate = useNavigate();
 
-    const { erase } = useDelete(`/delete?id=${id}`);
+    const { erase } = useDelete(`blog/delete?id=${id}`);
 
     const handleMenuClick = (e) => {
         e.stopPropagation();
