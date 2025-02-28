@@ -6,12 +6,12 @@ function Sidebar({showNavbar,setShowNavbar}){
     const location = useLocation();
     const navigations = [
         {
-            path:'/',
+            path:'/home',
             name:'Home',
             icon:<IoIosHome/>
         },
         {
-            path:'/editor',
+            path:'/home/editor',
             name:'New Post',
             icon:<IoMdAddCircleOutline/>
         },
