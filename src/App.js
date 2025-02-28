@@ -16,11 +16,11 @@ function App(){
         <Message/>
         <Routes>
           <Route path='/' element={<Header setSearch={setSearch} setShowNavbar={setShowNavbar}/>}>
-            <Route index element={<Login/>}/>
-            <Route path='home' element={<Sidebar showNavbar={showNavbar} setShowNavbar={setShowNavbar}/>}>
+            <Route element={<Sidebar showNavbar={showNavbar} setShowNavbar={setShowNavbar}/>}>
               <Route index element={<Home search={search}/>}/>
               <Route path='editor' element={<Newpost/>}/>
             </Route>
+            <Route path='login' element={<Login/>}/>
             <Route path='blog' element={<TextComposer/>}/>
             <Route path='settings' element={<Settings/>}/>
           </Route>
