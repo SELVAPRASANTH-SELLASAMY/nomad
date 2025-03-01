@@ -1,6 +1,6 @@
 .text_composer{
     width: 100%;
-    margin-top: 8rem;
+    margin-top: 5rem;
     line-height: 2rem;
     font-size: var(--font_125);
     color: var(--lightblue);
@@ -20,7 +20,8 @@
     text-transform: uppercase;
     text-align: center;
     position: relative;
-    margin-bottom: 6rem;
+    margin-bottom: 5rem;
+    margin-top: 6rem;
 }
 .text_composer h2::before{
     content: "blog";
