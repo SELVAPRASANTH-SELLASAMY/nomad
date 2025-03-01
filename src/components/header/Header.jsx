@@ -12,7 +12,7 @@ function Header({setShowNavbar,setSearch}){
     }
     return(
         <>
-            <header className={`w-100 ptb-025 plr-25 fixed left-0 top-0 d-flex center-y ${location.pathname !== '/login' && 'bg-tile-blue border-bottom-grey-01'}`}>
+            <header className={`w-100 plr-25 fixed left-0 top-0 d-flex center-y ${location.pathname !== '/login' && 'bg-tile-blue border-bottom-grey-01'}`}>
                 <h1 onClick={handleSidebar} className={`text-primary fs-7 uppercase mr-2 ${sideBarChilds.includes(location.pathname) && 'pointer'}`}>nomad</h1>
                 {location.pathname === '/' && 
                     <Searchinput setSearch={setSearch}/>

@@ -22,7 +22,7 @@ function UserControls(){
         <ul className='w-10rem border-grey-01 rounded-05 hide-overflow bg-tile-blue absolute right-0 top-25'>
             {
                 controls.map((control,index) => (
-                    <li key={index} onClick={control.clickHandler} role="button" className='fs-5_5 d-flex center-y gap-05 ptb-05 pl-1 hover-blue'>
+                    <li key={index} onMouseDown={control.clickHandler} role="button" className='fs-5_5 d-flex center-y gap-05 ptb-05 pl-1 hover-blue pointer'>
                         {control.icon}
                         <span className='fs-4 text-no-wrap'>{control.name}</span>
                     </li>
