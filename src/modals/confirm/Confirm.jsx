@@ -37,7 +37,7 @@ function Confirm(){
                     <span onClick={() => handleConfirm(false)} role="button" className="pointer fs-5 absolute right-05 top-05 hover-red svg-stroke-width-1">
                         <RxCross2/>
                     </span>
-                    <h3 className="fs-5_5 font-weight-600">{flash.title || "Confirm Title"}?</h3>
+                    <h3 className="fs-5_5 font-weight-600">{flash.title || "Confirm Title"}</h3>
                     <p className="fs-4 text-secondary">{flash.message || "Confirm message"}</p>
                     <div className="d-flex justify-space-between gap-2 mt-05">
                         <button onClick={() => handleConfirm(true)} type="button" className="fs-4 font-weight-600 uppercase ptb-05 text-centered w-100 rounded-100px bg-green">Proceed</button>

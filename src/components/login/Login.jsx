@@ -50,7 +50,7 @@ function Login(){
                     labelName="Password"
                     id="password"
                     type={check ? 'text' : 'password'}
-                    placeholder="Enter your mail id"
+                    placeholder="Enter your password"
                     response_message={formError.password}
                     setValue={setUserInput}
                 />
