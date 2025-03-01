@@ -1,0 +1,12 @@
+.starting-animation{
+    animation: rotate 1s linear infinite 500ms alternate;
+}
+
+@keyframes rotate {
+    From{
+        transform: translate(5px,2.5px) rotate(2deg) scale(0.95);
+    }
+    To{
+        transform: translate(-5px,-2.5px) rotate(-2deg) scale(1);
+    }
+}

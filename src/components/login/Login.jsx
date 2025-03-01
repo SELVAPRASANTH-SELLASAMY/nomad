@@ -28,7 +28,6 @@ function Login(){
         if(validateInput(userInput)){
             post(userInput,() => {
                 navigate("/",{replace: true});
-                window.history.replaceState(null,null,"/login");
             },false);
         }
     }

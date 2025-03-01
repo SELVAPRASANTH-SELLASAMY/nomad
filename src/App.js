@@ -1,6 +1,6 @@
 import { createContext, useRef, useState } from 'react';
 import './App.css';
-import { Header, Login, Sidebar, Home, Newpost, TextComposer, Settings } from './components';
+import { Header, Login, Sidebar, Home, Newpost, TextComposer, Settings, NotFound } from './components';
 import { Confirm, Message } from './modals';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './routes/ProtectedRoute';
@@ -27,6 +27,7 @@ function App(){
             </Route>
             <Route path='login' element={<Login/>}/>
           </Route>
+          <Route path='*' element={<NotFound/>}/>
         </Routes>
       </Router>
     </AppContext.Provider>

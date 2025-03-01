@@ -130,6 +130,9 @@
 .align-self-end{
     align-self: flex-end;
 }
+.align-items-center{
+    align-items: center;
+}
 .justify-self-end{
     justify-self: flex-end;
 }
@@ -317,6 +320,9 @@
 }
 .w-max-600{
     max-width: 600px;
+}
+.w-max-1000{
+    max-width: 1000px;
 }
 .w-min-5rem{
     min-width: 5rem;
