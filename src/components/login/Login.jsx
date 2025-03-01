@@ -2,9 +2,13 @@ import './login.css';
 import { mainContext } from './Main';
 import { useContext, useState } from 'react';
 import { useEvalEmail, useEvalPassword } from '../../customhooks/validation';
+import { usePost } from '../../customhooks/httpMethod';
+import { useNavigate } from 'react-router-dom';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
 function Login(){
     const setFormState = useContext(mainContext);
+    const { post } = usePost('/signin');
+    const navigate = useNavigate();
     const [formError,setFormError] = useState({
         email: '',
         password: ''
@@ -22,11 +26,12 @@ function Login(){
     }
     const handleLogin = () => {
         if(validateInput(userInput)){
-            console.log("Logged in...");
-            //TODO: Write a login logic here.
+            post(userInput,() => {
+                navigate("/",{replace: true});
+                window.history.replaceState(null,null,"/login");
+            },false);
         }
     }
-    console.log("Login component Re-Rendered...");
     return(
         <>
             <h2 className="text-primary font-weight-600 fs-8 italic">Welcome back!</h2>

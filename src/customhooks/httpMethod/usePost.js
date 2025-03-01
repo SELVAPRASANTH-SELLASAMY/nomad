@@ -11,10 +11,12 @@ const usePost = (url) => {
                 return;
             }
         }
-        Axios.post(url,data)
+        Axios.post(url,data,{withCredentials:true})
         .then((res)=>{
             if(res.status === 201){
                 alert(res.data);
+            }
+            else if(res.status === 200){
                 if(cb){
                     cb();
                 }

@@ -27,7 +27,7 @@ const useFetch = (url) => {
         }
         dispatch({type:"RESET"});
         const debouncer = debounce(() => {
-            Axios.get(url)
+            Axios.get(url,{withCredentials: true})
             .then((res) => {
                 if(res.status === 200){
                     dispatch({type:"SET_DATA",payload:res.data});

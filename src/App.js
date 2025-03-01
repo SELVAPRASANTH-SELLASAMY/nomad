@@ -3,6 +3,7 @@ import './App.css';
 import { Header, Login, Sidebar, Home, Newpost, TextComposer, Settings } from './components';
 import { Confirm, Message } from './modals';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProtectedRoute from './routes/ProtectedRoute';
 const AppContext = createContext();
 function App(){
   const FlashConfirm = useRef();
@@ -16,13 +17,15 @@ function App(){
         <Message/>
         <Routes>
           <Route path='/' element={<Header setSearch={setSearch} setShowNavbar={setShowNavbar}/>}>
-            <Route index element={<Login/>}/>
-            <Route path='home' element={<Sidebar showNavbar={showNavbar} setShowNavbar={setShowNavbar}/>}>
-              <Route index element={<Home search={search}/>}/>
-              <Route path='editor' element={<Newpost/>}/>
+            <Route element={<ProtectedRoute/>}>
+              <Route path='/' element={<Sidebar showNavbar={showNavbar} setShowNavbar={setShowNavbar}/>}>
+                <Route index element={<Home search={search}/>}/>
+                <Route path='editor' element={<Newpost/>}/>
+              </Route>
+              <Route path='blog' element={<TextComposer/>}/>
+              <Route path='settings' element={<Settings/>}/>
             </Route>
-            <Route path='blog' element={<TextComposer/>}/>
-            <Route path='settings' element={<Settings/>}/>
+            <Route path='login' element={<Login/>}/>
           </Route>
         </Routes>
       </Router>
