@@ -1,23 +1,20 @@
 import { useRef, useState } from 'react';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
-import { useEvalPhone, useEvalEmail , useEvalName } from '../../customhooks/validation';
+import { useEvalEmail , useEvalName } from '../../customhooks/validation';
 function ProfileSettings(){
     const [input,setInput] = useState({
         name:'',
         email:'',
-        phone:'',
         image:null
     });
     const [inputError,setInputError] = useState({
         name:'',
         email:'',
-        phone:''
     });
     const fileInputRef = useRef(null);
 
     const isValidName = useEvalName(input.name);
     const isValidEmail = useEvalEmail(input.email);
-    const isValidPhone = useEvalPhone(input.phone);
 
     const handleImgInput = (e) => {
         const img = e.target.files[0];
@@ -39,11 +36,10 @@ function ProfileSettings(){
     const validateInput = () => {
         setInputError({...inputError,
             name:(input.name === '' ? 'This field is required!' : isValidName ? '' : 'Invalid user name!'),
-            email:(input.email === '' ? 'This field is required!' : isValidEmail ? '' : 'Invalid email!'),
-            phone:(input.phone === '' ? 'This field is required!' : isValidPhone ? '' : 'Invalid phone number!')
+            email:(input.email === '' ? 'This field is required!' : isValidEmail ? '' : 'Invalid email!')
         });
         //Server logic
-        return isValidName && isValidEmail && isValidPhone;
+        return isValidName && isValidEmail;
     }
 
     const handleSubmit = () => {
@@ -51,14 +47,13 @@ function ProfileSettings(){
     }
 
     const handleCancel = () => {
-        setInputError({name:'',email:'',phone:''});
-        setInput({name:'',email:'',phone:''}); //TODO: Have to populate existing saved password
+        setInputError({name:'',email:''});
+        setInput({name:'',email:''}); //TODO: Have to populate existing saved password
     }
 
     const InputConfig = [
         {Name:'Name',id:'name',type:'text',placeholder:'Enter your name',response_message:inputError.name},
-        {Name:'Email',id:'email',type:'email',placeholder:'Enter your email',response_message:inputError.email},
-        {Name:'Phone Number',id:'phone',type:'number',placeholder:'Enter your phone number',response_message:inputError.phone}
+        {Name:'Email',id:'email',type:'email',placeholder:'Enter your email',response_message:inputError.email}
     ];
 
     return(
