@@ -4,7 +4,7 @@ import { error } from "./utils/error";
 const usePost = (url) => {
     const confirm = useConfirm();
     const alert = useMessage();
-    const post = async(data,cb,confirmAction=true,message=["Are you sure want to save","Changes can't be undone"]) => {
+    const post = async(data,cb,confirmAction=true,message=["Are you sure want to save?","Changes can't be undone"]) => {
         if(confirmAction){
             const action = await confirm(message[0],message[1]);
             if(!action){
@@ -18,7 +18,7 @@ const usePost = (url) => {
             }
             else if(res.status === 200){
                 if(cb){
-                    cb();
+                    cb(res.data);
                 }
             }
         })

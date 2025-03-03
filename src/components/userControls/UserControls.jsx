@@ -10,6 +10,7 @@ function UserControls(){
 
     const signOut = () => {
         post(null,() => {
+            localStorage.removeItem("user");
             navigate("/login",{replace: true});
         },true,["Sign Out","Are you sure want to sign out?"]);
     }
