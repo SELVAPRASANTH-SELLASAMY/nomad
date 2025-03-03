@@ -5,11 +5,11 @@ import { useEvalEmail, useEvalPassword } from '../../customhooks/validation';
 import { usePost } from '../../customhooks/httpMethod';
 import { useNavigate } from 'react-router-dom';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
-import { useSetItem } from '../../customhooks/storage';
+import { useLocalStorage } from '../../customhooks/storage';
 function Login(){
     const setFormState = useContext(mainContext);
     const { post } = usePost('/signin');
-    const { setItem } = useSetItem();
+    const { setItem } = useLocalStorage();
     const navigate = useNavigate();
     const [formError,setFormError] = useState({
         email: '',
