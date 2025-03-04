@@ -6,8 +6,8 @@ function UserMenu(){
     const [userName,setUserName] = useState(null);
     const { getItem } = useLocalStorage();
     useEffect(() => {
-        const { name } = getItem("user");
-        if(name) setUserName(name);
+        const item = getItem("user");
+        if(item?.name) setUserName(item.name);
     },[getItem]);
 
     return(

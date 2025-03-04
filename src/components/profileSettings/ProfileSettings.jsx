@@ -1,6 +1,7 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
 import { useEvalEmail , useEvalName } from '../../customhooks/validation';
+import { useLocalStorage } from '../../customhooks/storage';
 function ProfileSettings(){
     const [input,setInput] = useState({
         name:'',
@@ -11,6 +12,14 @@ function ProfileSettings(){
         name:'',
         email:'',
     });
+
+    const { getItem } = useLocalStorage();
+    useEffect(() => {
+        const item = getItem("user");
+        if(item?.name && item?.email) setInput({...input,name:item.name,email:item.email});
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
+
     const fileInputRef = useRef(null);
 
     const isValidName = useEvalName(input.name);
@@ -75,6 +84,7 @@ function ProfileSettings(){
                                 type={config.type}
                                 placeholder={config.placeholder}
                                 response_message={config.response_message}
+                                value={input}
                                 setValue={setInput}
                                 variant="small"
                             />
