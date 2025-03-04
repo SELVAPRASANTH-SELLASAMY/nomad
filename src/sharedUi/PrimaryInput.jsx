@@ -9,7 +9,6 @@ function PrimaryInput({labelName, id, type, placeholder, response_message, value
             [id]:e.target.value
         }));
     }
-    console.log("Re-Rendering...");
     return(
         <>
             {labelName && <label htmlFor={id} className={`fs-4 d-iblock ${disabled && "disabled-label"} ${variant === "small" ? 'mb-05 mt-1' : 'mtb-1'}`}>{labelName}</label>}
