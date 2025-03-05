@@ -12,7 +12,7 @@ const useUpdate = (url) => {
         if(!action){
             return;
         }
-        Axios.patch(url,data)
+        Axios.patch(url,data,{withCredentials: true})
         .then((res)=>{
             if(res.status === 200){
                 if(cb){
