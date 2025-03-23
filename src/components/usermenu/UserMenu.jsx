@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import UserControls from "../userControls/UserControls";
-import { useLocalStorage } from "../../customhooks/storage";
+import { useUser } from "../../store/userStore";
 function UserMenu(){
     const [controls,showControls] = useState(false);
-    const [userName,setUserName] = useState(null);
-    const { getItem } = useLocalStorage();
-    useEffect(() => {
-        const item = getItem("user");
-        if(item?.name) setUserName(item.name);
-    },[getItem]);
-
+    const user = useUser(state => state.user);
     return(
         <div className='d-flex gap-05 center-y relative'>
             <canvas id='profile-picture' className='w-2rem aspect-ratio-equal bg-light-blue rounded-100px'></canvas>
-            <p onFocus={()=>showControls(true)} onBlur={() => showControls(false)} tabIndex="0" id='user-name' className='fs-4 pointer'>{userName || "User"} <span className='fs-5_5'>&#128899;</span></p>
+            <p onFocus={()=>showControls(true)} onBlur={() => showControls(false)} tabIndex="0" id='user-name' className='fs-4 pointer'>{user?.name || "Loading..."} <span className='fs-5_5'>&#128899;</span></p>
             {controls && 
                 <UserControls/>
             }

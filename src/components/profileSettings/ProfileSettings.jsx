@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
 import { useEvalEmail , useEvalName } from '../../customhooks/validation';
-import { useLocalStorage } from '../../customhooks/storage';
 import { useUpdate } from '../../customhooks/httpMethod';
 import UserAvatar from './UserAvatar';
+import { useUser } from '../../store/userStore';
 function ProfileSettings(){
     const [input,setInput] = useState({
         name:'',
@@ -18,20 +18,15 @@ function ProfileSettings(){
         email:'',
     });
 
-    const { setItem, getItem } = useLocalStorage();
+    const user = useUser(state => state.user);
+    const setUser = useUser(state => state.setUser);
+
     useEffect(() => {
-        const item = getItem("user");
-        if(item?.name && item?.email){
-            setInput({
-                ...input,
-                name:item.name,
-                email:item.email,
-                image:item.image || null
-            });
-            copy.current = input;
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+        if(user) {
+            setInput(user);
+            copy.current = user;
+        }
+    },[user]);
 
     const isValidName = useEvalName(input.name);
     const isValidEmail = useEvalEmail(input.email);
@@ -58,9 +53,14 @@ function ProfileSettings(){
             });
             if(canUpdate){
                 update(data,() => {
+                    if(typeof input.image !== "string"){
+                        const url = URL.createObjectURL(input.image);
+                        setInput({...input,image:url});
+                        URL.revokeObjectURL(url);
+                    }
                     copy.current = input;
                     canUpdate = false;
-                    setItem("user",input);
+                    setUser(input);
                 });
             }
         }
@@ -68,12 +68,7 @@ function ProfileSettings(){
 
     const handleCancel = () => {
         setInputError({name:'',email:''});
-        setInput({
-            ...input,
-            name:copy.current.name,
-            email:copy.current.email,
-            image:copy.current.image,
-        });
+        setInput(copy.current);
     }
 
     const InputConfig = [
@@ -83,7 +78,10 @@ function ProfileSettings(){
 
     return(
         <section className="mt-2">
-            <UserAvatar/>
+            <UserAvatar
+                avatar={input.image}
+                setInput={setInput}
+            />
             <form noValidate className="mtb-1 w-max-600">
                 {
                     InputConfig.map((config,index) => (
