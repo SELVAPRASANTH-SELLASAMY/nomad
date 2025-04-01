@@ -54,9 +54,9 @@ function ProfileSettings(){
             if(canUpdate){
                 update(data,() => {
                     if(typeof input.image !== "string"){
-                        const url = URL.createObjectURL(input.image);
+                        const url = input.image ? URL.createObjectURL(input.image) : null;
                         setInput({...input,image:url});
-                        URL.revokeObjectURL(url);
+                        if(url) URL.revokeObjectURL(url);
                     }
                     copy.current = input;
                     canUpdate = false;
