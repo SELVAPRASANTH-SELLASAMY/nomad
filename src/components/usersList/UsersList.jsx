@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
+import { useFetch } from "../../customhooks/httpMethod";
 import ReactSwitch from "react-switch";
 function UsersList({setUserMeta}){
-    const [users,setUsers] = useState([
-        {_id:1,name:"Selvaprasanth",email:"prasanthsamy61@gmail.com",approved:true},
-        {_id:2,name:"Tom Cruise",email:"tommy@gmail.com",approved:false},
-        {_id:3,name:"steve rogers",email:"rogers@gmail.com",approved:true},
-        {_id:4,name:"Virginia gardner",email:"virginia@gmail.com",approved:true},
-        {_id:5,name:"Emma watson",email:"emma@gmail.com",approved:false},
-    ]);
+    const [users,setUsers] = useState([]);
+
+    const { data, error, isPending } = useFetch('getUsers');
+
+    useEffect(() => {
+        if(data?.users){
+            setUsers(data.users);
+        }
+    },[data]);
 
     const handleSwitch = ({id}) => {
         setUsers(users.map(user => user._id === id ? {...user,approved: !user.approved} : user));
@@ -21,6 +24,8 @@ function UsersList({setUserMeta}){
             unApprovedCount: users.filter(user => !user.approved).length
         }));
     },[users,setUserMeta]);
+
+    if(isPending || error) return <p className="mt-1 fs-4 font-weight-600 uppercase text-secondary">{isPending ? 'Loading...' : error}</p>
 
     return(
         <table style={{borderCollapse:'collapse'}} className="bg-tile-blue w-100 mtb-1 rounded-05 hide-overflow shadow-primary">
