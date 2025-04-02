@@ -4,6 +4,7 @@ import { useEvalEmail , useEvalName } from '../../customhooks/validation';
 import { useUpdate } from '../../customhooks/httpMethod';
 import UserAvatar from './UserAvatar';
 import { useUser } from '../../store/userStore';
+import { useNavigate } from 'react-router-dom';
 function ProfileSettings(){
     const [input,setInput] = useState({
         name:'',
@@ -17,6 +18,8 @@ function ProfileSettings(){
         name:'',
         email:'',
     });
+
+    const navigate = useNavigate();
 
     const user = useUser(state => state.user);
     const setUser = useUser(state => state.setUser);
@@ -102,7 +105,7 @@ function ProfileSettings(){
                 <button onClick={handleCancel} type='button' className="bg-lgreen fs-4 ptb-025 plr-15 text-white rounded-05 font-weight-500 uppercase outline-green-01 mtb-15 ml-2">Cancel</button>
             </form>
             
-            <button type="button" className="fs-4 pointer d-flex no-bg text-primary text-underline font-weight-500">Go back</button>
+            <button onClick={() => navigate('/')} type="button" className="fs-4 pointer d-flex no-bg text-primary text-underline font-weight-500">Go back</button>
         </section>
     );
 }

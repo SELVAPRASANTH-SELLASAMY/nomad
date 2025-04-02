@@ -28,9 +28,8 @@ function UserAvatar({avatar,setInput}){
             ctx.drawImage(image, 0, 0, image.width, image.height);
         }
         if(img && typeof img !== "string"){
-            const url = URL.createObjectURL(img)
+            const url = URL.createObjectURL(img);
             image.src = url;
-            URL.revokeObjectURL(img);
         }
         else{
             if(img) image.src = img.startsWith('file') ? img : `${process.env.REACT_APP_API_URL}${img}`;
@@ -51,7 +50,10 @@ function UserAvatar({avatar,setInput}){
             <input ref={fileInputRef} onChange={handleImageChange} type="file" accept="image/*" style={{display:"none"}}/>
             <canvas ref={canvasRef} className='h-7rem aspect-ratio-equal border-green-01 rounded-100px bg-lgreen'></canvas>
             <button onClick={handleClick} className="bg-green fs-4 ptb-025 plr-15 rounded-05 font-weight-500 uppercase">Upload new picture</button>
-            <button onClick={handleDelete} className="bg-lgreen fs-4 ptb-025 plr-15 text-white rounded-05 font-weight-500 uppercase outline-green-01">Delete</button>
+            {
+                avatar && 
+                <button onClick={handleDelete} className="bg-lgreen fs-4 ptb-025 plr-15 text-white rounded-05 font-weight-500 uppercase outline-green-01">Delete</button>
+            }
         </div>
     );
 }

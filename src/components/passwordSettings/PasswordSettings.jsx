@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
 import { useEvalPassword } from '../../customhooks/validation';
+import { useUpdate } from '../../customhooks/httpMethod';
 function PasswordSettings(){
     const [input,setInput] = useState({
         password:'',
@@ -16,27 +17,36 @@ function PasswordSettings(){
     const isValidPassword = useEvalPassword(input.password);
     const isValidNewPassword = useEvalPassword(input.newPassword);
 
+    const { update } = useUpdate("/updatePassword");
+
     const validateInput = () => {
         setInputError({...inputError,
             password:(input.password === '' ? 'This field is required!' : isValidPassword ? '' : 'Invalid password!'),
             newPassword:(input.newPassword === '' ? 'This field is required!' : isValidNewPassword ? '' : 'Password doesn\'t met the required criteria!'),
             confirmPassword:(input.confirmPassword === '' ? 'This field is required!' : input.newPassword === input.confirmPassword ? '' : 'Password\'s doesn\'t match!'),
         });
-        //Server logic
         return isValidPassword && isValidNewPassword && (input.newPassword === input.confirmPassword);
     }
 
     const handleSubmit = () => {
-        validateInput();
+        if(validateInput()){
+            update(input,() => {
+                setInput({
+                    password:'',
+                    newPassword:'',
+                    confirmPassword:''
+                });
+            });
+        }
     }
 
     const handleCancel = () => {
         setInputError({password:'',newPassword:'',confirmPassword:''});
-        setInput({password:'',newPassword:'',confirmPassword:''}); //TODO: Have to populate existing saved password
+        setInput({password:'',newPassword:'',confirmPassword:''});
     }
 
     const InputConfig = [
-        {Name:'Current Password',id:'currentPassword',type:'password',placeholder:'Enter your old password',response_message:inputError.password},
+        {Name:'Current Password',id:'password',type:'password',placeholder:'Enter your old password',response_message:inputError.password},
         {Name:'New Password',id:'newPassword',type:'password',placeholder:'Enter the new password',response_message:inputError.newPassword},
         {Name:'Confirm Password',id:'confirmPassword',type:'password',placeholder:'Confirm new password',response_message:inputError.confirmPassword}
     ];
@@ -59,6 +69,7 @@ function PasswordSettings(){
                             type={config.type}
                             placeholder={config.placeholder}
                             response_message={config.response_message}
+                            value={input}
                             setValue={setInput}
                             variant="small"
                         />
