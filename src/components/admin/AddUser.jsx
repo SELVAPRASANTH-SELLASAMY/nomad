@@ -41,6 +41,7 @@ function AddUser(_,ref){
     return(
         <dialog style={{margin:"auto"}} className="w-max-600 text-white bg-tile-blue-tr blur-10 ptb-1 plr-15 rounded-05 border-grey-01" ref={ref}>
             <form noValidate>
+            <h3 className="fs-5 font-weight-600">Add new user</h3>
                 {
                     inputConfig.map((config,index) => (
                         <PrimaryInput
