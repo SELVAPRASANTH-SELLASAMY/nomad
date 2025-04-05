@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useFetch } from "../../customhooks/httpMethod";
+import { useFetch, useUpdate } from "../../customhooks/httpMethod";
 import ReactSwitch from "react-switch";
 function UsersList({setUserMeta}){
     const [users,setUsers] = useState([]);
 
     const { data, error, isPending } = useFetch('getUsers');
+
+    const { update } = useUpdate('approve');
 
     useEffect(() => {
         if(data?.users){
@@ -13,7 +15,9 @@ function UsersList({setUserMeta}){
     },[data]);
 
     const handleSwitch = ({id}) => {
-        setUsers(users.map(user => user._id === id ? {...user,approved: !user.approved} : user));
+        update({id},() => {
+            setUsers(users.map(Obj => Obj._id === id ? {...Obj,approved: !Obj.approved} : Obj));
+        },false);
     }
 
     useEffect(() => {

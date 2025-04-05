@@ -4,13 +4,15 @@ import { error } from "./utils/error";
 const useUpdate = (url) => {
     const alert = useMessage();
     const confirm = useConfirm();
-    const update = async(data,cb) => {
+    const update = async(data,cb,confirmAction=true) => {
         if(!url){
             return;
         }
-        const action = await confirm("Are you sure want to save","Changes can't be undone");
-        if(!action){
-            return;
+        if(confirmAction){
+            const action = await confirm("Are you sure want to save","Changes can't be undone");
+            if(!action){
+                return;
+            }
         }
         Axios.patch(url,data,{withCredentials: true})
         .then((res)=>{
