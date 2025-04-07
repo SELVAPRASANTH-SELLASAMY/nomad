@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useFetch, useUpdate } from "../../customhooks/httpMethod";
 import ReactSwitch from "react-switch";
-function UsersList({setUserMeta}){
-    const [users,setUsers] = useState([]);
+function UsersList({users,setUsers}){
 
     const { data, error, isPending } = useFetch('getUsers');
 
@@ -12,22 +11,13 @@ function UsersList({setUserMeta}){
         if(data?.users){
             setUsers(data.users);
         }
-    },[data]);
+    },[data,setUsers]);
 
     const handleSwitch = ({id}) => {
         update({id},() => {
             setUsers(users.map(Obj => Obj._id === id ? {...Obj,approved: !Obj.approved} : Obj));
         },false);
     }
-
-    useEffect(() => {
-        setUserMeta((prev) => ({
-            ...prev,
-            usersCount: users.length,
-            approvedCount: users.filter(user => user.approved).length,
-            unApprovedCount: users.filter(user => !user.approved).length
-        }));
-    },[users,setUserMeta]);
 
     if(isPending || error) return <p className="mt-1 fs-4 font-weight-600 uppercase text-secondary">{isPending ? 'Loading...' : error}</p>
 

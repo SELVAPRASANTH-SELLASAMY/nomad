@@ -1,7 +1,8 @@
 import { forwardRef, useState } from "react";
 import PrimaryInput from "../../sharedUi/PrimaryInput";
 import { useEvalEmail , useEvalName } from '../../customhooks/validation';
-function AddUser(_,ref){
+import { usePost } from "../../customhooks/httpMethod";
+function AddUser({setUsers},ref){
     const [input,setInput] = useState({
         name:'',
         email:''
@@ -15,6 +16,8 @@ function AddUser(_,ref){
     const isValidName = useEvalName(input.name);
     const isValidEmail = useEvalEmail(input.email);
 
+    const { post } = usePost('signup');
+
     const validateInput = () => {
         setInputError({...inputError,
             name:(input.name === '' ? 'This field is required!' : isValidName ? '' : 'Invalid user name!'),
@@ -24,7 +27,9 @@ function AddUser(_,ref){
     }
 
     const handleSubmit = () => {
-        validateInput();
+        if(validateInput()){
+            //Logic to create access request
+        }
     }
 
     const handleCancel = () => {
