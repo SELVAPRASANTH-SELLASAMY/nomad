@@ -77,7 +77,7 @@ function Blogs({ascending,sort,category,search}){
                     Array.from({length:5},(_,index) => (
                         <ShimmerEffect key={index}/>
                     ))
-                    : error && <p className="fs-5_5 font-weight-600 uppercase text-secondary">{error}!</p>
+                    : error?.message && <p className="fs-5_5 font-weight-600 uppercase text-secondary">{error.message}!</p>
                 }
             </section>
             {

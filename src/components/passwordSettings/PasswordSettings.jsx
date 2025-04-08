@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
 import { useEvalPassword } from '../../customhooks/validation';
 import { useUpdate } from '../../customhooks/httpMethod';
+import { useNavigate } from 'react-router-dom';
 function PasswordSettings(){
     const [input,setInput] = useState({
         password:'',
@@ -16,6 +17,8 @@ function PasswordSettings(){
 
     const isValidPassword = useEvalPassword(input.password);
     const isValidNewPassword = useEvalPassword(input.newPassword);
+
+    const navigate = useNavigate();
 
     const { update } = useUpdate("/updatePassword");
 
@@ -79,7 +82,7 @@ function PasswordSettings(){
                 <button onClick={handleCancel} type='button' className="bg-lgreen fs-4 ptb-025 plr-15 text-white rounded-05 font-weight-500 uppercase outline-green-01 mtb-15 ml-2">Cancel</button>
             </form>
 
-            <button type="button" className="fs-4 pointer d-flex no-bg text-primary text-underline font-weight-500">Go back</button>
+            <button onClick={() => navigate('/')} type="button" className="fs-4 pointer d-flex no-bg text-primary text-underline font-weight-500">Go back</button>
         </section>
     );
 }

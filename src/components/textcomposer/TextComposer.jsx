@@ -8,14 +8,14 @@ function TextComposer(){
     return(
         <section className="text_composer">
             {
-                (isPending || error) ? <p className="fs-5_5 font-weight-600 uppercase text-secondary">{isPending ? 'Loading...' : error}</p>
+                (isPending || error) ? <p className="fs-5_5 font-weight-600 uppercase text-secondary">{isPending ? 'Loading...' : error?.message}</p>
                 : data && 
                 <>
                     <h2>
-                        {data.title}
+                        {data?.data.title}
                         <span className="bottomline"></span>
                     </h2>
-                    <div dangerouslySetInnerHTML={{__html:data.content}}></div>
+                    <div dangerouslySetInnerHTML={{__html:data?.data.content}}></div>
                 </>
             }
         </section>

@@ -28,7 +28,12 @@ function AddUser({setUsers},ref){
 
     const handleSubmit = () => {
         if(validateInput()){
-            //Logic to create access request
+            post(input,(res) => {
+                if(res?.data){
+                    setUsers(prevState => ([...prevState,res.data]));
+                    ref.current.close();
+                }
+            },false);
         }
     }
 

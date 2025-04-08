@@ -1,15 +1,9 @@
 const error = (err,alert) => {
     if(err.response){
-        const { status, data } = err.response;
-        if(status === 500){
-            const { message, error } = data;
-            alert(message,false);
-            console.error(error);
-        }
-        else{
-            alert(data,false);
-            console.error(data);
-        }
+        const { data } = err.response;
+        const { message, error } = data;
+        alert(message,false);
+        error ? console.error(error) : console.log(message);
     }
     else{
         alert(err.message,false);

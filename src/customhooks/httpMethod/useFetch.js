@@ -35,16 +35,9 @@ const useFetch = (url) => {
             })
             .catch((err) => {
                 if(err.response){
-                    const { status, data } = err.response;
-                    if(status === 500){
-                        const { message, error } = data;
-                        dispatch({type:"SET_ERROR",error:message});
-                        console.error(error);
-                    }
-                    else{
-                        dispatch({type:"SET_ERROR",error:data});
-                        console.error(data);
-                    }
+                    const { data } = err.response;
+                    dispatch({type:"SET_ERROR",error: data});
+                    data.error ? console.error(data.error) : console.error(data.message);
                 }
                 else{
                     dispatch({type:"SET_ERROR",error:err.message});

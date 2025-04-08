@@ -20,7 +20,11 @@ const useUpdate = (url) => {
                 if(cb){
                     cb();
                 }
-                alert(res.data);
+                alert(res.data.message);
+                if(res.data?.data){
+                    return res.data.data;
+                }
+                //Need to return updated data from the server
             }
         })
         .catch((err)=>{

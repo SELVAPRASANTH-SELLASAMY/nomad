@@ -12,7 +12,7 @@ const useDelete = (url) => {
         Axios.delete(url)
         .then((res)=>{
             if(res.status === 200){
-                alert(res.data);
+                alert(res.data.message);
                 if(cb){
                     cb();
                 }

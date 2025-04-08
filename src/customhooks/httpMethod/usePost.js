@@ -14,11 +14,14 @@ const usePost = (url) => {
         Axios.post(url,data,{withCredentials:true})
         .then((res)=>{
             if(res.status === 201){
-                alert(res.data);
+                alert(res.data.message);
+                if(cb){
+                    cb(res.data);
+                }
             }
             else if(res.status === 200){
                 if(cb){
-                    cb(res.data);
+                    cb(res.data.message);
                 }
             }
         })
