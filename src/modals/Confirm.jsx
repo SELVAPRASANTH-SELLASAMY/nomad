@@ -17,7 +17,7 @@ function Confirm(){
                 <span className="fs-6 text-primary">
                     <FaCircleExclamation/>
                 </span>
-                <h2 className="fs-5_5 font-weight-600">{title || "Are you sure want to proceed!"}</h2>
+                <h2 className="fs-5_5 font-weight-600">{title || "Are you sure want to proceed"}?</h2>
                 <p className="fs-4 text-secondary">{message || "Changes can't be undone"}</p>
                 <div className="d-flex justify-center gap-2 mt-1 mb-05">
                     <button onClick={() => confirm(true)} className="uppercase fs-4 font-weight-500 ptb-025 plr-25 rounded-100px bg-green pointer">Proceed</button>
