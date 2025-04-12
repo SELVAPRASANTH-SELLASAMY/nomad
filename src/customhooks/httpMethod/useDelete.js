@@ -1,9 +1,9 @@
-import { useMessage, useConfirm } from '../flash';
+import { useConfirm, useAlert } from '../../store/userStore';
 import Axios from './utils/Axios';
 import { error } from './utils/error';
 const useDelete = (url) => {
-    const alert = useMessage();
-    const confirm = useConfirm();
+    const alert = useAlert(state => state.handleAlert);
+    const confirm = useConfirm(state => state.handleConfirm);
     const erase = async(cb) => {
         const action = await confirm("Are you sure want to delete","Changes can't be undone");
         if(!action){

@@ -333,6 +333,9 @@
 .w-min-15rem{
     min-width: 15rem;
 }
+.w-min-400px{
+    min-width: 400px;
+}
 .w-min-500px{
     min-width: 500px;
 }
@@ -524,6 +527,9 @@ a{
 }
 .line-height-2rem{
     line-height: 2rem;
+}
+.line-height-2_5rem{
+    line-height: 2.5rem;
 }
 .line-height-25rem{
     line-height: 2.5rem;

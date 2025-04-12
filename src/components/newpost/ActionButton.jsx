@@ -3,9 +3,9 @@ import { Option } from "../../sharedUi/select";
 import { RiSave3Line, RiUploadCloud2Line, RiDownloadCloud2Line } from "react-icons/ri";
 import { usePost, useUpdate } from "../../customhooks/httpMethod";
 import { validateContent } from "./Validation";
-import { useMessage } from "../../customhooks/flash";
+import { useAlert } from "../../store/userStore";
 function ActionButton({content,setContent}){
-    const alert = useMessage();
+    const alert = useAlert(state => state.handleAlert);
     const { post } = usePost('blog/add');
     const { update } = useUpdate(content.id ? `blog/update?id=${content.id}` : null);
 

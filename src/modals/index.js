@@ -1,2 +1,2 @@
-export { default as Confirm } from './confirm/Confirm';
-export { default as Message } from './message/Message';
+export { default as Confirm } from "./Confirm";
+export { default as Alert } from "./Alert";

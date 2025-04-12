@@ -1,12 +1,10 @@
 import './login.css';
 import { mainContext } from './Main';
-import { AppContext } from '../../App';
 import { useContext, useState } from 'react';
 import { useEvalPassword } from '../../customhooks/validation';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
 function Setnewpassword(){
     const setFormState = useContext(mainContext);
-    const { FlashMsg } = useContext(AppContext);
     const [userInput,setUserInput] = useState({
         newPassword:'',
         confirmPassword:''
@@ -26,7 +24,6 @@ function Setnewpassword(){
         if(validateInput(userInput)){
             //Logic to change password.
             console.log("Password changed successfully...");
-            FlashMsg.current.show("Password changed successfully");
         }
     }
     console.log("setNewPassword Re-Rendered...");

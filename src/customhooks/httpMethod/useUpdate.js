@@ -1,9 +1,9 @@
-import { useMessage, useConfirm } from "../flash";
 import Axios from "./utils/Axios";
 import { error } from "./utils/error";
+import { useConfirm, useAlert } from "../../store/userStore";
 const useUpdate = (url) => {
-    const alert = useMessage();
-    const confirm = useConfirm();
+    const alert = useAlert(state => state.handleAlert);
+    const confirm = useConfirm(state => state.handleConfirm);
     const update = async(data,cb,confirmAction=true) => {
         if(!url){
             return;
