@@ -8,11 +8,13 @@ function AdminButtons({addUserRef, usersRef, setUsers}){
 
     const removeUsers = () => {
         const selectedUsers = usersRef.current.getSelectedUsers();
-        erase(() => {
-            setUsers((prev) => {
-                return prev.filter(user => !selectedUsers.includes(user._id));
-            });
-        },{users: selectedUsers});
+        if(selectedUsers.length > 0){
+            erase(() => {
+                setUsers((prev) => {
+                    return prev.filter(user => !selectedUsers.includes(user._id));
+                });
+            },{users: selectedUsers});
+        }
     }
 
     const buttonConfig = [

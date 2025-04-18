@@ -38,7 +38,7 @@ function UserMenu(){
 
     return(
         <div className='d-flex gap-05 center-y relative'>
-            <canvas ref={avatarRef} id='profile-picture' className='w-2rem aspect-ratio-equal border-grey-01 rounded-100px bg-lgreen'></canvas>
+            <canvas ref={avatarRef} id='profile-picture' className='w-2rem aspect-ratio-equal border-grey-01 rounded-100px bg-common-blue'></canvas>
             <p onFocus={()=>showControls(true)} onBlur={() => showControls(false)} tabIndex="0" id='user-name' className='fs-4 pointer'>{user?.name || "Loading..."} <span className='fs-5_5'>&#128899;</span></p>
             {controls && 
                 <UserControls/>

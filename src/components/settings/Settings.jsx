@@ -2,6 +2,7 @@ import { useState } from "react";
 import ProfileSettings from "../profileSettings/ProfileSettings";
 import PasswordSettings from "../passwordSettings/PasswordSettings";
 import Admin from "../admin/Admin";
+import { useUser } from "../../store/userStore";
 
 function Page({activePage}){
     switch(activePage){
@@ -10,7 +11,7 @@ function Page({activePage}){
         case "password":
             return <PasswordSettings/>;
         case "admin":
-            return <Admin/>
+            return <Admin/>;
         default:
             return <p>Page Not Found!</p>;
     }
@@ -19,11 +20,14 @@ function Page({activePage}){
 function Settings(){
     const [activePage,setActivePage] = useState('profile');
 
+    const role = useUser(state => state.user?.role);
+
     const options = [
         {label:"Profile settings",value:"profile",clickEvent:() => setActivePage('profile')},
-        {label:"Password",value:"password",clickEvent:() => setActivePage('password')},
-        {label:"Administration",value:"admin",clickEvent:() => setActivePage('admin')}
+        {label:"Password",value:"password",clickEvent:() => setActivePage('password')}
     ];
+
+    if(role === "admin") options.push({label:"Administration",value:"admin",clickEvent:() => setActivePage('admin')});
     
     return(
         <>
