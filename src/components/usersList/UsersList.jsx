@@ -1,11 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useImperativeHandle, useMemo } from "react";
 import { useFetch, useUpdate } from "../../customhooks/httpMethod";
 import ReactSwitch from "react-switch";
-function UsersList({users,setUsers}){
+import { forwardRef } from "react";
+function UsersList({users,setUsers},ref){
 
     const { data, error, isPending } = useFetch('getUsers');
 
     const { update } = useUpdate('approve');
+
+    let selectedUsers = useMemo(() => [],[]);
 
     useEffect(() => {
         if(data?.users){
@@ -18,6 +21,14 @@ function UsersList({users,setUsers}){
             setUsers(users.map(Obj => Obj._id === id ? {...Obj,approved: !Obj.approved} : Obj));
         },false);
     }
+
+    const handleSelect = (e,userId) => {
+        e.target.checked ? selectedUsers.push(userId) : selectedUsers.splice(selectedUsers.indexOf(userId),1);
+    }
+
+    useImperativeHandle(ref,() => ({
+        getSelectedUsers: () => selectedUsers
+    }),[selectedUsers]);
 
     if(isPending || error) return <p className="mt-1 fs-4 font-weight-600 uppercase text-secondary">{isPending ? 'Loading...' : error}</p>
 
@@ -37,7 +48,7 @@ function UsersList({users,setUsers}){
                     users.map((user) => (
                         <tr key={user._id}>
                             <td className="text-centered">
-                                <input type="checkbox"/>
+                                <input onChange={(e) => handleSelect(e,user._id)} type="checkbox"/>
                             </td>
                             <td className="fs-4 p-05">{user.name}</td>
                             <td className="fs-4 p-05">
@@ -63,4 +74,4 @@ function UsersList({users,setUsers}){
         </table>
     );
 }
-export default UsersList;
+export default forwardRef(UsersList);

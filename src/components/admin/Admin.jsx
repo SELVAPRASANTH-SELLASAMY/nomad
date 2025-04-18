@@ -8,6 +8,8 @@ function Admin(){
     const [users,setUsers] = useState([]);
 
     const addUserRef = useRef(null);
+
+    const usersRef = useRef(null);
     
     return(
         <section>
@@ -18,9 +20,9 @@ function Admin(){
                 <StatCard icon={<FiUserCheck/>} title="Approved Users" count={users.filter(user => user.approved).length}/>
                 <StatCard icon={<FiUserX/>} title="Un approved Users" count={users.filter(user => !user.approved).length}/>
             </div>
-            <AdminButtons addUserRef={addUserRef}/>
+            <AdminButtons addUserRef={addUserRef} usersRef={usersRef} setUsers={setUsers}/>
             <AddUser setUsers={setUsers} ref={addUserRef}/>
-            <UsersList users={users} setUsers={setUsers}/>
+            <UsersList users={users} setUsers={setUsers} ref={usersRef}/>
         </section>
     );
 }
