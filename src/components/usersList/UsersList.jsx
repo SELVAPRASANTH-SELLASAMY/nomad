@@ -40,7 +40,7 @@ function UsersList({users,setUsers},ref){
                     <th className="fs-4 text-start font-weight-500 ptb-05 plr-05">Name</th>
                     <th className="fs-4 text-start font-weight-500 ptb-05 plr-05">Email</th>
                     <th className="fs-4 text-start font-weight-500 ptb-05 plr-05">Role</th>
-                    <th className="fs-4 text-start font-weight-500 ptb-05 plr-05">Platform Access</th>
+                    <th className="fs-4 text-start font-weight-500 ptb-05 plr-05">Access</th>
                 </tr>
             </thead>
             <tbody>
