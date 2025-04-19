@@ -2,11 +2,14 @@ import { forwardRef, useState } from "react";
 import PrimaryInput from "../../sharedUi/PrimaryInput";
 import { useEvalEmail , useEvalName } from '../../customhooks/validation';
 import { usePost } from "../../customhooks/httpMethod";
+import { Select } from "../../sharedUi/select";
 function AddUser({setUsers},ref){
     const [input,setInput] = useState({
         name:'',
         email:''
     });
+
+    const [role,setRole] = useState("standard user");
 
     const [inputError,setInputError] = useState({
         name:'',
@@ -28,9 +31,10 @@ function AddUser({setUsers},ref){
 
     const handleSubmit = () => {
         if(validateInput()){
-            post(input,(res) => {
+            post({...input,role},(res) => {
                 if(res?.data){
                     setUsers(prevState => ([...prevState,res.data]));
+                    setInput({name:'',email:''});
                     ref.current.close();
                 }
             },false);
@@ -68,6 +72,14 @@ function AddUser({setUsers},ref){
                         />
                     ))
                 }
+                <label htmlFor='role' className="fs-4 d-iblock mb-05 mt-1">Role</label>
+                <Select
+                    options={["standard user","admin"]}
+                    value={role}
+                    setValue={setRole}
+                    Styles={"bg-tile-blue-tr ptb-05 plr-1"}
+                    fullWidth
+                />
                 <button onClick={handleSubmit} type='button' className="bg-green fs-4 ptb-025 plr-15 rounded-05 font-weight-500 uppercase mtb-15">Save</button>
                 <button onClick={handleCancel} type='button' className="bg-lgreen fs-4 ptb-025 plr-15 text-white rounded-05 font-weight-500 uppercase outline-green-01 mtb-15 ml-2">Cancel</button>
             </form>

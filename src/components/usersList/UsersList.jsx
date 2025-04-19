@@ -39,8 +39,8 @@ function UsersList({users,setUsers},ref){
                     <th><input type="checkbox"/></th>
                     <th className="fs-4 text-start font-weight-500 ptb-05 plr-05">Name</th>
                     <th className="fs-4 text-start font-weight-500 ptb-05 plr-05">Email</th>
-                    <th className="fs-4 text-start font-weight-500 ptb-05 plr-05">Status</th>
-                    <th className="fs-4 text-start font-weight-500 ptb-05 plr-05">Access</th>
+                    <th className="fs-4 text-start font-weight-500 ptb-05 plr-05">Role</th>
+                    <th className="fs-4 text-start font-weight-500 ptb-05 plr-05">Platform Access</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,7 +54,7 @@ function UsersList({users,setUsers},ref){
                             <td className="fs-4 p-05">
                                 <a className="font-weight-400 text-white" href={`mailto:${user.email}`}>{user.email}</a>
                             </td>
-                            <td className="fs-4 p-05">{user.approved ? 'Approved' : 'Unapproved'}</td>
+                            <td className="fs-4 p-05">{user.role}</td>
                             <td className="fs-4 p-05">
                                 <ReactSwitch 
                                     onChange={() => handleSwitch({id:user._id})}

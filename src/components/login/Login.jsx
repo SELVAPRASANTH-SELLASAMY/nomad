@@ -57,7 +57,7 @@ function Login(){
 
                 <div className="d-iflex center-y">
                     <input onChange={(e)=>setCheck(e.target.checked)} type="checkbox" id='show-password' name='show-password'/>
-                    <label htmlFor="show-password" className='fs-4 d-iblock mtb-1'>Show password</label>
+                    <label htmlFor="show-password" className='fs-4 mtb-1 pointer'>Show password</label>
                 </div>
                 <a href='/' role='button' onClick={(e)=>{e.preventDefault(); setFormState('reset_password')}} className="fs-4 float-right d-iblock mtb-1">Forgot password?</a>
 
