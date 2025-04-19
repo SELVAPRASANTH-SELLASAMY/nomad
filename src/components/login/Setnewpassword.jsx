@@ -3,30 +3,38 @@ import { mainContext } from './Main';
 import { useContext, useState } from 'react';
 import { useEvalPassword } from '../../customhooks/validation';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
+import { useUpdate } from '../../customhooks/httpMethod';
 function Setnewpassword(){
     const setFormState = useContext(mainContext);
+
     const [userInput,setUserInput] = useState({
         newPassword:'',
         confirmPassword:''
     });
+
     const [formError,setFormError] = useState({
         newPassword:'',
         confirmPassword:''
     });
+
     const passwordValidation = useEvalPassword(userInput.newPassword);
+
     const [check,setCheck] = useState(false); // For checkbox input to display password input.
+
+    const { update } = useUpdate("resetPassword");
+
     const validateInput = (input) => {
         const isEqual = input.newPassword === input.confirmPassword;
         setFormError({...formError,newPassword:input.newPassword === '' ? 'This field is required!' : passwordValidation ? '' : "Password doesn't meet the required criteria!",confirmPassword:input.confirmPassword === '' ? 'This field is required!' : isEqual ? '' :"Password's doesn't match!"});
         return passwordValidation && isEqual;
     }
+
     const handlePasswordChange = () => {
         if(validateInput(userInput)){
-            //Logic to change password.
-            console.log("Password changed successfully...");
+            update(userInput);
         }
     }
-    console.log("setNewPassword Re-Rendered...");
+    
     return(
         <>
             <h2 className="text-primary font-weight-600 fs-8 italic">Reset password!</h2>

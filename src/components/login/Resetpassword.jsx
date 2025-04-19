@@ -3,6 +3,7 @@ import { mainContext } from './Main';
 import { useContext, useRef, useState } from 'react';
 import { useEvalEmail, useEvalotp } from '../../customhooks/validation';
 import PrimaryInput from '../../sharedUi/PrimaryInput';
+import { usePost } from '../../customhooks/httpMethod';
 function Resetpassword() {
     const setFormState = useContext(mainContext);
     const [userInput,setUserInput] = useState({
@@ -13,34 +14,39 @@ function Resetpassword() {
         email:'',
         otp:''
     });
+
+    const request = usePost("requestOtp");
+    const validate = usePost("validateOtp");
+
     const [enableOtp,setEnableOtp] = useState(false);
     const emailValidation = useEvalEmail(userInput.email);
     const otpValidation = useEvalotp(userInput.otp);
     const resetPasswordForm = useRef();
-    const resendOtp = (e) => {
-        e.preventDefault();
-        //Logic to resend OTP;
-        console.log("Logic to resend otp");
-    }
+
     const sendOTP = () => {
-        //logic to send OTP
         setFormError({...formError,email:userInput.email === '' ? 'This field is required!' : emailValidation ? '' : 'Invalid email!'});
         if(emailValidation){
-            return setEnableOtp(true);
+            request.post({email: userInput.email},() => {
+                setEnableOtp(true);
+            },false);
         }
     }
+
     const handlePasswordReset = () => {
         setFormError({...formError,otp:userInput.otp === '' ? 'This field is required!' : otpValidation ? '' : 'Invalid OTP!'});
         if(otpValidation){
-            return setFormState('set_new_password');
+            validate.post({email: userInput.email, otp: userInput.otp},() => {
+                setFormState('set_new_password');
+            },false);
         }
     }
+
     const handleFormreset = () => {
         setUserInput({...userInput,email:'',otp:''});
         setFormError({...formError,email:'',otp:''});
         setEnableOtp(false);
     }
-    console.log("Reset-password field re-redered...");
+
     return(
         <>
             <h2 className="text-primary font-weight-600 fs-8 italic">Reset password!</h2>
@@ -66,7 +72,7 @@ function Resetpassword() {
                     disabled={!enableOtp}
                 />
 
-                <p className='fs-4 d-iblock mtb-1'>Not received the OTP yet? <a href='/' role='button' onClick={(e)=>resendOtp(e)}>Resend</a> or <a href="/" role='button' onClick={(e)=>{e.preventDefault(); resetPasswordForm.current.reset()}}>Use a different email</a></p>
+                <p className='fs-4 d-iblock mtb-1'>Not received the OTP yet? <a href='/' role='button' onClick={(e) => {e.preventDefault();sendOTP()}}>Resend</a> or <a href="/" role='button' onClick={(e)=>{e.preventDefault(); resetPasswordForm.current.reset()}}>Use a different email</a></p>
 
                 <button type='button' onClick={() => enableOtp ? handlePasswordReset() : sendOTP()} className='btn-primary w-100 fs-4'>{enableOtp ? 'submit' : 'get otp'}</button>
 
@@ -75,4 +81,5 @@ function Resetpassword() {
         </>
     );
 }
+
 export default Resetpassword;
