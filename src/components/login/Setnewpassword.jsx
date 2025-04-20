@@ -31,7 +31,16 @@ function Setnewpassword(){
 
     const handlePasswordChange = () => {
         if(validateInput(userInput)){
-            update(userInput);
+            update(userInput,() => {
+                setUserInput({
+                    newPassword:'',
+                    confirmPassword:''
+                });
+                setFormError({
+                    newPassword:'',
+                    confirmPassword:''
+                });
+            });
         }
     }
     
@@ -47,6 +56,7 @@ function Setnewpassword(){
                     type={check ? 'text' : 'password'}
                     placeholder="Enter your new password"
                     response_message={formError.newPassword}
+                    value={userInput}
                     setValue={setUserInput}
                 />
 
@@ -56,6 +66,7 @@ function Setnewpassword(){
                     type={check ? 'text' : 'password'}
                     placeholder="Confirm your new password"
                     response_message={formError.confirmPassword}
+                    value={userInput}
                     setValue={setUserInput}
                 />
 

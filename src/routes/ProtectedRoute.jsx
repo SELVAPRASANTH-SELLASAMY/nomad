@@ -3,20 +3,18 @@ import { useFetch } from "../customhooks/httpMethod";
 import { useEffect } from "react";
 import { useUser } from "../store/userStore";
 function ProtectedRoute({children}){
-    const { data, error, isPending } = useFetch('/check-auth');
+    const { data, isPending } = useFetch('/check-auth');
     const navigate = useNavigate();
     const setUser = useUser(state => state.setUser);
-    useEffect(() => {
-        if(!isPending && error?.authenticated === false){
-            navigate("/login",{replace:true});
-        }
-    },[error,isPending,navigate]);
 
     useEffect(() => {
         if(data?.authenticated && data?.user){
             setUser(data.user);
         }
-    },[data,setUser]);
+        else if(!isPending){
+            navigate("/login",{replace:true});
+        }
+    },[data,isPending,navigate,setUser]);
 
     if(isPending){
         return <p className="mt-5 fs-5_5 font-weight-600 text-secondary">Checking Authentication...</p>
