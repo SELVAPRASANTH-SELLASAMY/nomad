@@ -21,8 +21,8 @@ function Newpost(){
     const { data, error, isPending } = useFetch(edit ? `blog/getcontent?id=${edit}` : null);
 
     useEffect(()=>{
-        if(data){
-            setContent({...data,copy:data,id:edit});
+        if(data?.data){
+            setContent({...(data.data),copy:(data.data),id:edit});
         }
     },[data,edit]);
 
@@ -38,6 +38,10 @@ function Newpost(){
             setCategory(content.category);
         }
     },[content.category]);
+
+    useEffect(() => {
+        console.log(error);
+    },[error])
 
     return(
         edit && (isPending || error) 
