@@ -1,12 +1,14 @@
 import { useEffect, useRef } from "react";
+import useCanvas from "../../customhooks/useCanvas";
 
 function UserAvatar({avatar,setInput}){
     const fileInputRef = useRef(null);
     const canvasRef = useRef(null);
+    const drawImage = useCanvas();
 
     useEffect(() => {
-        if(avatar) handleCanvas(avatar);
-    },[avatar]);
+        if(avatar) drawImage(canvasRef,avatar);
+    },[avatar,drawImage]);
 
     const handleClick = () => {
         fileInputRef?.current?.click();
@@ -14,26 +16,8 @@ function UserAvatar({avatar,setInput}){
 
     const handleImageChange = (e) => {
         const pic = e.target.files[0];
-        handleCanvas(pic);
+        drawImage(canvasRef,avatar);
         setInput((prevState) => ({...prevState,image:pic}));
-    }
-
-    const handleCanvas = (img) => {
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext("2d");
-        const image = new Image();
-        image.onload = () => {
-            canvas.width = image.width;
-            canvas.height = image.height;
-            ctx.drawImage(image, 0, 0, image.width, image.height);
-        }
-        if(img && typeof img !== "string"){
-            const url = URL.createObjectURL(img);
-            image.src = url;
-        }
-        else{
-            if(img) image.src = img.startsWith('file') ? img : `${process.env.REACT_APP_API_URL}${img}`;
-        }
     }
 
     const handleDelete = () => {

@@ -30,7 +30,7 @@ function UsersList({users,setUsers},ref){
         getSelectedUsers: () => selectedUsers
     }),[selectedUsers]);
 
-    if(isPending || error) return <p className="mt-1 fs-4 font-weight-600 uppercase text-secondary">{isPending ? 'Loading...' : error}</p>
+    if(isPending || error?.message) return <p className="mt-1 fs-4 font-weight-600 uppercase text-secondary">{isPending ? 'Loading...' : error.message + "!"}</p>
 
     return(
         <table style={{borderCollapse:'collapse'}} className="bg-tile-blue w-100 mtb-1 rounded-05 hide-overflow shadow-primary">

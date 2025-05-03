@@ -5,7 +5,7 @@ function ShimmerEffect(){
             <div className="w-100 aspect-ratio-21 rounded-top-1 loading-tile"></div>
             <div style={{height:"25px"}} className="title-animation loading-tile rounded-025"></div>
             {
-                Array.from({length:2},(_,index) => (
+                Array.from({length:1},(_,index) => (
                     <div key={index} className='fs-3 d-iflex gap-05'>
                         <span style={{height:"15px"}} className="title-animation loading-tile rounded-025 w-100"></span>
                         <span style={{height:"15px"}} className="title-animation loading-tile rounded-025 w-100"></span>

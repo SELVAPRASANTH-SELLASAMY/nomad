@@ -36,9 +36,8 @@ const useFetch = (url) => {
             .catch((err) => {
                 if(err.response){
                     const { data } = err.response;
-                    const { message, error } = data;
-                    dispatch({type:"SET_ERROR",error: error});
-                    error ? console.error(error) : console.error(message);
+                    dispatch({type:"SET_ERROR",error: data});
+                    data?.error ? console.error(data.error) : console.error(data.message);
                 }
                 else{
                     dispatch({type:"SET_ERROR",error:err.message});
