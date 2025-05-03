@@ -9,8 +9,8 @@ function App(){
   return(
     <Router future={{v7_startTransition: true, v7_relativeSplatPath: true}}>
       <Routes>
-        <Route path='/' element={<Header setSearch={setSearch} setShowNavbar={setShowNavbar}/>}>
-          <Route element={<ProtectedRoute/>}>
+        <Route element={<ProtectedRoute/>}>
+          <Route path='/' element={<Header setSearch={setSearch} setShowNavbar={setShowNavbar}/>}>
             <Route path='/' element={<Sidebar showNavbar={showNavbar} setShowNavbar={setShowNavbar}/>}>
               <Route index element={<Home search={search}/>}/>
               <Route path='editor' element={<Newpost/>}/>
@@ -18,8 +18,8 @@ function App(){
             <Route path='blog' element={<TextComposer/>}/>
             <Route path='settings' element={<Settings/>}/>
           </Route>
-          <Route path='login' element={<Login/>}/>
         </Route>
+        <Route path='login' element={<Login/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </Router>
