@@ -1,4 +1,3 @@
-import './login.css';
 import Login from './Login';
 import Resetpassword from './Resetpassword';
 import Setnewpassword from './Setnewpassword';

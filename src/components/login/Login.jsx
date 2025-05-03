@@ -1,4 +1,3 @@
-import './login.css';
 import { mainContext } from './Main';
 import { useContext, useState } from 'react';
 import { useEvalEmail, useEvalPassword } from '../../customhooks/validation';

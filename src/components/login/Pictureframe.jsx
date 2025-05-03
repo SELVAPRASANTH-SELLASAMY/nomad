@@ -1,4 +1,3 @@
-import './login.css';
 import rootImage from '../../assets/a-man-writing-a-blog-on-a-computer.webp';
 import { memo } from 'react';
 function Pictureframe(){
