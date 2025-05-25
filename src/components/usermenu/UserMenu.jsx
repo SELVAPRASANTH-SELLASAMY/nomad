@@ -15,9 +15,9 @@ function UserMenu(){
     },[user?.image,drawImage]);
 
     return(
-        <div className='d-flex gap-05 center-y relative'>
+        <div className='d-flex gap-05 relative ml-auto'>
             <canvas ref={avatarRef} id='profile-picture' className='w-2rem aspect-ratio-equal border-grey-01 rounded-100px bg-common-blue'></canvas>
-            <p onFocus={()=>showControls(true)} onBlur={() => showControls(false)} tabIndex="0" id='user-name' className='fs-4 pointer uppercase font-weight-500'>{user?.name || "Loading..."} <span className='fs-5_5'>&#128899;</span></p>
+            <p onFocus={()=>showControls(true)} onBlur={() => showControls(false)} tabIndex="0" id='user-name' className='fs-4 pointer uppercase font-weight-500 d-flex center-y'>{user?.name || "Loading..."} <span className='fs-5 mb-025 ml-015'>&#128899;</span></p>
             {controls && 
                 <UserControls/>
             }

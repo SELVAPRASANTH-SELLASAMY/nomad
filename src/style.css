@@ -19,6 +19,9 @@
 .text-no-wrap{
     text-wrap: nowrap;
 }
+.white-space-no-wrap{
+    white-space: nowrap;
+}
 .font-weight-300{
     font-weight: 300;
 }
@@ -163,6 +166,9 @@
 .gap-2{
     gap: 2rem;
 }
+.gap-3{
+    gap: 3rem;
+}
 .mtb-025{
     margin-top: .25rem;
     margin-bottom: .25rem;
@@ -178,6 +184,10 @@
 .mtb-15{
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+}
+.mtb-3{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 .mt-025{
     margin-top: .25rem;
@@ -226,6 +236,9 @@
 }
 .mr-2{
     margin-right: 2rem;
+}
+.ml-015{
+    margin-left: .15rem;
 }
 .ml-1{
     margin-left: 1rem;
@@ -398,6 +411,9 @@
 }
 .h-min-700px{
     min-height: 700px;
+}
+.h-min-600px{
+    min-height: 600px;
 }
 .aspect-ratio-equal{
     aspect-ratio: 1/1;
