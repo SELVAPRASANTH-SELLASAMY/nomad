@@ -9,6 +9,12 @@
     .w-auto_L_768{
         width: auto;
     }
+    .w-2_L_768{
+        width: 2rem;
+    }
+    .aspect-ration-equal_L_768{
+        aspect-ratio: 1/1;
+    }
 
     /* Height */
     .h-min-0_L_768{
@@ -44,27 +50,17 @@
     .mb-2_L_768{
         margin-bottom: 2rem;
     }
-    .ml-0_L_768{
-        margin-left: 0;
-    }
 
     /* Padding */
     .p-05_L_768{
-        padding: .25rem;
-    }
-    .pl-0_L_768{
-        padding-left: 0;
-    }
-
-    /* Border */
-    .search-border-none_L_768{
-        --search-border-color: transparent !important;
+        padding-top: .25rem;
+        padding-bottom: .25rem;
+        padding-left: .25rem;
+        padding-right: .25rem;
     }
 
     /* Backround */
-    .bg-none_L_768{
-        background-color: unset;
-    }
+    
 }
 
 /* Screen width <= 500 */
