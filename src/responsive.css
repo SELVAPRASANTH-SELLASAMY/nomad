@@ -58,9 +58,39 @@
         padding-left: .25rem;
         padding-right: .25rem;
     }
+    .ptb-05_L_768{
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+    }
 
-    /* Backround */
-    
+    /* Position */
+    .static_L_768{
+        position: static;
+    }
+
+    /* Background */
+    #OptionList > li{
+        display: flex;
+        align-items: center;
+    }
+    #OptionList > li::before{
+        content: "";
+        width: .5rem;
+        height: .5rem;
+        border: .25rem solid var(--background);
+        border-radius: 100%;
+        background-color: var(--background);
+        outline: .1rem inset var(--lightgrey);
+        margin-right: .25rem;
+    }
+    #OptionList > li[aria-selected=true]::before{
+        border-color: var(--green);
+        outline-color: var(--green);
+        outline-style: outset;
+    }
+    .bg-tile-blue-tr_L_768{
+        background-color: var(--black-pearl);
+    }
 }
 
 /* Screen width <= 500 */

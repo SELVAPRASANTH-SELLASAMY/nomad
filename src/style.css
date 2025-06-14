@@ -169,6 +169,10 @@
 .gap-3{
     gap: 3rem;
 }
+.mtb-auto{
+    margin-top: auto;
+    margin-bottom: auto;
+}
 .mtb-025{
     margin-top: .25rem;
     margin-bottom: .25rem;
