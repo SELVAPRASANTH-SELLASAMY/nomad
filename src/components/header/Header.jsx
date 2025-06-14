@@ -1,6 +1,6 @@
 import './header.css';
 import { Outlet, useLocation } from 'react-router-dom';
-import Searchinput from '../searchinput/Searchinput';
+import Search from '../search/Search';
 import UserMenu from '../usermenu/UserMenu';
 function Header({setShowNavbar,setSearch}){
     const location = useLocation();
@@ -16,7 +16,7 @@ function Header({setShowNavbar,setSearch}){
                 <h1 onClick={handleSidebar} className={`text-primary fs-7 uppercase mr-2 ${sideBarChilds.includes(location.pathname) && 'pointer'}`}>nomad</h1>
                 <div className='d-flex center-y justify-space-between w-100 w-auto_L_768 gap-05_L_768 ml-auto'>
                     {location.pathname === '/' && 
-                        <Searchinput setSearch={setSearch}/>
+                        <Search setSearch={setSearch}/>
                     }
                     <UserMenu/>
                 </div>
