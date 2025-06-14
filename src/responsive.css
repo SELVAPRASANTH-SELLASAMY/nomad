@@ -81,3 +81,11 @@
         padding-right: 1.5rem;
     }
 }
+
+/* Screem width <= 425 */
+@media screen and (width <= 425px) {
+    /* Width */
+    .w-100_L_425{
+        width: 100%;
+    }
+}
