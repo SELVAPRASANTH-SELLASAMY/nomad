@@ -491,6 +491,19 @@
 .hide-overflow{
     overflow: hidden;
 }
+.overflow-x-auto{
+    overflow-x: auto;
+}
+.scroll-snap-x-always{
+    scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
+}
+.scroll-snap-align-start{
+    scroll-snap-align: start;
+}
+.overflow-x-auto::-webkit-scrollbar{
+    height: 0;
+}
 input:not(input[type="checkbox"]):focus,textarea:focus{
     border-color: var(--green);
 }

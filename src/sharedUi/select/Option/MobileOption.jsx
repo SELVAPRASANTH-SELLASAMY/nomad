@@ -1,21 +1,13 @@
-import { useEffect, useRef } from "react";
+import ReactDOM from 'react-dom';
 
 function MobileOption({onClick,expand,children}){
-    const MobileOptionRef = useRef(null);
+    if(!expand) return null;
 
-    useEffect(() => {
-        if(expand){
-            MobileOptionRef?.current?.showModal();
-        }
-        else{
-            MobileOptionRef?.current?.close();
-        }
-    },[expand]);
-
-    return(
-        <dialog onClick={onClick} style={{maxWidth:"300px"}} ref={MobileOptionRef} className="w-100 no-bg text-white no-border mlr-auto mtb-auto">
+    return ReactDOM.createPortal(
+        <div onClick={onClick} className="fixed top-0 bottom-0 left-0 right-0 bg-overlay d-grid place-content-center z-index-110 w-child-min-18rem_L_768">
             {children}
-        </dialog>
+        </div>,
+        document.getElementById('flash')
     );
 }
 
