@@ -1,5 +1,5 @@
 import axios from "axios";
 const Axios = axios.create({
-    baseURL: 'http://localhost:3001/nomad'
+    baseURL: `${process.env.REACT_APP_API_URL}/nomad`
 });
 export default Axios;
