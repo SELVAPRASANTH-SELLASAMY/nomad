@@ -39,10 +39,6 @@ function Newpost(){
         }
     },[content.category]);
 
-    useEffect(() => {
-        console.log(error);
-    },[error])
-
     return(
         edit && (isPending || error) 
         ? 
