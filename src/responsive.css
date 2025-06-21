@@ -133,6 +133,14 @@
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
+
+    /* Overflow */
+    .overflow-x-auto_L_500{
+        overflow-x: auto;
+    }
+    .overflow-x-auto_L_500::-webkit-scrollbar{
+        height: 0;
+    }
 }
 
 /* Screem width <= 425 */

@@ -1,16 +1,11 @@
 import { FaArrowUp } from "react-icons/fa";
 import Option from "./Option/Option";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MobileOption from "./Option/MobileOption";
+import useWindowWidth from "../../customhooks/useWindowWidth";
 function Select({name,options,Styles,fullWidth,value,setValue,setAscending,ascending}){
-    const [windowWidth,setWindowWidth] = useState(window.innerWidth);
+    const windowWidth = useWindowWidth();
     const [expand,setExpand] = useState(false);
-
-    useEffect(() => {
-        const handleResize = () => setWindowWidth(window.innerWidth);
-        window.addEventListener("resize",handleResize);
-        return () => window.removeEventListener("resize",handleResize);
-    },[]);
 
     const handleFocus = () => {
         if(windowWidth > 768){

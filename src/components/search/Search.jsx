@@ -1,15 +1,9 @@
-import { useEffect, useState } from "react";
 import SearchInput from "./SearchInput";
 import MobileSearch from "./MobileSearch";
+import useWindowWidth from "../../customhooks/useWindowWidth";
 
 function Search({setSearch}){
-    const [windowWidth,setWindowWidth] = useState(window.innerWidth);
-    
-    useEffect(() => {
-        const handleResize = () => setWindowWidth(window.innerWidth);
-        window.addEventListener("resize",handleResize);
-        return () => window.removeEventListener("resize",handleResize);
-    },[]);
+    const windowWidth = useWindowWidth();
 
     if(windowWidth <= 768) return <MobileSearch setSearch={setSearch}/>;
 
