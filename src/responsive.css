@@ -116,6 +116,19 @@
     }
 }
 
+/* Screen width <= 550 */
+@media screen and (width <= 550px){
+    /* display */
+    .flex-col_L_550{
+        flex-direction: column;
+    }
+
+    /* Margin */
+    .ml-0_L_550{
+        margin-left: 0;
+    }
+}
+
 /* Screen width <= 500 */
 @media screen and (width <= 500px){
     /* Font size */

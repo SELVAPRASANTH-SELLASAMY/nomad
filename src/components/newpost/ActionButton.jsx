@@ -4,7 +4,10 @@ import { RiSave3Line, RiUploadCloud2Line, RiDownloadCloud2Line } from "react-ico
 import { usePost, useUpdate } from "../../customhooks/httpMethod";
 import { validateContent } from "./Validation";
 import { useAlert } from "../../store/userStore";
+import useWindowWidth from "../../customhooks/useWindowWidth";
+import { MobileOption } from "../../sharedUi/select";
 function ActionButton({content,setContent}){
+    const windowWidth = useWindowWidth();
     const alert = useAlert(state => state.handleAlert);
     const { post } = usePost('blog/add');
     const { update } = useUpdate(content.id ? `blog/update?id=${content.id}` : null);
@@ -69,15 +72,23 @@ function ActionButton({content,setContent}){
     const [expand,setExpand] = useState(false);
 
     return(
-        <div className="w-10rem relative ml-auto">
-            <button onClick={() => handleAction(functionality[value.name])} type="button" className='fs-4 bg-green rounded-05 ptb-025 plr-1 text-black font-weight-600 d-flex center-y gap-05 w-fit justify-center pointer uppercase ml-auto text-no-wrap'>
-                <span>{value.name}</span>
-                <span tabIndex="0" onClick={(e)=>e.stopPropagation()} onFocus={()=>setExpand(true)} onBlur={()=>setExpand(false)}>| &#9660;</span>
-            </button>
-            {expand &&
-                <Option actions={actions} setValue={setValue} value={value}/>
+        <>
+            <div className="w-10rem relative ml-auto ml-0_L_550">
+                <button onClick={() => handleAction(functionality[value.name])} type="button" className='fs-4 bg-green rounded-05 ptb-025 plr-1 text-black font-weight-600 d-flex center-y gap-05 w-fit justify-center pointer uppercase ml-auto ml-0_L_550 text-no-wrap'>
+                    <span>{value.name}</span>
+                    <span tabIndex="0" onClick={(e)=>e.stopPropagation()} onFocus={()=>setExpand(true)} onBlur={()=>setExpand(false)}>| &#9660;</span>
+                </button>
+                {(expand && windowWidth > 768) &&
+                    <Option actions={actions} setValue={setValue} value={value}/>
+                }
+            </div>
+            {
+                (windowWidth <= 768) && 
+                <MobileOption onClick={() => setExpand(false)} expand={expand}>
+                    <Option actions={actions} setValue={setValue} value={value}/>
+                </MobileOption>
             }
-        </div>
+        </>
     );
 }
 export default ActionButton;
