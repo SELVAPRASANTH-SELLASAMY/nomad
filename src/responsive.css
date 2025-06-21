@@ -71,6 +71,14 @@
         position: static;
     }
 
+    /* Overflow */
+    .overflow-x-auto_L_768{
+        overflow-x: auto;
+    }
+    .overflow-x-auto_L_768::-webkit-scrollbar{
+        height: 0;
+    }
+
     /* Background */
     #OptionList > li{
         display: flex;
