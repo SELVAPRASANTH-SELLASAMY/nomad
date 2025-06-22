@@ -31,3 +31,8 @@ export const useAlert = create((set) => ({
         setTimeout(() => set({message: '',open: false}),3000);
     }
 }));
+
+export const useNavControl = create((set) => ({
+    display: false,
+    handleDisplay: () => set(state => ({display: !state.display}))
+}));

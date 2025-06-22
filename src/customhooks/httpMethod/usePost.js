@@ -1,4 +1,4 @@
-import { useConfirm, useAlert } from "../../store/userStore";
+import { useConfirm, useAlert } from "../../store/zustandStore";
 import Axios from './utils/Axios';
 import { error } from "./utils/error";
 const usePost = (url) => {

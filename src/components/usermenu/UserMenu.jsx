@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import UserControls from "../userControls/UserControls";
-import { useUser } from "../../store/userStore";
+import { useUser } from "../../store/zustandStore";
 import useCanvas from "../../customhooks/useCanvas";
 function UserMenu(){
     const [controls,showControls] = useState(false);

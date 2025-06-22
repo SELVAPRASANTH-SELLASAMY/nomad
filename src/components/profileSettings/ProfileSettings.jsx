@@ -3,7 +3,7 @@ import PrimaryInput from '../../sharedUi/PrimaryInput';
 import { useEvalEmail , useEvalName } from '../../customhooks/validation';
 import { useUpdate } from '../../customhooks/httpMethod';
 import UserAvatar from './UserAvatar';
-import { useUser } from '../../store/userStore';
+import { useUser } from '../../store/zustandStore';
 import { useNavigate } from 'react-router-dom';
 function ProfileSettings(){
     const [input,setInput] = useState({

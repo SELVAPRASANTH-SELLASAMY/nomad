@@ -4,7 +4,7 @@ import AdminButtons from "./AdminButtons";
 import AddUser from "./AddUser";
 import UsersList from "../usersList/UsersList";
 import { useState, useRef } from "react";
-import { useUser } from "../../store/userStore";
+import { useUser } from "../../store/zustandStore";
 function Admin(){
     const [users,setUsers] = useState([]);
 

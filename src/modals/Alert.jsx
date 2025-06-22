@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { IoShieldCheckmarkSharp } from "react-icons/io5";
 import { BiSolidErrorAlt } from "react-icons/bi";
-import { useAlert } from "../store/userStore";
+import { useAlert } from "../store/zustandStore";
 function Alert(){
     const ModalRef = useRef(null);
 

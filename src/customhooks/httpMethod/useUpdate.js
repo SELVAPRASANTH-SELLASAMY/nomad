@@ -1,6 +1,6 @@
 import Axios from "./utils/Axios";
 import { error } from "./utils/error";
-import { useConfirm, useAlert } from "../../store/userStore";
+import { useConfirm, useAlert } from "../../store/zustandStore";
 const useUpdate = (url) => {
     const alert = useAlert(state => state.handleAlert);
     const confirm = useConfirm(state => state.handleConfirm);

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { FaCircleExclamation } from "react-icons/fa6";
-import { useConfirm } from "../store/userStore";
+import { useConfirm } from "../store/zustandStore";
 function Confirm(){
     const ModalRef = useRef(null);
 

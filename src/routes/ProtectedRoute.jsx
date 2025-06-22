@@ -1,7 +1,7 @@
 import { useNavigate, Outlet } from "react-router-dom";
 import { useFetch } from "../customhooks/httpMethod";
 import { useEffect } from "react";
-import { useUser } from "../store/userStore";
+import { useUser } from "../store/zustandStore";
 function ProtectedRoute({children}){
     const { data, isPending } = useFetch('/check-auth');
     const navigate = useNavigate();

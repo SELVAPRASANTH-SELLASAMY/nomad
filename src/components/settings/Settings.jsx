@@ -2,7 +2,7 @@ import { useState } from "react";
 import ProfileSettings from "../profileSettings/ProfileSettings";
 import PasswordSettings from "../passwordSettings/PasswordSettings";
 import Admin from "../admin/Admin";
-import { useUser } from "../../store/userStore";
+import { useUser } from "../../store/zustandStore";
 
 function Page({activePage}){
     switch(activePage){
