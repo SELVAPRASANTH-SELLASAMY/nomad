@@ -36,3 +36,8 @@ export const useNavControls = create((set) => ({
     display: false,
     handleDisplay: () => set(state => ({display: !state.display}))
 }));
+
+export const useContentSearch = create((set) => ({
+    search: '',
+    handleSearch: (input) => set({search: input})
+}));

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
 import SearchInput from "./SearchInput";
-function MobileSearch({setSearch}){
+function MobileSearch(){
     const [display,setDisplay] = useState(false);
     const MobileSearchRef = useRef(null);
 
@@ -20,7 +20,7 @@ function MobileSearch({setSearch}){
                 <IoSearchSharp/>
             </div>
             <dialog onClick={() => setDisplay(false)} ref={MobileSearchRef} className="no-bg text-white no-border mt-2 mlr-auto">
-                <SearchInput setSearch={setSearch} displayMobileSearch={setDisplay}/>
+                <SearchInput displayMobileSearch={setDisplay}/>
             </dialog>
         </>
     );

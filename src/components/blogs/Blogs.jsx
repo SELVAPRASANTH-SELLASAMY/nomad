@@ -3,7 +3,9 @@ import { useFetch } from "../../customhooks/httpMethod";
 import { useEffect, useReducer, useRef } from "react";
 import { debounce } from "lodash";
 import ShimmerEffect from '../../sharedUi/shimmerEffect/ShimmerEffect';
-function Blogs({ascending,sort,category,search}){
+import { useContentSearch } from "../../store/zustandStore";
+function Blogs({ascending,sort,category}){
+    const search = useContentSearch(state => state.search);
     const bottomMargin = useRef(null);
 
     const blogReducer = (state,action) => {

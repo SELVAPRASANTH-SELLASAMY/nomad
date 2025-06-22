@@ -2,12 +2,12 @@ import SearchInput from "./SearchInput";
 import MobileSearch from "./MobileSearch";
 import useWindowWidth from "../../customhooks/useWindowWidth";
 
-function Search({setSearch}){
+function Search(){
     const windowWidth = useWindowWidth();
 
-    if(windowWidth <= 768) return <MobileSearch setSearch={setSearch}/>;
+    if(windowWidth <= 768) return <MobileSearch/>;
 
-    return <SearchInput setSearch={setSearch}/>;
+    return <SearchInput/>;
 }
 
 export default Search;

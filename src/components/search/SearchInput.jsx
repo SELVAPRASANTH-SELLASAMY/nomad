@@ -1,11 +1,12 @@
 import { IoSearchSharp } from "react-icons/io5";
 import { debounce } from "lodash";
-function SearchInput({setSearch,displayMobileSearch}){
-    
+import { useContentSearch } from "../../store/zustandStore";
+function SearchInput({displayMobileSearch}){
+    const setSearchContent = useContentSearch(state => state.handleSearch);
     const handleInput = debounce((e) => {
         const val = e.target.value;
         if(val.length > 3 || val.length === 0){
-            setSearch(val);
+            setSearchContent(val);
             displayMobileSearch && displayMobileSearch(false);
         }
     },[500]);
