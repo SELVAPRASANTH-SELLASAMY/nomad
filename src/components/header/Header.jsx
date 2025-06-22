@@ -2,12 +2,14 @@ import './header.css';
 import { Outlet, useLocation } from 'react-router-dom';
 import Search from '../search/Search';
 import UserMenu from '../usermenu/UserMenu';
+import { useNavControls } from '../../store/zustandStore';
 function Header({setShowNavbar,setSearch}){
+    const handleNavDisplay = useNavControls(state => state.handleDisplay);
     const location = useLocation();
     const sideBarChilds = ["/","/editor"];
     const handleSidebar = () => {
         if(sideBarChilds.includes(location.pathname)){
-            setShowNavbar((prevState) => !prevState);
+            handleNavDisplay();
         }
     }
     return(

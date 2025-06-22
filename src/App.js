@@ -4,14 +4,13 @@ import { Header, Login, Sidebar, Home, Newpost, TextComposer, Settings, NotFound
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './routes/ProtectedRoute';
 function App(){
-  const [showNavbar,setShowNavbar] = useState(false);
   const [search,setSearch] = useState('');
   return(
     <Router future={{v7_startTransition: true, v7_relativeSplatPath: true}}>
       <Routes>
         <Route element={<ProtectedRoute/>}>
-          <Route path='/' element={<Header setSearch={setSearch} setShowNavbar={setShowNavbar}/>}>
-            <Route path='/' element={<Sidebar showNavbar={showNavbar} setShowNavbar={setShowNavbar}/>}>
+          <Route path='/' element={<Header setSearch={setSearch}/>}>
+            <Route path='/' element={<Sidebar/>}>
               <Route index element={<Home search={search}/>}/>
               <Route path='editor' element={<Newpost/>}/>
             </Route>

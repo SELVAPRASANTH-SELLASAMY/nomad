@@ -2,7 +2,10 @@ import { IoIosHome, IoMdAddCircleOutline } from "react-icons/io";
 // import { IoIosAnalytics } from "react-icons/io";
 // import { BiCategory } from "react-icons/bi";
 import { Outlet, useLocation, Link } from "react-router-dom";
-function Sidebar({showNavbar,setShowNavbar}){
+import { useNavControls } from "../../store/zustandStore";
+function Sidebar(){
+    const displayNav = useNavControls(state => state.display);
+    const handleNavDisplay = useNavControls(state => state.handleDisplay);
     const location = useLocation();
     const navigations = [
         {
@@ -28,8 +31,8 @@ function Sidebar({showNavbar,setShowNavbar}){
     ];
     return(
         <>
-            {showNavbar && 
-                <nav onClick={() => setShowNavbar(!showNavbar)} className="w-13rem h-100 bg-tile-blue plr-1 fixed left-0 top-0 z-index-91 pt-5">
+            {displayNav && 
+                <nav onClick={() => handleNavDisplay()} className="w-13rem h-100 bg-tile-blue plr-1 fixed left-0 top-0 z-index-91 pt-5">
                     {
                         navigations.map((nav,index)=>(
                             <Link to={nav.path} key={index} className={`fs-6 d-flex center-y gap-05 rounded-05 ptb-05 plr-1 mtb-1 ${location.pathname === nav.path ? 'bg-green text-black' : 'text-white'}`}>

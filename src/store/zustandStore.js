@@ -32,7 +32,7 @@ export const useAlert = create((set) => ({
     }
 }));
 
-export const useNavControl = create((set) => ({
+export const useNavControls = create((set) => ({
     display: false,
     handleDisplay: () => set(state => ({display: !state.display}))
 }));
