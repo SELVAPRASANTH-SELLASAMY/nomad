@@ -80,7 +80,7 @@ function ProfileSettings(){
     ];
 
     return(
-        <section className="mt-2">
+        <section className="mt-1">
             <UserAvatar
                 avatar={input.image}
                 setInput={setInput}
