@@ -3,15 +3,21 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Search from '../search/Search';
 import UserMenu from '../usermenu/UserMenu';
 import { useNavControls } from '../../store/zustandStore';
+import useWindowWidth from '../../customhooks/useWindowWidth';
 function Header(){
     const handleNavDisplay = useNavControls(state => state.handleDisplay);
     const location = useLocation();
+    const windowWidth = useWindowWidth();
     const sideBarChilds = ["/","/editor"];
+
+    if(windowWidth <= 768) sideBarChilds.push("/settings");
+
     const handleSidebar = () => {
         if(sideBarChilds.includes(location.pathname)){
             handleNavDisplay();
         }
     }
+    
     return(
         <>
             <header className="w-100 plr-25 plr-15_L_500 fixed left-0 top-0 d-flex center-y bg-tile-blue border-bottom-grey-01">

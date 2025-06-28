@@ -19,9 +19,9 @@ function Confirm(){
                 </span>
                 <h2 className="fs-5_5 font-weight-600">{title || "Are you sure want to proceed"}?</h2>
                 <p className="fs-4 text-secondary">{message || "Changes can't be undone"}</p>
-                <div className="d-flex justify-center gap-2 mt-1 mb-05">
-                    <button onClick={() => confirm(true)} className="uppercase fs-4 font-weight-500 ptb-025 plr-25 rounded-100px bg-green pointer">Proceed</button>
-                    <button onClick={() => confirm(false)} className="uppercase fs-4 font-weight-500 text-white ptb-025 plr-25 rounded-100px bg-lgreen border-green-01 pointer">Cancel</button>
+                <div className="d-flex justify-center gap-2 gap-1_L_425 mt-1 mb-05">
+                    <button onClick={() => confirm(true)} className="uppercase fs-4 font-weight-500 ptb-025 plr-25 plr-15_L_400 rounded-100px bg-green pointer">Proceed</button>
+                    <button onClick={() => confirm(false)} className="uppercase fs-4 font-weight-500 text-white ptb-025 plr-25 plr-15_L_400 rounded-100px bg-lgreen border-green-01 pointer">Cancel</button>
                 </div>
             </dialog>
             ,

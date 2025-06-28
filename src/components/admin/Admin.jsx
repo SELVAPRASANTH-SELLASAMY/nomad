@@ -19,7 +19,7 @@ function Admin(){
             <section>
                 <h3 className="fs-5_5 font-weight-500">Accounts</h3>
                 <p className="text-secondary">Manage users and access.</p>
-                <div className="mt-1 d-flex gap-1">
+                <div className="mt-1 d-flex gap-1 overflow-x-auto scroll-snap-x-always">
                     <StatCard icon={<FiUsers/>} title="Total Users" count={users.length}/>
                     <StatCard icon={<FiUserCheck/>} title="Approved Users" count={users.filter(user => user.approved).length}/>
                     <StatCard icon={<FiUserX/>} title="Un approved Users" count={users.filter(user => !user.approved).length}/>

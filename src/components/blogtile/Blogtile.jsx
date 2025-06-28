@@ -5,8 +5,8 @@ import BlogOptions from './Manageblog';
 import { useNavigate } from 'react-router-dom';
 import useCanvas from '../../customhooks/useCanvas';
 function Blogtile({blog, blogDispatcher}){
-    const authorName = useUser(state => state.user.name);
-    const authorAvatar = useUser(state => state.user.image);
+    const authorName = useUser(state => state.user?.name);
+    const authorAvatar = useUser(state => state.user?.image);
     const drawImage = useCanvas();
     const avatarRef = useRef(null);
     const navigate = useNavigate();

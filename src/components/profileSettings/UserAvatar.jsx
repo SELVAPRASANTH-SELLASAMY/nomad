@@ -30,7 +30,7 @@ function UserAvatar({avatar,setInput}){
     }
 
     return(
-        <div className="d-flex center-y gap-2">
+        <div className="d-flex center-y gap-2 row-gap-15 wrap-flex">
             <input ref={fileInputRef} onChange={handleImageChange} type="file" accept="image/*" style={{display:"none"}}/>
             <canvas ref={canvasRef} className='h-7rem aspect-ratio-equal border-green-01 rounded-100px bg-tile-blue'></canvas>
             <button onClick={handleClick} className="bg-green fs-4 ptb-025 plr-15 rounded-05 font-weight-500 uppercase">Upload new picture</button>

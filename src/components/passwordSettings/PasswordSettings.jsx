@@ -78,11 +78,13 @@ function PasswordSettings(){
                         />
                     ))
                 }
-                <button onClick={handleSubmit} type='button' className="bg-green fs-4 ptb-025 plr-15 rounded-05 font-weight-500 uppercase mtb-15">Save Changes</button>
-                <button onClick={handleCancel} type='button' className="bg-lgreen fs-4 ptb-025 plr-15 text-white rounded-05 font-weight-500 uppercase outline-green-01 mtb-15 ml-2">Cancel</button>
+                <div className="d-flex mtb-15 gap-2 row-gap-15 wrap-flex">
+                    <button onClick={handleSubmit} type='button' className="bg-green fs-4 ptb-025 plr-15 rounded-05 font-weight-500 uppercase">Save Changes</button>
+                    <button onClick={handleCancel} type='button' className="bg-lgreen fs-4 ptb-025 plr-15 text-white rounded-05 font-weight-500 uppercase outline-green-01">Cancel</button>
+                </div>
             </form>
 
-            <button onClick={() => navigate('/')} type="button" className="fs-4 pointer d-flex no-bg text-primary text-underline font-weight-500">Go back</button>
+            <button onClick={() => navigate('/')} type="button" className="fs-4 pointer d-flex no-bg text-primary text-underline font-weight-500 mb-25">Go back</button>
         </section>
     );
 }

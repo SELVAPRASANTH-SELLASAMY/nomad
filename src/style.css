@@ -112,6 +112,9 @@
 .flex-row-rev{
     flex-direction: row-reverse;
 }
+.wrap-flex{
+    flex-wrap: wrap;
+}
 .d-grid{
     display: grid;
 }
@@ -168,6 +171,9 @@
 }
 .gap-3{
     gap: 3rem;
+}
+.row-gap-15{
+    row-gap: 1.5rem;
 }
 .mtb-auto{
     margin-top: auto;

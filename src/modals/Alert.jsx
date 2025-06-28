@@ -14,7 +14,7 @@ function Alert(){
 
     if(open){
         return ReactDOM.createPortal(
-            <dialog ref={ModalRef} style={{border:'.15rem groove var(--lightgrey)'}} className={`ml-auto mt-2 mr-2 bg-tile-blue-tr blur-10 plr-15 ptb-1 w-min-400px rounded-05 no-outline text-white gap-1 ${open && "d-flex"}`}>
+            <dialog ref={ModalRef} style={{border:'.15rem groove var(--lightgrey)'}} className={`ml-auto mt-2 mr-2 mt-1_L_500 mr-1_L_500 bg-tile-blue-tr blur-10 plr-15 ptb-1 w-min-400px w-min-0_L_500 rounded-05 no-outline text-white gap-1 ${open && "d-flex"}`}>
                 <span style={{color:`${success ? 'var(--green)' : '#eb2f06'}`}} className="fs-8 middle">
                     {success ? <IoShieldCheckmarkSharp/> : <BiSolidErrorAlt/>}
                 </span>
