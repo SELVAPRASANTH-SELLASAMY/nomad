@@ -41,3 +41,8 @@ export const useContentSearch = create((set) => ({
     search: '',
     handleSearch: (input) => set({search: input})
 }));
+
+export const useLoading = create((set) => ({
+    loading: false,
+    handleLoading: (loading) => set({loading:loading})
+}));
