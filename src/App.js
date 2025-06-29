@@ -1,6 +1,6 @@
 import './App.css';
 import { Header, Login, Sidebar, Home, Newpost, TextComposer, Settings, NotFound } from './components';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './routes/ProtectedRoute';
 function App(){
   return(
