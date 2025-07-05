@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.c28d441f.css",
-    "main.js": "/static/js/main.179f663e.js",
+    "main.css": "/static/css/main.7342b32b.css",
+    "main.js": "/static/js/main.bc07284f.js",
     "static/media/404.svg": "/static/media/404.edd34990c1277f924f3b4fcfdc8fb10d.svg",
     "static/media/a-man-writing-a-blog-on-a-computer.webp": "/static/media/a-man-writing-a-blog-on-a-computer.eecbf9639ed79e3a459e.webp",
     "index.html": "/index.html",
-    "main.c28d441f.css.map": "/static/css/main.c28d441f.css.map",
-    "main.179f663e.js.map": "/static/js/main.179f663e.js.map"
+    "main.7342b32b.css.map": "/static/css/main.7342b32b.css.map",
+    "main.bc07284f.js.map": "/static/js/main.bc07284f.js.map"
   },
   "entrypoints": [
-    "static/css/main.c28d441f.css",
-    "static/js/main.179f663e.js"
+    "static/css/main.7342b32b.css",
+    "static/js/main.bc07284f.js"
   ]
 }
