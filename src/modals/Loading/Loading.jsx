@@ -5,7 +5,7 @@ function Loading(){
     const loading = useLoading(state => state.loading);
     if(loading){
         return ReactDOM.createPortal(
-            <div className="fixed top-0 bottom-0 left-0 right-0 bg-overlay d-flex center-y justify-center">
+            <div className="fixed top-0 bottom-0 left-0 right-0 bg-overlay d-flex center-y justify-center z-index-110">
                 <span className="container">
                     {
                         Array.from({length:4},(_,index) => (

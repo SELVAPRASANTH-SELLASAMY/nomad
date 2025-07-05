@@ -175,6 +175,9 @@
 .row-gap-15{
     row-gap: 1.5rem;
 }
+.row-gap-1{
+    row-gap: 1rem;
+}
 .mtb-auto{
     margin-top: auto;
     margin-bottom: auto;
@@ -261,6 +264,14 @@
 }
 .ml-auto{
     margin-left: auto;
+}
+.mlr-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+.mlr-1{
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 .mlr-auto{
     margin-left: auto;

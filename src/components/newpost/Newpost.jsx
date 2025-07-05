@@ -46,8 +46,8 @@ function Newpost(){
         :
         <>
             <section className="bg-common-blue w-100 pb-15">
-                <h2 className="fs-6 mt-5 font-weight-600 uppercase">New post</h2>
-                <div className="toolbar d-flex flex-col_L_550 gap-2 w-100 mt-05">
+                <h2 className="fs-6 mt-5 mt-4_L_500 font-weight-600 uppercase">New post</h2>
+                <div className="toolbar d-flex flex-col_L_550 gap-2 row-gap-1 w-100 mt-05">
                     <Select
                         name="Category"
                         options={categoryOptions}

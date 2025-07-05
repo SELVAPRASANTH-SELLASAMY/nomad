@@ -4,6 +4,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Poppins", serif;
+  -webkit-tap-highlight-color: transparent;
 }
 body{
   width: 100%;
@@ -24,9 +25,20 @@ body{
   background-color: var(--lightblue);
 }
 
-@media screen and (width <= 500px){
+@media screen and (width <= 650px){
   body{
     padding: 0 1.5rem;
+  }   
+}
+
+@media screen and (width <= 500px){
+  body{
     text-size-adjust: 85%;
+  }   
+}
+
+@media screen and (width <= 425px){
+  body{
+    padding: 0 1rem;
   }   
 }

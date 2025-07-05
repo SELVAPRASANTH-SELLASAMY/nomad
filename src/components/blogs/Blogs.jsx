@@ -68,7 +68,7 @@ function Blogs({ascending,sort,category}){
 
     return(
         <>
-            <section className="d-grid grid-auto-fill gap-2 mtb-15 mt-120">
+            <section className="d-grid grid-auto-fill gap-2 gap-15_L_500 mtb-15 mt-120 mt-100_L_500">
                 {
                     (State.blogs).map((blog)=>(
                         <Blogtile key={blog._id} blog={blog} blogDispatcher={dispatch}/>

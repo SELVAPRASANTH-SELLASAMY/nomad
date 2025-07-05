@@ -49,7 +49,7 @@ function Blogtile({blog, blogDispatcher}){
             <hr className='border-grey-005 mtb-025'></hr>
             <div id='author' className='d-flex center-y gap-05'>
                 <canvas ref={avatarRef} className='bg-light-blue w-015rem aspect-ratio-equal rounded-100px'></canvas>
-                <p id='author-name' className='fs-4 capitalize'>{authorName || "Unknown"}</p>
+                <p id='author-name' className='fs-4 uppercase'>{authorName || "Unknown"}</p>
             </div>
         </div>
     );

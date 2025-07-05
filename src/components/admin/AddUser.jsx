@@ -53,7 +53,7 @@ function AddUser({setUsers},ref){
     ];
 
     return(
-        <dialog style={{margin:"auto"}} className="w-max-600 text-white bg-tile-blue-tr blur-10 ptb-1 plr-15 rounded-05 border-grey-01" ref={ref}>
+        <dialog className="w-max-600 text-white bg-tile-blue-tr blur-10 ptb-1 plr-15 rounded-05 border-grey-01 mtb-auto mlr-auto mlr-1_L_650" ref={ref}>
             <form noValidate>
             <h3 className="fs-5 font-weight-600">Add new user</h3>
                 {
