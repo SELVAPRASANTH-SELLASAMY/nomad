@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import PrimaryInput from "../../sharedUi/PrimaryInput";
 import { useEvalEmail , useEvalName } from '../../customhooks/validation';
 import { usePost } from "../../customhooks/httpMethod";
@@ -16,10 +16,17 @@ function AddUser({setUsers},ref){
         email:'',
     });
 
+    const [Modal,displayModal] = useState(false);
+
     const isValidName = useEvalName(input.name);
     const isValidEmail = useEvalEmail(input.email);
 
     const { post } = usePost('signup');
+
+    useImperativeHandle(ref,() => ({
+        showModal: () => displayModal(true),
+        close: () => displayModal(false)
+    }),[]);
 
     const validateInput = () => {
         setInputError({...inputError,
@@ -52,9 +59,11 @@ function AddUser({setUsers},ref){
         {id:"email",Name:"Email",type:"email",placeholder:"Enter user's email id",response_message:inputError.email},
     ];
 
+    if(!Modal) return null;
+
     return(
-        <dialog className="w-max-600 text-white bg-tile-blue-tr blur-10 ptb-1 plr-15 rounded-05 border-grey-01 mtb-auto mlr-auto mlr-1_L_650" ref={ref}>
-            <form noValidate>
+        <div className="fixed top-0 bottom-0 left-0 right-0 z-index-100 bg-overlay d-flex">
+            <form noValidate className="w-max-600 text-white bg-tile-blue-tr blur-10 ptb-1 plr-15 rounded-05 border-grey-01 mtb-auto mlr-auto mlr-1_L_650">
             <h3 className="fs-5 font-weight-600">Add new user</h3>
                 {
                     inputConfig.map((config,index) => (
@@ -83,7 +92,7 @@ function AddUser({setUsers},ref){
                 <button onClick={handleSubmit} type='button' className="bg-green fs-4 ptb-025 plr-15 rounded-05 font-weight-500 uppercase mtb-15">Save</button>
                 <button onClick={handleCancel} type='button' className="bg-lgreen fs-4 ptb-025 plr-15 text-white rounded-05 font-weight-500 uppercase outline-green-01 mtb-15 ml-2">Cancel</button>
             </form>
-        </dialog>
+        </div>
     );
 }
 
