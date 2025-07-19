@@ -33,8 +33,8 @@ function UsersList({users,setUsers},ref){
     if(isPending || error?.message) return <p className="mt-1 fs-4 font-weight-600 uppercase text-secondary">{isPending ? 'Loading...' : error.message + "!"}</p>
 
     return(
-        <div className="w-100 overflow-x-auto">
-            <table style={{borderCollapse:'collapse'}} className="bg-tile-blue w-100 mtb-1 rounded-05 hide-overflow shadow-primary">
+        <div className="overflow-x-auto">
+            <table style={{borderCollapse:'collapse',minWidth:"750px"}} className="bg-tile-blue w-100 mtb-1 rounded-05 hide-overflow shadow-primary">
                 <thead>
                     <tr>
                         <th><input type="checkbox"/></th>

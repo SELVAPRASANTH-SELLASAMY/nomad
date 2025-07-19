@@ -57,7 +57,7 @@ function PasswordSettings(){
     const passwordCriterias = ["Password should have more than 6 characters","Password should contain at least one Uppercase","Password should contain at least one Lowercase","Password should contain at least one numerical number","Password should contain at least one Special character"];
 
     return(
-        <section className="mtb-05 w-max-600">
+        <section className="mtb-05 mt-5 w-max-600">
             <p className="fs-4 font-weight-600">Password should satisfy the following criteria!</p>
             {
                 passwordCriterias.map((criteria,index) => <p key={index} className="fs-3 text-secondary line-height-2rem">{criteria}.</p>)

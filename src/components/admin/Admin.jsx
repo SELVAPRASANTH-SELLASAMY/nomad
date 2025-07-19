@@ -16,7 +16,7 @@ function Admin(){
     
     if(role === "admin"){
         return(
-            <section>
+            <section className="mt-5 hide-overflow">
                 <h3 className="fs-5_5 font-weight-500">Accounts</h3>
                 <p className="text-secondary">Manage users and access.</p>
                 <div className="mt-1 d-flex gap-1 overflow-x-auto scroll-snap-x-always">

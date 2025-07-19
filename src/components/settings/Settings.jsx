@@ -31,20 +31,16 @@ function Settings(){
     if(role === "admin") options.push({label:"Administration",value:"admin",clickEvent:() => setActivePage('admin')});
     
     return(
-        <>
-            <div className="w-100 fixed top-0 pb-1 bg-common-blue z-index-1">
+        <main className="mt-5 ptb-05">
+            <div className="fixed top-0 w-100 bg-common-blue pb-1">
                 <h2 className="fs-6 mt-5 font-weight-600 uppercase">Settings</h2>
                 <h6 className="fs-4 font-weight-500 text-secondary">Here you can control everything.</h6>
             </div>
-            <div className="d-flex">
+            <div className="d-grid d-block_L_768 grid-temp-col-10rem_1fr">
                 <SideBar options={options} activePage={activePage}/>
-                <div className="ml-13 ml-0_L_768 mt-10 w-100">
-                {
-                    <Page activePage={activePage}/>
-                }
-                </div>
+                <Page activePage={activePage}/>
             </div>
-        </>
+        </main>
     );
 }
 export default Settings;
