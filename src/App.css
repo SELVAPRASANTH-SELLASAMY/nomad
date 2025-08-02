@@ -1,0 +1,37 @@
+@import url("./style.css");
+@import url("./responsive.css");
+:root{
+    /*Colors*/
+    --background: #0B1223;
+    --green: #72E2AE;
+    --lightgreen: #72e2ae33;
+    --lightblue: #BFBECB;
+    --lightgrey: #ffffff33;
+    --tileblue: #162033;
+    --tileblue-transparent: #162033cc;
+    --gold: #FFB200;
+    --black-pearl: #1e272e80;
+
+    /*Font sizes*/
+
+    --font_085: .6rem;
+    --font_09: .65rem;
+    --font_1: .75rem;
+    --font_125: 1rem;
+    --font_15: 1.2rem;
+    --font_175: 1.5rem;
+    --font_2: 1.75rem;
+    --font_225: 2rem;
+    --font_3: 2.5rem;
+    --font_8: 7.75rem;
+
+    /*Font weights*/
+    --semibold: 500;
+}
+button{
+    cursor: pointer;
+    border: none;
+}
+header svg{
+    cursor: pointer;
+}

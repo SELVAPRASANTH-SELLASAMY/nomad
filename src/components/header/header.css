@@ -1,0 +1,15 @@
+header{
+    z-index: 100;
+}
+header h1::after{
+    content: ".";
+    font-size: var(--font_3);
+    color: #ffffff;
+}
+div.search-field{
+    --search-border-color: var(--lightgrey);
+    border: .1rem solid var(--search-border-color);
+}
+div.search-field:has(input.search-input:focus){
+    --search-border-color: var(--green);
+}

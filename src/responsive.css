@@ -1,0 +1,239 @@
+/* Screen width <= 768 */
+@media screen and (width <= 768px) {
+    /* Font size */
+    .fs-6_L_768{
+        font-size: var(--font_2)
+    }
+
+    /* Width */
+    .w-auto_L_768{
+        width: auto;
+    }
+    .w-2_L_768{
+        width: 2rem;
+    }
+    .aspect-ration-equal_L_768{
+        aspect-ratio: 1/1;
+    }
+    .w-child-min-18rem_L_768 > *{
+        min-width: 18rem;
+    }
+
+    /* Height */
+    .h-min-0_L_768{
+        min-height: 0;
+    }
+    .h-min-450_L_768{
+        min-height: 450px;
+    }
+    .h-auto_L_768{
+        height: auto;
+    }
+
+    /* display */
+    .d-none_L_768{
+        display: none;
+    }
+    .d-block_L_768{
+        display: block;
+    }
+    .flex-col_L_768{
+        flex-direction: column;
+    }
+    .gap-05_L_768{
+        gap: .5rem;
+    }
+
+    /* Margin */
+    .mtb-0_L_768{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .mtb-2_L_768{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .mb-2_L_768{
+        margin-bottom: 2rem;
+    }
+    .ml-0_L_768{
+        margin-left: 0;
+    }
+
+    /* Padding */
+    .p-05_L_768{
+        padding-top: .25rem;
+        padding-bottom: .25rem;
+        padding-left: .25rem;
+        padding-right: .25rem;
+    }
+    .ptb-05_L_768{
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+    }
+
+    /* Position */
+    .static_L_768{
+        position: static;
+    }
+
+    /* Overflow */
+    .overflow-x-auto_L_768{
+        overflow-x: auto;
+    }
+    .overflow-x-auto_L_768::-webkit-scrollbar{
+        height: 0;
+    }
+
+    /* Background */
+    #OptionList > li{
+        display: flex;
+        align-items: center;
+    }
+    #OptionList > li:active{
+        background-color: inherit;
+    }
+    #OptionList > li:not(:last-child){
+        border-bottom: .01rem solid var(--lightgrey);
+    }
+    #OptionList > li::before{
+        content: "";
+        width: .5rem;
+        height: .5rem;
+        border: .25rem solid var(--background);
+        border-radius: 100%;
+        background-color: var(--background);
+        outline: .1rem inset var(--lightgrey);
+        margin-right: .25rem;
+    }
+    #OptionList > li[aria-selected=true]::before{
+        border-color: var(--green);
+        outline-color: var(--green);
+        outline-style: outset;
+    }
+    .bg-tile-blue-tr_L_768{
+        background-color: var(--black-pearl);
+    }
+    .blur-10_L_768{
+        backdrop-filter: blur(10px);
+    }
+    #OptionList > li[aria-selected=true]{
+        backdrop-filter: blur(50px);
+    }
+}
+
+/* Screen width <= 650 */
+@media screen and (width <= 650px){
+    /* Padding */
+    .plr-15_L_650{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    /* Margin */
+    .mlr-1_L_650{
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+/* Screen width <= 550 */
+@media screen and (width <= 550px){
+    /* display */
+    .flex-col_L_550{
+        flex-direction: column;
+    }
+
+    /* Margin */
+    .ml-0_L_550{
+        margin-left: 0;
+    }
+}
+
+/* Screen width <= 500 */
+@media screen and (width <= 500px){
+    /* Width */
+    .w-min-0_L_500{
+        min-width: 0;
+    }
+
+    /* Font size */
+    .fs-5_5_L_500{
+        font-size: var(--font_175);
+    }
+
+    /* Display */
+    .gap-1_L_500{
+        gap: 1rem;
+    }
+    .gap-15_L_500{
+        gap: 1.5rem;
+    }
+
+    /* Padding */
+    .plr-15_L_500{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .pb-1_L_500{
+        padding-bottom: 1rem;
+    }
+    .pt-4_L_500{
+        padding-top: 4rem;
+    }
+
+    /* Margin */
+    .mt-1_L_500{
+        margin-top: 1rem;
+    }
+    .mr-1_L_500{
+        margin-right: 1rem;
+    }
+    .mt-4_L_500{
+        margin-top: 4rem;
+    }
+    .mt-100_L_500{
+        margin-top: 10rem;
+    }
+
+    /* Overflow */
+    .overflow-x-auto_L_500{
+        overflow-x: auto;
+    }
+    .overflow-x-auto_L_500::-webkit-scrollbar{
+        height: 0;
+    }
+}
+
+/* Screem width <= 425 */
+@media screen and (width <= 425px) {
+    /* Width */
+    .w-100_L_425{
+        width: 100%;
+    }
+
+    /* Display */
+    .gap-1_L_425{
+        gap: 1rem;
+    }
+
+    /* Padding */
+    .plr-1_L_425{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Screem width <= 400 */
+@media screen and (width <= 400px){
+    /* Display */
+    .wrap-flex_L_400{
+        flex-wrap: wrap;
+    }
+
+    /* Padding */
+    .plr-15_L_400{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}

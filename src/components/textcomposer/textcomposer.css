@@ -1,0 +1,103 @@
+.text_composer{
+    width: 100%;
+    margin-top: 5rem;
+    line-height: 2rem;
+    font-size: var(--font_125);
+    color: var(--lightblue);
+    padding-bottom: 5rem;
+}
+.text_composer p:has(img){
+    text-align: center;
+}
+.text_composer img{
+    width: 100%;
+    max-width: 965px;
+    border-radius: .5rem;
+}
+.text_composer h2{
+    font-size: var(--font_225);
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    margin-bottom: 5rem;
+    margin-top: 6rem;
+}
+.text_composer h2::before{
+    content: "blog";
+    font-size: var(--font_8);
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    opacity: .05;
+    z-index: -1;
+}
+span.bottomline{
+    position: absolute;
+    bottom: -1.5rem;
+    height: .4rem;
+    width: 10rem;
+    left: calc(50% - 5rem);
+    border-radius: 50px;
+    background-color: var(--lightgreen);
+    overflow: hidden;
+}
+.bottomline::before{
+    content: "";
+    height: .4rem;
+    aspect-ratio: 1/1 !important;
+    background-color: var(--green);
+    border-radius: 50px;
+    position: absolute;
+    left: -.4rem;
+    top: 0;
+    animation: moving-ball 3s ease-in-out infinite;
+}
+@keyframes moving-ball {
+    from{
+        left: -.4rem;
+    }
+    To{
+        left: 10.4rem;
+    }
+}
+.text_composer h3{
+    font-size: var(--font_2);
+}
+.text_composer h4{
+    font-size: var(--font_175);
+}
+.text_composer h5{
+    font-size: var(--font_15);
+}
+.text_composer h6{
+    font-size: var(--font_125);
+}
+.text_composer h3,.text_composer h4,.text_composer h5,.text_composer h6{
+    color: #ffffff;
+    font-weight: 500;
+}
+.text_composer p{
+    font-size: var(--font_125);
+}
+.text_composer strong{
+    font-weight: 600;
+}
+.text_composer ol{
+    margin-left: 1.25rem;
+} 
+.text_composer li::marker{
+    color: var(--green);
+}
+.text_composer li[data-list=bullet]{
+    list-style-type: disc;
+}
+.text_composer li[data-list=ordered]{
+    list-style-type: decimal;
+}
+.text_composer blockquote{
+    border-left: .25rem solid var(--green);
+    border-radius: .25rem;
+}

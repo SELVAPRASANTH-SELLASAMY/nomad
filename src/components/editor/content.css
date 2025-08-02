@@ -1,0 +1,56 @@
+.ql-snow .ql-editor h3{
+    font-size: var(--font_2);
+}
+.ql-snow .ql-editor h4{
+    font-size: var(--font_175);
+}
+.ql-snow .ql-editor h5{
+    font-size: var(--font_15);
+}
+.ql-snow .ql-editor h6{
+    font-size: var(--font_125);
+}
+.ql-snow .ql-editor h3,.ql-snow .ql-editor h4,.ql-snow .ql-editor h5,.ql-snow .ql-editor h6{
+    color: #ffffff;
+    font-weight: 500;
+}
+.ql-snow .ql-editor p{
+    font-size: var(--font_125);
+}
+.ql-snow strong{
+    font-weight: 600;
+}
+.ql-editor li[data-list=bullet] > .ql-ui:before, .ql-editor li[data-list=ordered] > .ql-ui:before {
+    content: "";
+}
+.ql-editor li > .ql-ui:before{
+    all: unset;
+}
+.ql-editor li{
+    padding-left: 0;
+}
+.ql-editor li::marker{
+    color: var(--green);
+}
+.ql-editor li[data-list=bullet]{
+    list-style-type: disc;
+}
+.ql-editor li[data-list=ordered]{
+    list-style-type: decimal;
+}
+.ql-snow .ql-editor blockquote{
+    border-left: .25rem solid var(--green);
+    border-radius: .25rem;
+}
+.ql-snow .ql-editor img{
+    max-width: 965px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: .5rem;
+}
+.ql-snow .ql-editor p:has(img){
+    text-align: center;
+}
+.ql-snow a{
+    color: var(--green);
+}

@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 45px;
+    gap: 5px;
+    transform: rotate(45deg);
+}
+.rect{
+    animation: scale 500ms ease infinite alternate;
+    animation-delay: calc(var(--i) * 600ms);
+}
+@keyframes scale {
+    From{
+        transform: scale(.9);
+    }
+    To{
+        transform: scale(1);
+    }
+}
