@@ -17,7 +17,7 @@ function ProtectedRoute(){
         else if(!isPending && error){
             navigate("/login",{replace:true});
         }
-    },[data,error,isPending,navigate,setUser,loading]);
+    },[data,error,isPending]);
 
     if(data?.authenticated) return <Outlet/>;
 }

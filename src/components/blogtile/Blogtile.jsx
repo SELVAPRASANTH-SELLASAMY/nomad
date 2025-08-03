@@ -41,7 +41,7 @@ function Blogtile({blog}){
             <hr className='border-grey-005 mtb-025'></hr>
             <div id='author' className='d-flex center-y gap-05'>
                 <span className="w-015rem aspect-ratio-equal rounded-100px bg-light-blue d-grid center-y justify-center hide-overflow">
-                    {authorAvatar && <img className="w-7rem" src={`${import.meta.env.VITE_REACT_APP_API_URL}\\${authorAvatar}`} alt="profile-picture" />}
+                    {authorAvatar && <img className="w-015rem" src={`${import.meta.env.VITE_REACT_APP_API_URL}\\${authorAvatar}`} alt="profile-picture" />}
                 </span>
                 <p id='author-name' className='fs-4 uppercase'>{authorName || "Unknown"}</p>
             </div>

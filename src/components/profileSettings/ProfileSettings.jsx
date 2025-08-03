@@ -106,7 +106,7 @@ function ProfileSettings(){
                 </div>
             </form>
             
-            <button onClick={() => navigate('/')} type="button" className="fs-4 pointer d-flex no-bg text-primary text-underline font-weight-500 mb-25">Go back</button>
+            <button onClick={() => navigate(-1)} type="button" className="fs-4 pointer d-flex no-bg text-primary text-underline font-weight-500 mb-25">Go back</button>
         </section>
     );
 }
