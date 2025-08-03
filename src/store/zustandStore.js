@@ -1,7 +1,8 @@
 import { create } from "zustand";
 export const useUser = create((set,get) => ({
     user: {},
-    setUser: (userData) => set({user: {...get().user,...userData}})
+    setUser: (userData) => set({user: {...get().user,...userData}}),
+    removeUser: () => set({user: {}})
 }));
 
 export const useConfirm = create((set) => ({

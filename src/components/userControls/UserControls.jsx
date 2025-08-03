@@ -4,7 +4,7 @@ import { usePost } from '../../customhooks/httpMethod';
 import { useUser } from "../../store/zustandStore";
 function UserControls(){
     const navigate = useNavigate();
-    const setUser = useUser(state => state.setUser);
+    const removeUser = useUser(state => state.removeUser);
     const { post } = usePost('/signout');
     const gotoSettings = () => {
         navigate("/settings");
@@ -12,7 +12,7 @@ function UserControls(){
 
     const signOut = () => {
         post(null,() => {
-            setUser({});
+            removeUser({});
             navigate("/login",{replace: true});
         },true,["Sign Out","Are you sure want to sign out?"]);
     }
