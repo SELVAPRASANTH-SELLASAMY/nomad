@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export const useBlogManager = create((set,get) => ({
+export const useBlogManager = create((set) => ({
     blogs: [],
     hasMore: false,
     filters: {
@@ -11,28 +11,31 @@ export const useBlogManager = create((set,get) => ({
         search: ""
     },
     cachedFilters: "",
-    addBlogs: (newBlogs) => set({
-        blogs: [...get().blogs,...newBlogs],
-        cachedFilters: JSON.stringify(get().filters)
-    }),
-    deleteBlog: (blogId) => set({
-        blogs: get().blogs.filter(blog => blog._id !== blogId)
-    }),
-    clearBlogs: () => set({blogs: [],page: 1}),
+    addBlogs: (newBlogs) => set((state) => ({
+        blogs: [...state.blogs,...newBlogs],
+        cachedFilters: JSON.stringify(state.filters)
+    })),
+    deleteBlog: (blogId) => set((state) => ({
+        blogs: state.blogs.filter(blog => blog._id !== blogId)
+    })),
     setHasMore: (prop) => set({hasMore: prop}),
-    incPage: () => set({
-        filters: {...get().filters,page: get().filters.page + 1}
-    }),
-    setCategory: (category) => set({
-        filters: {...get().filters,category: category}
-    }),
-    setSort: (sort) => set({
-        filters: {...get().filters,sort: sort}
-    }),
-    changeSortOrder: () => set({
-        filters: {...get().filters,sortOrder: 0 - get().filters.sortOrder}
-    }),
-    handleSearch: (input) => set({
-        filters: {...get().filters,search:input}
-    })
+    incPage: () => set((state) => ({
+        filters: {...state.filters,page: state.filters.page + 1}
+    })),
+    setCategory: (category) => set((state) => ({
+        filters: {...state.filters,category: category, page: 1},
+        blogs: []
+    })),
+    setSort: (sort) => set((state) => ({
+        filters: {...state.filters,sort: sort, page: 1},
+        blogs: []
+    })),
+    changeSortOrder: () => set((state) => ({
+        filters: {...state.filters,sortOrder: 0 - state.filters.sortOrder, page: 1},
+        blogs: []
+    })),
+    handleSearch: (input) => set((state) => ({
+        filters: {...state.filters,search:input, page: 1},
+        blogs: []
+    }))
 }));

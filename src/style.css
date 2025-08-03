@@ -584,9 +584,9 @@ a{
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
-.line-clamp-2{
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
+.line-clamp-1{
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
 }
 .line-height-2rem{
     line-height: 2rem;

@@ -5,7 +5,7 @@ import { debounce } from "lodash";
 import ShimmerEffect from '../../sharedUi/shimmerEffect/ShimmerEffect';
 import { useBlogManager } from "../../store/BlogStore";
 function Blogs({ascending,sort,category}){
-    const { filters, cachedFilters, blogs, hasMore, setHasMore, incPage, addBlogs, clearBlogs } = useBlogManager();
+    const { filters, cachedFilters, blogs, hasMore, setHasMore, incPage, addBlogs } = useBlogManager();
 
     const { search, page } = filters;
     
@@ -34,13 +34,6 @@ function Blogs({ascending,sort,category}){
         }
     },[data,addBlogs]);
 
-    useEffect(() => {
-        const page = cachedFilters ? JSON.parse(cachedFilters).page : 0;
-        if((page === filters.page) && JSON.stringify(filters) !== cachedFilters){
-            clearBlogs();
-        }
-    },[ascending,sort,category,search,clearBlogs,cachedFilters,filters]);
-
     return(
         <>
             <section className="d-grid grid-auto-fill gap-2 gap-15_L_500 mtb-15 mt-120 mt-100_L_500">
@@ -58,7 +51,7 @@ function Blogs({ascending,sort,category}){
                 }
             </section>
             {
-                (hasMore) && 
+                (hasMore && !isPending) && 
                 <div className="bottom_margin h-25 rounded-100px no-bg" ref={bottomMargin} style={{height:".25rem"}}></div>
             }
         </>

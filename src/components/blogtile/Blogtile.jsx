@@ -23,13 +23,13 @@ function Blogtile({blog}){
             <BlogOptions id={blog._id}/>
 
             <Lazyimage 
-                componentClass={'w-100 aspect-ratio-21 rounded-top-1'} 
+                componentClass={'w-100 rounded-top-1 hide-overflow aspect-ratio-21 d-flex center-y justify-center'} 
                 placeholder={blog.lazyImage} 
                 source={blog.content}
                 altText={`${blog.title} thumbnail`}
             />
 
-            <h6 title={blog.title} className='fs-4 font-weight-500 webkit-vbox line-clamp-2 hide-overflow ellipsis'>{blog.title}</h6>
+            <h6 title={blog.title} className='fs-4 font-weight-500 webkit-vbox line-clamp-1 hide-overflow ellipsis'>{blog.title}</h6>
             {/* <div className='fs-3 d-iflex justify-space-between'>
                 <p className='text-gold'><span className='mr-025'>&#9733;</span>4.5</p>
                 <p className='text-secondary'><span className='mr-025'>&#x1F441;</span>4500</p>

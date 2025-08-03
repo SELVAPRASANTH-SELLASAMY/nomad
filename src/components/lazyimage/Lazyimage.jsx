@@ -14,7 +14,9 @@ function Lazyimage({componentClass,placeholder,source,onClick,altText}){
     },[source]);
 
     return(
-        <img loading='lazy' className={componentClass} onClick={onClick && onClick} ref={image} src={placeholder} alt={altText} />
+        <div className={componentClass}>
+            <img loading='lazy' className='w-100' onClick={onClick && onClick} ref={image} src={placeholder} alt={altText} />
+        </div>
     );
 }
 export default Lazyimage;
