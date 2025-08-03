@@ -26,8 +26,9 @@ function ProfileSettings(){
 
     useEffect(() => {
         if(user) {
-            setInput(user);
-            copy.current = user;
+            const { name, email, image } = user;
+            setInput({...input,name,email,image});
+            copy.current = { name, email, image };
         }
     },[user]);
 
@@ -56,9 +57,12 @@ function ProfileSettings(){
             });
             if(canUpdate){
                 update(data,(res) => {
-                    copy.current = res.data;
-                    canUpdate = false;
-                    setUser(res.data);
+                    if(res && res.data){
+                        const { name, email, image } = res.data;
+                        copy.current = { name, email, image };
+                        canUpdate = false;
+                        setUser(res.data);
+                    }
                 });
             }
         }
@@ -66,7 +70,7 @@ function ProfileSettings(){
 
     const handleCancel = () => {
         setInputError({name:'',email:''});
-        setInput(copy.current);
+        setInput({...copy.current});
     }
 
     const InputConfig = [

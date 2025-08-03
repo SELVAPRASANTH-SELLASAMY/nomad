@@ -15,7 +15,6 @@ function ProtectedRoute(){
             setUser(data.user);
         }
         else if(!isPending && error){
-            setUser(null);
             navigate("/login",{replace:true});
         }
     },[data,error,isPending,navigate,setUser,loading]);

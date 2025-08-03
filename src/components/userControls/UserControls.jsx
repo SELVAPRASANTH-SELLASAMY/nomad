@@ -12,7 +12,7 @@ function UserControls(){
 
     const signOut = () => {
         post(null,() => {
-            setUser(null);
+            setUser({});
             navigate("/login",{replace: true});
         },true,["Sign Out","Are you sure want to sign out?"]);
     }

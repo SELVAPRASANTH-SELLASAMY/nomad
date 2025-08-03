@@ -1,14 +1,10 @@
-import { useEffect, useRef } from 'react';
 import { useUser } from '../../store/zustandStore';
 import Lazyimage from '../lazyimage/Lazyimage';
 import BlogOptions from './Manageblog';
 import { useNavigate } from 'react-router-dom';
-import useCanvas from '../../customhooks/useCanvas';
 function Blogtile({blog}){
     const authorName = useUser(state => state.user?.name);
     const authorAvatar = useUser(state => state.user?.image);
-    const drawImage = useCanvas();
-    const avatarRef = useRef(null);
     const navigate = useNavigate();
     const gotoBlog = () => {
         navigate(`/blog?id=${blog._id}`);
@@ -21,10 +17,6 @@ function Blogtile({blog}){
         const year = String(date.getFullYear()).padStart(2,'0');
         return `${day}-${month}-${year}`;
     }
-
-    useEffect(() => {
-        drawImage(avatarRef,authorAvatar);
-    },[authorAvatar,drawImage]);
     
     return(
         <div onClick={gotoBlog} className='bg-tile-blue p-1 rounded-1 d-flex flex-col gap-05 relative border-grey-005'>
@@ -48,7 +40,9 @@ function Blogtile({blog}){
             </div>
             <hr className='border-grey-005 mtb-025'></hr>
             <div id='author' className='d-flex center-y gap-05'>
-                <canvas ref={avatarRef} className='bg-light-blue w-015rem aspect-ratio-equal rounded-100px'></canvas>
+                <span className="w-015rem aspect-ratio-equal rounded-100px bg-light-blue d-grid center-y justify-center hide-overflow">
+                    {authorAvatar && <img className="w-7rem" src={`${import.meta.env.VITE_REACT_APP_API_URL}\\${authorAvatar}`} alt="profile-picture" />}
+                </span>
                 <p id='author-name' className='fs-4 uppercase'>{authorName || "Unknown"}</p>
             </div>
         </div>

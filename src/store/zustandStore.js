@@ -1,7 +1,7 @@
 import { create } from "zustand";
-export const useUser = create((set) => ({
-    user: null,
-    setUser: (userData) => set({user: userData})
+export const useUser = create((set,get) => ({
+    user: {},
+    setUser: (userData) => set({user: {...get().user,...userData}})
 }));
 
 export const useConfirm = create((set) => ({
