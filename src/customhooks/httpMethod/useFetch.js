@@ -52,7 +52,7 @@ const useFetch = (url,condition) => {
         
     },[url,condition]);
 
-    return { data:res.data, error:res.error, isPending:res.isPending };
+    return { data:res.data, error:res.error, isPending:res.isPending, setData: (data) => dispatch({type:"SET_DATA",payload: data}) };
 }
 
 export default useFetch;

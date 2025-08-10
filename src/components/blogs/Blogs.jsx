@@ -13,7 +13,7 @@ function Blogs({ascending,sort,category}){
 
     const filterProp = useMemo(() => [cachedFilters,JSON.stringify(filters)],[cachedFilters,filters]);
 
-    const { data, error, isPending } = useFetch(
+    const { data, error, isPending, setData } = useFetch(
         `blog/fetch?page=${page}&sortby=${sort}&ascending=${ascending}&category=${category}&search=${search}`,
         filterProp
     );
@@ -33,6 +33,7 @@ function Blogs({ascending,sort,category}){
     useEffect(() => {
         if(data?.data){
             addBlogs(data.data);
+            setData(null);
         }
     },[data,addBlogs]);
 
