@@ -14,7 +14,7 @@ function Lazyimage({componentClass,placeholder,source,onClick,altText}){
     },[source]);
 
     return(
-        <div className={componentClass}>
+        <div style={{alignItems:"flex-start"}} className={componentClass}>
             <img loading='lazy' className='w-100' onClick={onClick && onClick} ref={image} src={placeholder} alt={altText} />
         </div>
     );

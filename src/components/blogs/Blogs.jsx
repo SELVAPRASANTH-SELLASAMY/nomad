@@ -11,9 +11,11 @@ function Blogs({ascending,sort,category}){
     
     const bottomMargin = useRef(null);
 
+    const filterProp = useMemo(() => [cachedFilters,JSON.stringify(filters)],[cachedFilters,filters]);
+
     const { data, error, isPending } = useFetch(
         `blog/fetch?page=${page}&sortby=${sort}&ascending=${ascending}&category=${category}&search=${search}`,
-        useMemo(() => [cachedFilters,JSON.stringify(filters)],[cachedFilters,filters])
+        filterProp
     );
 
     useEffect(() => {

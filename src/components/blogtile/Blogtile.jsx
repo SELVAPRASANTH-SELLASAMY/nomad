@@ -23,7 +23,7 @@ function Blogtile({blog}){
             <BlogOptions id={blog._id}/>
 
             <Lazyimage 
-                componentClass={'w-100 rounded-top-1 hide-overflow aspect-ratio-21 d-flex center-y justify-center'} 
+                componentClass={'w-100 rounded-top-1 hide-overflow aspect-ratio-21 d-flex justify-center'} 
                 placeholder={blog.lazyImage} 
                 source={blog.content}
                 altText={`${blog.title} thumbnail`}
