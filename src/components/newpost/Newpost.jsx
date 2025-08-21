@@ -4,6 +4,7 @@ import ActionButton from './ActionButton';
 import Editor from '../editor/Editor';
 import { useSearchParams } from "react-router-dom";
 import { useFetch } from "../../customhooks/httpMethod";
+import { useBlogCategory } from '../../store/BlogStore';
 function Newpost(){
     const [content,setContent] = useState({
         title:'',
@@ -12,8 +13,14 @@ function Newpost(){
         category:''
     });
 
-    const categoryOptions = ["programming","Frontend","Backend","Database","technology","general"];
-    const [category,setCategory] = useState(categoryOptions[0]);
+    const categories = useBlogCategory(state => state.categories)?.filter(item => item !== "All");
+    const fetchCategories = useBlogCategory(state => state.fetchCategories);
+
+    useEffect(() => {
+        if(categories.length <= 0) fetchCategories();
+    },[]);
+
+    const [category,setCategory] = useState(categories[0]);
 
     const [queryParams] = useSearchParams();
 
@@ -50,7 +57,7 @@ function Newpost(){
                 <div className="toolbar d-flex flex-col_L_550 gap-2 row-gap-1 w-100 mt-05">
                     <Select
                         name="Category"
-                        options={categoryOptions}
+                        options={categories}
                         value={category}
                         setValue={setCategory}
                     />

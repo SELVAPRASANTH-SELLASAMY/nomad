@@ -1,14 +1,18 @@
 import Blogs from "../blogs/Blogs";
 import { Select } from '../../sharedUi/select';
-import { useMemo } from "react";
-import { useBlogManager } from "../../store/BlogStore";
+import { useEffect, useMemo } from "react";
+import { useBlogManager, useBlogCategory } from "../../store/BlogStore";
 function Home(){
+    const { fetchCategories, categories } = useBlogCategory();
+
+    useEffect(() => {
+        if(categories.length <= 1) fetchCategories();
+    },[fetchCategories]);
+
     const sortOptions = useMemo(() => [
         {label:"name",value:"title"},
         {label:"publish date",value:"createdAt"}
     ],[]);
-
-    const categoryOptions = useMemo(() => ["All","programming","Frontend","Backend","Database","technology","general"],[]);
 
     const { sort, category, sortOrder } = useBlogManager(state => state.filters);
     const setSort = useBlogManager(state => state.setSort);
@@ -30,7 +34,7 @@ function Home(){
                     />
                     <Select
                         name="Category"
-                        options={categoryOptions}
+                        options={categories}
                         value={category}
                         setValue={setCategory}
                     />

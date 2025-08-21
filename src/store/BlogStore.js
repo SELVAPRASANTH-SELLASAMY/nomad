@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import Axios from "../customhooks/httpMethod/utils/Axios";
 
 export const useBlogManager = create((set) => ({
     blogs: [],
@@ -38,4 +39,27 @@ export const useBlogManager = create((set) => ({
         filters: {...state.filters,search:input, page: 1},
         blogs: []
     }))
+}));
+
+export const useBlogCategory = create((set,get) => ({
+    categories: ["All"],
+    fetchCategories: async() => {
+        await Axios.get("/blog/getCategories",{withCredentials: true})
+        .then((res) => {
+            if(res?.data && get().categories.length < 2){
+                set({categories: [...get().categories,...res.data.categories]});
+            }
+        })
+        .catch((err) => {
+            if(err.response){
+                const { data } = err.response;
+                const { message, error } = data;
+                message ? console.error(message) : console.error(error);
+            }
+            else{
+                console.error(err.message);
+            }
+        })
+    },
+    setCategories: (newCategories) => set((state) => ([...newCategories,...state.categories]))
 }));
