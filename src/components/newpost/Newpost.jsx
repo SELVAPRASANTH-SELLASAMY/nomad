@@ -13,11 +13,11 @@ function Newpost(){
         category:''
     });
 
-    const categories = useBlogCategory(state => state.categories)?.filter(item => item !== "All");
+    const categories = useBlogCategory(state => state.categories).filter(item => item !== "All");
     const fetchCategories = useBlogCategory(state => state.fetchCategories);
 
     useEffect(() => {
-        if(categories.length <= 0) fetchCategories();
+        fetchCategories();
     },[]);
 
     const [category,setCategory] = useState(categories[0]);

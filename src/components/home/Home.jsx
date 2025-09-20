@@ -6,8 +6,8 @@ function Home(){
     const { fetchCategories, categories } = useBlogCategory();
 
     useEffect(() => {
-        if(categories.length <= 1) fetchCategories();
-    },[fetchCategories]);
+        fetchCategories();
+    },[]);
 
     const sortOptions = useMemo(() => [
         {label:"name",value:"title"},

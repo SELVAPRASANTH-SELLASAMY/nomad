@@ -45,13 +45,13 @@ function ActionButton({content,setContent}){
     }
 
     const actions = [
-        {icon:<RiSave3Line/>,name:"Save"},
+        {icon:<RiSave3Line/>,name:"Draft"},
         {icon:content.published ? <RiDownloadCloud2Line/> : <RiUploadCloud2Line/>,
               name:content.published ? "Un publish" : "Publish"}
     ];
 
     const functionality = {
-        "Save":saveBlog,
+        "Draft":saveBlog,
         "Publish":handlePublish,
         "Un publish":handlePublish
     }
