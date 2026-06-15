@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('./App.css');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /*Colors*/
+  --dark-blue: #071322;
+  --tile-blue: #101B2B;
+  --tile-blue-tr: #101b2be5;
+  --green: #72e2ae;
+  --border-green: #1B5E4D;
+  --light-green: #081C23;
+  --red: #c42023;
+  --gray: #adadad;
+  --light-blue: #1E2737;
+
+  /* Fonts */
+  --font-radio-canada: Radio Canada, sans-serif;
+  --font-sans: sans-serif;
+}
+
+body{
+  font-family: var(--font-radio-canada);
+  /* padding: 0 1.5rem; */
+  background-color: var(--dark-blue);
+  color: #ffffff;
+}
+
+input[type='email']{
+  text-transform: lowercase;
+}
+
+input[type='checkbox']{
+  accent-color: var(--green);
+}
+
+label, input::placeholder{
+  text-transform: capitalize;
+}
