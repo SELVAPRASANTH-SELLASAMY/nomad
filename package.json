@@ -1,5 +1,5 @@
 {
-  "homepage": "https://selvaprasanth-sellasamy.github.io/nomad/",
+  "homepage": "https://selvaprasanth-sellasamy.github.io/nomad",
   "name": "nomad",
   "private": true,
   "version": "0.0.0",
@@ -16,7 +16,8 @@
     "gh-pages": "^6.3.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-icons": "^5.6.0"
+    "react-icons": "^5.6.0",
+    "react-router-dom": "^7.18.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

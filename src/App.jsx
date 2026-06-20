@@ -1,13 +1,15 @@
-import { Header } from "./components";
-import { PortalAccess } from "./pages";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { Layout, PortalAccess, Blogs } from "./pages";
 function App(){
   return(
-    <>
-      <Header/>
-      <main id="container" className="px-xl py-xl">
-        <PortalAccess/>
-      </main>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<PortalAccess/>}/>
+          <Route path="/blogs" element={<Blogs/>}/>
+        </Route>
+      </Routes>
+    </Router>
+  );
 }
 export default App;

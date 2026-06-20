@@ -8,6 +8,9 @@
 .fs-lg{
     font-size: 1.5rem;
 }
+.fs-2lg{
+    font-size: 2rem;
+}
 .fs-xl{
     font-size: 2.5rem;
 }
@@ -23,6 +26,9 @@
 /* text transforms */
 .uppercase{
     text-transform: uppercase;
+}
+.capitalize{
+    text-transform: capitalize;
 }
 .italic{
     font-style: italic;
@@ -55,6 +61,9 @@
 .text-error{
     color: var(--red);
 }
+.text-white{
+    color: #ffffff;
+}
 
 /* padding */
 .pd-sm{
@@ -84,6 +93,9 @@
 }
 .pr-lg{
     padding-right: 1em;
+}
+.pr-2lg{
+    padding-right: 1.5em;
 }
 .pl-lg{
     padding-left: 1em;
@@ -122,8 +134,14 @@
     margin-left: auto;
     margin-right: auto;
 }
-.m-top-xl{
+.mt-sm{
+    margin-top: .25em;
+}
+.mt-xl{
     margin-top: 1.5em;
+}
+.ml-sm{
+    margin-left: .25em;
 }
 
 /* float */
@@ -158,13 +176,13 @@
 
 /* borders */
 .border-sm-green{
-    border: .1rem solid var(--green);
+    border: .2rem solid var(--green);
 }
 .border-sm-gray{
-    border: .1rem solid var(--light-blue);
+    border: .2rem solid var(--light-blue);
 }
 .border-btm-sm-gray{
-    border-bottom: .1rem solid var(--light-blue);
+    border-bottom: .2rem solid var(--light-blue);
 }
 .no-border{
     border: none;
@@ -177,10 +195,10 @@
 }
 
 .rounded-md{
-    border-radius: .5rem;
+    border-radius: .5em;
 }
 .rounded-lg{
-    border-radius: 1rem;
+    border-radius: 1em;
 }
 
 /* outline */
@@ -210,6 +228,9 @@
 .space-between{
     justify-content: space-between;
 }
+.justify-center{
+    justify-content: center;
+}
 .middle{
     vertical-align: middle;
 }
@@ -229,8 +250,11 @@
 }
 
 /* background */
-.bg-l-green{
+.bg-gr-green{
     background: linear-gradient(#1B5E4D .01em,#081C23);
+}
+.bg-l-green{
+    background-color: var(--light-green);
 }
 .bg-tile-blue{
     background-color: var(--tile-blue);
@@ -261,8 +285,14 @@
 .top-0{
     top: 0;
 }
+.bottom--lg{
+    bottom: -1.5em;
+}
 .bottom-1{
     bottom: 1em;
+}
+.left-0{
+    left: 0;
 }
 .left-auto{
     left: auto;
@@ -270,8 +300,14 @@
 .right-auto{
     right: auto;
 }
+.right-sm{
+    right: .25em;
+}
 
 /* others */
+.no-list{
+    list-style: none;
+}
 .dot::after{
     content: ".";
     color: #ffffff;

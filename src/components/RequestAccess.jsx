@@ -55,7 +55,7 @@ function RequestAccess({handleCurrentPageNavigation}){
 
             <button 
                 type="button"
-                className="fs-sm py-lg w-full rounded-md uppercase bg-green bold-md no-border m-top-xl"
+                className="fs-sm py-lg w-full rounded-md uppercase bg-green bold-md no-border mt-xl"
                 onClick={handleRequest}
             >
                 Send Request

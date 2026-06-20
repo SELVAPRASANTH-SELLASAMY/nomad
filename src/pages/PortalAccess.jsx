@@ -44,7 +44,7 @@ function PortalAccess(){
 
     return(
         <>
-            <div className="primary fs-xl border-sm-green rounded-lg d-flex w-fit mx-auto pd-sm bg-l-green center">
+            <div className="primary fs-xl border-sm-green rounded-lg d-flex w-fit mx-auto pd-sm bg-gr-green center">
                 <CurrentPage.icon/>
             </div>
             <h2 className="fs-xl bold-md my-sm center">{CurrentPage.h2.normal} <span className="italic primary">{CurrentPage.h2.highlight}!</span></h2>
