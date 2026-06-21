@@ -9,14 +9,14 @@ function Option({options,selectedValue,setValue}){
             {
                 options.map(option => (
                     <li 
-                        key={option.value} 
-                        className="pd-md" 
+                        key={option.value || option} 
+                        className="pd-md capitalize" 
                         role="option" 
-                        aria-selected={selectedValue?.value === option?.value} 
-                        value={option.value}
+                        aria-selected={selectedValue?.value === option?.value || selectedValue === option} 
+                        value={option.value || option}
                         onMouseDown={() => setValue(option)}
                     >
-                        {option.label}
+                        {option.label || option}
                     </li>
                 ))
             }

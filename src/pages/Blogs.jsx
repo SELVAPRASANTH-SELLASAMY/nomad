@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MdGridView, MdFormatListBulleted, MdArrowUpward } from "react-icons/md";
-import { Select } from "../components";
+import { Select, BlogCard } from "../components";
 
 const views = [
     {
@@ -24,6 +24,8 @@ const sortOptions = [
     }
 ];
 
+const categories = ["All","Technology","Programming","Web development","general"];
+
 function Blogs(){
     const [activeView,setview] = useState('grid');
 
@@ -42,14 +44,31 @@ function Blogs(){
                 </div>
             </div>
 
-            <p className="py-lg fs-sm bold-sm secondary">Discover my latest thoughts and tutorials</p>
+            {/* <p className="py-lg fs-sm secondary">Discover my latest thoughts and tutorials</p> */}
             
-            <Select
-                icon={<MdArrowUpward/>}
-                label="Sort by"
-                options={sortOptions}
-                defaultValue={sortOptions[0]}
-            />
+            <div className="d-flex gap-md w-full overflow-x scroll-snap hide-scrollbar">
+                <Select
+                    icon={<MdArrowUpward/>}
+                    label="Sort by"
+                    options={sortOptions}
+                    defaultValue={sortOptions[0]}
+                />
+
+                <Select
+                    icon={<MdGridView/>}
+                    label="Category"
+                    options={categories}
+                    defaultValue={categories[0]}
+                />
+            </div>
+
+            <section className="d-grid grid-template-auto-cols gap-lg py-lg">
+                {
+                    Array.from({length: 10},(_,index) => (
+                        <BlogCard key={index}/>
+                    ))
+                }
+            </section>
         </>
     );
 }

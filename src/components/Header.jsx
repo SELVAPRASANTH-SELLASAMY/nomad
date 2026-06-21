@@ -4,7 +4,7 @@ function Header(){
     const path = useLocation().pathname;
     
     return(
-        <header className={`pd-lg sticky top-0 bg-dark-blue border-btm-sm-gray d-flex gap-md items-center ${path !== '/' ? 'py-md' : null}`}>
+        <header className={`pd-lg sticky top-0 bg-dark-blue border-btm-sm-gray d-flex gap-md items-center z-index-top ${path !== '/' ? 'py-md' : null}`}>
             {
                 path !== '/' ?
                     <span className="fs-2lg d-inline-flex pd-sm bg-tile-blue rounded-md border-sm-gray">

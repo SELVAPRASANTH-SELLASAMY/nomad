@@ -50,7 +50,7 @@ function Input({label,type,id,placeholder,icon,required,input,setInput,error,dis
                                 inputMode="numeric" 
                                 maxLength="1"
                                 id={`otp${index === 0 ? '' : `_${index}`}`}
-                                className={`secondary placeholder-text-secondary fs-sm py-lg no-outline px-lg bg-tile-blue rounded-md border-sm-gray border-green-focus aspect-ratio-equal w-3_5 center ${disabled ? 'opacity-60' : ''}`}
+                                className={`secondary placeholder-text-secondary fs-sm py-lg no-outline px-lg bg-tile-blue rounded-md border-sm-gray border-green-focus ratio-equal w-3_5 center ${disabled ? 'opacity-60' : ''}`}
                                 onChange={(e) => handleOtpInput(e.target,index)}
                                 ref={(element) => OTPInputRef.current[index] = element}
                                 disabled={disabled}
