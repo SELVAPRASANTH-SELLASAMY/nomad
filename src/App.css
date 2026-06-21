@@ -176,13 +176,13 @@
 
 /* borders */
 .border-sm-green{
-    border: .2rem solid var(--green);
+    border: .1rem solid var(--green);
 }
 .border-sm-gray{
-    border: .2rem solid var(--light-blue);
+    border: .1rem solid var(--light-blue);
 }
 .border-btm-sm-gray{
-    border-bottom: .2rem solid var(--light-blue);
+    border-bottom: .1rem solid var(--light-blue);
 }
 .no-border{
     border: none;
@@ -195,10 +195,10 @@
 }
 
 .rounded-md{
-    border-radius: .5em;
+    border-radius: .5rem;
 }
 .rounded-lg{
-    border-radius: 1em;
+    border-radius: 1rem;
 }
 
 /* outline */
