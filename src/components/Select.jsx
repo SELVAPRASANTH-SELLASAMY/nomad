@@ -1,10 +1,14 @@
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import Option from "./Option";
 import { useState } from "react";
+// import { useWindowSize } from "../hooks";
+import CompactOption from "./CompactOption";
 function Select({icon,label,options,defaultValue}){
     const [value,setValue] = useState(defaultValue || {label: "--Select--",value:""});
     const [sortOrder,setSortOrder] = useState(0);
     const [expand,setExpand] = useState(false);
+
+    // const windowSize = useWindowSize();
 
     return(
         <div className="w-fit mt-sm scroll-snap-stop-always scroll-snap-start">
@@ -39,11 +43,19 @@ function Select({icon,label,options,defaultValue}){
 
             {
                 expand &&
+                // windowSize > 768 ?
                 <Option
                     options={options}
                     selectedValue={value}
                     setValue={setValue}
-                />
+                /> /*:
+                <CompactOption>
+                    <Option
+                        options={options}
+                        selectedValue={value}
+                        setValue={setValue}
+                    />
+                </CompactOption>*/
             }
         </div>
     );

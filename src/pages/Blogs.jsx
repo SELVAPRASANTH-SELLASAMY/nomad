@@ -31,36 +31,38 @@ function Blogs(){
 
     return(
         <>
-            <div className="d-flex items-center space-between">
-                <h2 className="fs-lg uppercase bold-md">Blogs</h2>
-                <div className="d-flex border-sm-gray rounded-md no-overflow">
-                    {
-                        views.map((view,index) => (
-                            <span key={index} onClick={() => setview(view.name)} className={`fs-lg d-flex pd-sm ${activeView === view.name ? 'bg-l-green primary' : 'bg-tile-blue'}`}>
-                                <view.icon/>
-                            </span>
-                        ))
-                    }
+            <section style={{top: "4.2em"}} className="sticky bg-dark-blue z-index-2 py-md">
+                <div className="d-flex items-center space-between">
+                    <h2 className="fs-lg uppercase bold-md">Blogs</h2>
+                    <div className="d-flex border-sm-gray rounded-md no-overflow">
+                        {
+                            views.map((view,index) => (
+                                <span key={index} onClick={() => setview(view.name)} className={`fs-lg d-flex pd-sm ${activeView === view.name ? 'bg-l-green primary' : 'bg-tile-blue'}`}>
+                                    <view.icon/>
+                                </span>
+                            ))
+                        }
+                    </div>
                 </div>
-            </div>
 
-            {/* <p className="py-lg fs-sm secondary">Discover my latest thoughts and tutorials</p> */}
-            
-            <div className="d-flex gap-md w-full overflow-x scroll-snap hide-scrollbar">
-                <Select
-                    icon={<MdArrowUpward/>}
-                    label="Sort by"
-                    options={sortOptions}
-                    defaultValue={sortOptions[0]}
-                />
+                {/* <p className="py-lg fs-sm secondary">Discover my latest thoughts and tutorials</p> */}
+                
+                <div className="d-flex gap-lg w-full overflow-x scroll-snap hide-scrollbar py-md">
+                    <Select
+                        icon={<MdArrowUpward/>}
+                        label="Sort by"
+                        options={sortOptions}
+                        defaultValue={sortOptions[0]}
+                    />
 
-                <Select
-                    icon={<MdGridView/>}
-                    label="Category"
-                    options={categories}
-                    defaultValue={categories[0]}
-                />
-            </div>
+                    <Select
+                        icon={<MdGridView/>}
+                        label="Category"
+                        options={categories}
+                        defaultValue={categories[0]}
+                    />
+                </div>
+            </section>
 
             <section className="d-grid grid-template-auto-cols gap-lg py-lg">
                 {
