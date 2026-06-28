@@ -326,19 +326,6 @@
 .overflow-x{
     overflow-x: auto;
 }
-.scroll-snap{
-    scroll-snap-type: x mandatory;
-}
-.scroll-snap-stop-always{
-    scroll-snap-stop: always;
-}
-.scroll-snap-start{
-    scroll-snap-align: start;
-}
-.hide-scrollbar::-webkit-scrollbar{
-    width: 0;
-    height: 0;
-}
 
 /* background */
 .bg-gr-green{
@@ -357,6 +344,9 @@
     background-color: var(--overlay);
 }
 .bg-dark-blue{
+    background-color: var(--dark-blue);
+}
+.hover-dark-bg:hover{
     background-color: var(--dark-blue);
 }
 .bg-green{

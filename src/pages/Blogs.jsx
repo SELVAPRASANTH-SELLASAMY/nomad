@@ -47,7 +47,7 @@ function Blogs(){
 
                 {/* <p className="py-lg fs-sm secondary">Discover my latest thoughts and tutorials</p> */}
                 
-                <div className="d-flex gap-lg w-full overflow-x scroll-snap hide-scrollbar py-md">
+                <div className="d-flex gap-lg w-full md-overflow-x md-scroll-snap md-hide-scrollbar py-md">
                     <Select
                         icon={<MdArrowUpward/>}
                         label="Sort by"

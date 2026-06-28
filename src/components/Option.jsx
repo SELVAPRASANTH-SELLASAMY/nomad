@@ -2,7 +2,7 @@ function Option({options,selectedValue,setValue}){
     return(
         <ul 
             id="select-dropdown"
-            className="mt-sm no-list bg-tile-blue border-sm-gray rounded-md"
+            className="mt-sm no-list bg-tile-blue border-sm-gray rounded-md lg-absolute w-full"
             role="listbox"
             aria-labelledby="select-label"
         >
@@ -10,9 +10,9 @@ function Option({options,selectedValue,setValue}){
                 options.map(option => (
                     <li 
                         key={option.value || option} 
-                        className="pd-md capitalize" 
+                        className="pd-md md-pd-lg capitalize hover-dark-bg md-option-selection-indicator" 
                         role="option" 
-                        aria-selected={selectedValue?.value === option?.value || selectedValue === option} 
+                        aria-selected={((selectedValue?.value && option?.value) && (selectedValue?.value === option?.value)) || selectedValue === option} 
                         value={option.value || option}
                         onMouseDown={() => setValue(option)}
                     >

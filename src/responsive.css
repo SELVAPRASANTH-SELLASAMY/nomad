@@ -1,0 +1,77 @@
+/* Screen Md */
+@media screen and (width <= 768px){
+    /* width */
+    .md-w-full{
+        width: 100%;
+    }
+
+    /* overflow */
+    .md-overflow-x{
+        overflow-x: auto;
+    }
+    .md-hide-scrollbar::-webkit-scrollbar{
+        width: 0;
+        height: 0;
+    }
+    .md-scroll-snap{
+        scroll-snap-type: x mandatory;
+    }
+    .md-scroll-snap{
+        scroll-snap-type: x mandatory;
+    }
+    .md-scroll-snap-stop-always{
+        scroll-snap-stop: always;
+    }
+    .md-scroll-snap-start{
+        scroll-snap-align: start;
+    }
+
+    /* padding */
+    .md-pd-lg{
+        padding: 1em 1em !important;
+    }
+
+    /* others */
+    .md-option-selection-indicator{
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+    .md-option-selection-indicator:not(:last-child){
+        border-bottom: .1rem solid var(--light-blue);
+    }
+    .md-option-selection-indicator::before{
+        content: "";
+        width: .5em;
+        height: .5em;
+        border-radius: 100%;
+        display: inline-block;
+        background-color: var(--dark-blue);
+        outline: .2em inset var(--tile-blue);
+        border: .25em solid var(--tile-blue);
+    }
+    .md-option-selection-indicator[aria-selected="true"]::before{
+        border-color: var(--green);
+        outline-color: var(--green);
+        outline-style: solid;
+    }
+    .blur-md{
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Screen lg */
+@media screen and (width > 768px){
+    /* width & height */
+    .lg-w-full{
+        width: 100%;
+    }
+
+    /* positions */
+    .lg-relative{
+        position: relative;
+    }
+    .lg-absolute{
+        position: absolute;
+    }
+}
