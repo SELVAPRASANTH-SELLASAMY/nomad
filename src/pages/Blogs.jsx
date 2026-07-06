@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MdGridView, MdFormatListBulleted, MdArrowUpward } from "react-icons/md";
-import { Select, BlogCard } from "../components";
+import { Select, BlogCard, BlogList } from "../components";
 
 const views = [
     {
@@ -64,10 +64,12 @@ function Blogs(){
                 </div>
             </section>
 
-            <section className="d-grid grid-template-auto-cols gap-lg py-lg">
+            <section className={`${activeView === 'grid' ? `grid-template-auto-cols`: ''} d-grid gap-lg py-lg`}>
                 {
                     Array.from({length: 10},(_,index) => (
-                        <BlogCard key={index}/>
+                        activeView === 'grid' ? 
+                        <BlogCard key={index}/> 
+                        : <BlogList key={index}/>
                     ))
                 }
             </section>

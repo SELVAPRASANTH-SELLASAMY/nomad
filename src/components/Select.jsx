@@ -40,11 +40,13 @@ function Select({icon,label,options,defaultValue}){
 
             {
                 expand &&
-                <CompactOption
-                    options={options}
-                    selectedValue={value}
-                    setValue={setValue}
-                />
+                <CompactOption>
+                    <Option
+                        options={options}
+                        selectedValue={value}
+                        setValue={setValue}
+                    />
+                </CompactOption>
             }
         </div>
     );

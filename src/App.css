@@ -179,6 +179,9 @@
 .ml-sm{
     margin-left: .25em;
 }
+.ml-auto{
+    margin-left: auto;
+}
 
 /* float */
 .float-right{
@@ -191,6 +194,9 @@
 }
 .w-90{
     width: 90%;
+}
+.w-20{
+    width: 30%;
 }
 .w-fit{
     width: fit-content;

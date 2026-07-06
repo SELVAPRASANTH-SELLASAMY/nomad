@@ -1,4 +1,5 @@
 import dummyThumbnail from "../assets/blog-manager.png";
+import dummyAvatar from "../assets/dummy-avatar.png";
 import { MdMoreVert } from "react-icons/md";
 function BlogCard(){
     return(
@@ -22,7 +23,7 @@ function BlogCard(){
 
             <div className="d-flex gap-md items-center">
                 <span className="w-2 ratio-equal bg-dark-blue border-sm-gray rounded-full d-block no-overflow bg-cover">
-                    <img className="w-full middle" src={dummyThumbnail} alt="autor-profile" />
+                    <img className="w-full middle" src={dummyAvatar} alt="autor-profile" />
                 </span>
                 <p className="fs-sm uppercase">Prasanth</p>
             </div>
