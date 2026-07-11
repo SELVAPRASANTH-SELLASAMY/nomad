@@ -46,6 +46,9 @@
 .wrap-text{
     text-wrap: wrap;
 }
+.text-no-wrap{
+    text-wrap: nowrap;
+}
 .no-wrap{
     white-space: nowrap;
 }
@@ -215,6 +218,9 @@
 }
 .max-w-450{
     max-width: 450px;
+}
+.max-w-80p{
+    max-width: 80%;
 }
 .h-full{
     height: 100dvh;
@@ -393,6 +399,9 @@
 .top-sm{
     top: .25em;
 }
+.top-100{
+    top: 100%;
+}
 .bottom--lg{
     bottom: -1.5em;
 }
@@ -420,6 +429,9 @@
 }
 .z-index-2{
     z-index: 90;
+}
+.z-index-3{
+    z-index: 1;
 }
 
 /* others */

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MdGridView, MdFormatListBulleted, MdArrowUpward } from "react-icons/md";
 import { Select, BlogCard, BlogList } from "../components";
+import { MdOutlineModeEditOutline, MdContentCopy, MdBookmarkBorder, MdOutlineDeleteForever } from "react-icons/md";
 
 const views = [
     {
@@ -25,6 +26,26 @@ const sortOptions = [
 ];
 
 const categories = ["All","Technology","Programming","Web development","general"];
+
+const blogActions = [
+    {
+        icon: MdOutlineModeEditOutline,
+        name: 'edit post'
+    },
+    {
+        icon: MdContentCopy,
+        name: 'duplicate post'
+    },
+    {
+        icon: MdBookmarkBorder,
+        name: 'bookmark'
+    },
+    {
+        icon: MdOutlineDeleteForever,
+        name: 'delete post',
+        warn: true
+    }
+];
 
 function Blogs(){
     const [activeView,setview] = useState('grid');
@@ -68,8 +89,14 @@ function Blogs(){
                 {
                     Array.from({length: 10},(_,index) => (
                         activeView === 'grid' ? 
-                        <BlogCard key={index}/> 
-                        : <BlogList key={index}/>
+                        <BlogCard 
+                            key={index}
+                            actionlist={blogActions}
+                        /> 
+                        : <BlogList 
+                            key={index}
+                            actionlist={blogActions}
+                        />
                     ))
                 }
             </section>

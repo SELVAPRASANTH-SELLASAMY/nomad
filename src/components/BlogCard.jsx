@@ -1,7 +1,12 @@
 import dummyThumbnail from "../assets/blog-manager.png";
 import dummyAvatar from "../assets/dummy-avatar.png";
 import { MdMoreVert } from "react-icons/md";
-function BlogCard(){
+import Actions from "./Actions";
+import { useState } from "react";
+
+function BlogCard({actionlist}){
+    const [relatedActions,displayRelatedActions] = useState(false);
+
     return(
         <div className="bg-tile-blue rounded-lg border-sm-gray d-flex flex-col gap-lg pd-lg">
             <div className="d-flex items-center space-between">
@@ -11,8 +16,20 @@ function BlogCard(){
 
             <div className="rounded-md no-overflow ratio-15-10 relative">
                 <img className="w-full middle" src={dummyThumbnail} alt="Blog-Thumbnail"/>
-                <span className="bg-tile-blue-tr border-sm-gray fs-lg absolute top-sm right-sm rounded-full w-2 ratio-equal d-flex items-center justify-center">
+                <span 
+                    tabIndex="1"
+                    className="bg-tile-blue-tr border-sm-gray fs-lg absolute top-sm right-sm rounded-full w-2 ratio-equal d-flex items-center justify-center"
+                    onFocus={() => displayRelatedActions(true)}
+                    onBlur={() => displayRelatedActions(false)}
+                >
                     <MdMoreVert/>
+                    {
+                        relatedActions ? 
+                            <Actions
+                                actionlist = {actionlist}
+                            />
+                        : null
+                    }
                 </span>
             </div>
 

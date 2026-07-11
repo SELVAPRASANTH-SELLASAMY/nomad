@@ -1,16 +1,32 @@
+import { useState } from "react";
 import dummyThumbnail from "../assets/blog-manager.png";
 import dummyAvatar from "../assets/dummy-avatar.png";
 import { MdMoreVert } from "react-icons/md";
-function BlogList(){
+import Actions from "./Actions";
+function BlogList({actionlist}){
+    const [relatedActions,displayRelatedActions] = useState(false);
+
     return(
         <div className="bg-tile-blue rounded-lg border-sm-gray d-flex gap-lg pd-lg">
             <img className="w-20 rounded-md ratio-15-10" src={dummyThumbnail} alt="Blog-Thumbnail"/>
 
             <div className="d-flex flex-col gap-md">
                 <div className="d-flex items-center space-between">
-                    <p className="fs-xsm primary uppercase px-lg py-sm bg-l-green rounded-full w-fit">Frontend Development</p>
-                    <span className="bg-tile-blue-tr border-sm-gray fs-lg rounded-full w-2 ratio-equal d-flex items-center justify-center">
+                    <p className="fs-xsm primary uppercase px-lg py-sm bg-l-green rounded-full w-fit no-wrap no-overflow ellipsis max-w-80p">Frontend Development</p>
+                    <span 
+                        tabIndex="1"
+                        className="bg-tile-blue-tr border-sm-gray fs-lg rounded-full w-2 ratio-equal d-flex items-center justify-center relative"
+                        onFocus={() => displayRelatedActions(true)}
+                        onBlur={() => displayRelatedActions(false)}
+                    >
                         <MdMoreVert/>
+                        {
+                            relatedActions ? 
+                                <Actions
+                                    actionlist = {actionlist}
+                                />
+                            : null
+                        }
                     </span>
                 </div>
 
