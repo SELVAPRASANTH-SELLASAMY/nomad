@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { MdGridView, MdFormatListBulleted, MdArrowUpward } from "react-icons/md";
-import { Select, BlogCard, BlogList } from "../components";
-import { MdOutlineModeEditOutline, MdContentCopy, MdBookmarkBorder, MdOutlineDeleteForever } from "react-icons/md";
+import { Select, BlogItem } from "../components";
 
 const views = [
     {
@@ -26,26 +25,6 @@ const sortOptions = [
 ];
 
 const categories = ["All","Technology","Programming","Web development","general"];
-
-const blogActions = [
-    {
-        icon: MdOutlineModeEditOutline,
-        name: 'edit post'
-    },
-    {
-        icon: MdContentCopy,
-        name: 'duplicate post'
-    },
-    {
-        icon: MdBookmarkBorder,
-        name: 'bookmark'
-    },
-    {
-        icon: MdOutlineDeleteForever,
-        name: 'delete post',
-        warn: true
-    }
-];
 
 function Blogs(){
     const [activeView,setview] = useState('grid');
@@ -87,16 +66,11 @@ function Blogs(){
 
             <section className={`${activeView === 'grid' ? `grid-template-auto-cols`: ''} d-grid gap-lg py-lg`}>
                 {
-                    Array.from({length: 10},(_,index) => (
-                        activeView === 'grid' ? 
-                        <BlogCard 
+                    Array.from({length: 100},(_,index) => (
+                        <BlogItem 
                             key={index}
-                            actionlist={blogActions}
+                            view={activeView}
                         /> 
-                        : <BlogList 
-                            key={index}
-                            actionlist={blogActions}
-                        />
                     ))
                 }
             </section>
