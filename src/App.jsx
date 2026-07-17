@@ -7,6 +7,7 @@ function App(){
         <Route path="/" element={<Layout/>}>
           <Route index element={<PortalAccess/>}/>
           <Route path="/blogs" element={<Blogs/>}/>
+          <Route path="*" element={<h2>Page not found!</h2>}/>
         </Route>
       </Routes>
     </Router>
