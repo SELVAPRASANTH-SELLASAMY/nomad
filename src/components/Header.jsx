@@ -11,10 +11,10 @@ function Header(){
     }
     
     return(
-        <header className={`pd-lg sticky top-0 bg-dark-blue border-btm-sm-gray d-flex gap-md items-center z-index-top ${path !== '/' ? 'py-md' : null}`}>
+        <header className={`pd-lg sticky top-0 bg-dark-blue border-bottom-sm-gray d-flex gap-md items-center z-index-top ${path !== '/' ? 'py-md' : null}`}>
             {
                 path !== '/' ?
-                    <span onClick={handleClick} className="fs-2lg d-inline-flex pd-sm bg-tile-blue rounded-md border-sm-gray">
+                    <span onClick={handleClick} className="fs-2lg d-inline-flex pd-xsm bg-tile-blue rounded-md border-sm-gray">
                         <MdMenu/>
                     </span> :
                 null

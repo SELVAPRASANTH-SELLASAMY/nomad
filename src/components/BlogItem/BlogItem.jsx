@@ -7,7 +7,7 @@ function BlogCard({view}){
     return(
         <div className={`${view === 'grid' ? 'd-flex flex-col' : 'd-grid list-container'} gap-md bg-tile-blue rounded-lg border-sm-gray pd-lg`}>
             <div className={`${view === 'list' && 'category'} d-flex items-center space-between`}>
-                <p className="fs-xsm primary uppercase px-lg py-sm bg-l-green rounded-full w-fit no-wrap no-overflow ellipsis max-w-80p">Frontend Development</p>
+                <p className="fs-xsm primary uppercase px-lg py-sm bg-mint rounded-full w-fit no-wrap no-overflow ellipsis max-w-80p">Frontend Development</p>
                 {
                     view === 'grid' ? 
                         <p className="fs-xsm secondary">06 Jun 2026</p>

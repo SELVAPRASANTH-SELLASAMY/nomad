@@ -1,5 +1,5 @@
 import { useImperativeHandle, useState } from "react";
-import { MdClose, MdOutlineHome, MdOutlineCategory, MdBookmarkBorder } from "react-icons/md";
+import { MdClose, MdOutlineHome, MdOutlineCategory, MdBookmarkBorder, MdOutlineAddCircleOutline } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
 
 const navigations = [
@@ -7,6 +7,11 @@ const navigations = [
         icon: MdOutlineHome,
         name: "blogs",
         path: "/blogs"
+    },
+    {
+        icon: MdOutlineAddCircleOutline,
+        name: "New post",
+        path: "/newblog"
     },
     {
         icon: MdOutlineCategory,
@@ -36,7 +41,7 @@ function Navbar({ref}){
     return(
         <nav onClick={closeNavbar} style={{maxWidth: '300px'}} className="fixed left-0 top-0 w-70 h-full bg-tile-blue z-index-top px-lg py-md rounded-xl-right overlay">
             <div className="mb-lg d-flex items-center gap-md">
-                <span className="fs-2lg d-inline-flex pd-sm bg-tile-blue rounded-md border-sm-gray">
+                <span className="fs-2lg d-inline-flex pd-xsm bg-tile-blue rounded-md border-sm-gray">
                     <MdClose/>
                 </span>
                 <h1 className="fs-lg uppercase bold-md primary dot">Nomad</h1>

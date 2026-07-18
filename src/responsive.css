@@ -37,9 +37,6 @@
         align-items: center;
         gap: 1em;
     }
-    .md-option-selection-indicator:not(:last-child){
-        border-bottom: .1rem solid var(--light-blue);
-    }
     .md-option-selection-indicator::before{
         content: "";
         width: .5em;
@@ -54,6 +51,9 @@
         border-color: var(--green);
         outline-color: var(--green);
         outline-style: solid;
+    }
+    .md-border-bottom:not(:last-child){
+        border-bottom: .1rem solid var(--light-blue);
     }
     .blur-md{
         backdrop-filter: blur(10px);

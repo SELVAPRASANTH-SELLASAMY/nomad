@@ -31,13 +31,13 @@ function Blogs(){
 
     return(
         <>
-            <section style={{top: "4.2em"}} className="sticky bg-dark-blue z-index-2 py-md">
+            <section style={{top: "3.8em"}} className="sticky bg-dark-blue z-index-2 py-md">
                 <div className="d-flex items-center space-between">
                     <h2 className="fs-lg uppercase bold-md">Blogs</h2>
                     <div className="d-flex border-sm-gray rounded-md no-overflow">
                         {
                             views.map((view,index) => (
-                                <span key={index} onClick={() => setview(view.name)} className={`fs-lg d-flex pd-sm ${activeView === view.name ? 'bg-l-green primary' : 'bg-tile-blue'}`}>
+                                <span key={index} onClick={() => setview(view.name)} className={`fs-lg d-flex pd-sm ${activeView === view.name ? 'bg-mint primary' : 'bg-tile-blue'}`}>
                                     <view.icon/>
                                 </span>
                             ))

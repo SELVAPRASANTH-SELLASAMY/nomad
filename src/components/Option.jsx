@@ -10,7 +10,7 @@ function Option({options,selectedValue,setValue}){
                 options.map(option => (
                     <li 
                         key={option.value || option} 
-                        className="pd-md md-pd-lg capitalize hover-dark-bg md-option-selection-indicator" 
+                        className="pd-md md-pd-lg capitalize hover-dark-bg md-option-selection-indicator md-border-bottom" 
                         role="option" 
                         aria-selected={((selectedValue?.value && option?.value) && (selectedValue?.value === option?.value)) || selectedValue === option} 
                         value={option.value || option}

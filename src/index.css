@@ -8,14 +8,13 @@
 
 :root {
   /*Colors*/
-  --dark-blue: #071322;
-  --tile-blue: #101B2B;
+  --dark-blue: #040C19;
+  --tile-blue: #091122;
   --tile-blue-tr: #101b2be5;
   --overlay: #0000006f;
-  --green: #72e2ae;
+  --green: #3DD78D;
   --border-green: #1B5E4D;
-  --light-green: #72e2ae29;
-  --mint: #72e2ae13;
+  --mint: #072125;
   --red: #c42023;
   --gray: #adadad;
   --light-blue: #1E2737;
@@ -29,7 +28,7 @@ body{
   font-family: var(--font-radio-canada);
   /* padding: 0 1.5rem; */
   background-color: var(--dark-blue);
-  color: #ffffff;
+  color: #ffffffe8;
   letter-spacing: 0.01em;
 }
 

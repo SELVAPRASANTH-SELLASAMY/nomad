@@ -18,6 +18,9 @@
 .fs-xl{
     font-size: 2.5rem;
 }
+.fs-xxl{
+    font-size: 5rem;
+}
 
 /* font weight */
 .bold-sm{
@@ -64,13 +67,16 @@
 
 /* line-height */
 .lh-xsm{
-    line-height: 1.5rem;
+    line-height: 1.5em;
 }
 .lh-sm{
-    line-height: 2rem;
+    line-height: 2em;
 }
 .lh-md{
-    line-height: 3rem;
+    line-height: 3em;
+}
+.lh-lg{
+    line-height: 4em;
 }
 
 .line-clamp-1{
@@ -105,6 +111,9 @@
 }
 
 /* padding */
+.pd-xsm{
+    padding: .15em .15em;
+}
 .pd-sm{
     padding: .25em .25em;
 }
@@ -224,6 +233,9 @@
 .w-300{
     width: 300px;
 }
+.w-200{
+    width: 200px;
+}
 .w-3_5{
     width: 3.5rem;
 }
@@ -258,7 +270,7 @@
 .border-sm-gray{
     border: .1rem solid var(--light-blue);
 }
-.border-btm-sm-gray{
+.border-bottom-sm-gray:not(:last-child){
     border-bottom: .1rem solid var(--light-blue);
 }
 .no-border{
@@ -365,9 +377,6 @@
 /* background */
 .bg-gr-green{
     background: linear-gradient(#1B5E4D .01em,#081C23);
-}
-.bg-l-green{
-    background-color: var(--light-green);
 }
 .bg-tile-blue{
     background-color: var(--tile-blue);
