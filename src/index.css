@@ -16,7 +16,7 @@
   --border-green: #1B5E4D;
   --mint: #072125;
   --red: #c42023;
-  --gray: #adadad;
+  --gray: #8C949B;
   --light-blue: #1E2737;
 
   /* Fonts */
@@ -28,7 +28,7 @@ body{
   font-family: var(--font-radio-canada);
   /* padding: 0 1.5rem; */
   background-color: var(--dark-blue);
-  color: #ffffffe8;
+  color: #EBEFF2;
   letter-spacing: 0.01em;
 }
 

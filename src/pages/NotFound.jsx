@@ -16,7 +16,7 @@ function NotFound(){
 
                 <p className="fs-sm secondary lh-sm">Looks like you've taken a wrong turn.<br/>The page you're looking for doesn't exist.</p>
 
-                <button type="button" className="bg-green rounded-md py-2md d-flex items-center justify-center gap-md w-200 mx-auto my-lg">
+                <button type="button" className="bg-green rounded-md py-2md d-flex items-center justify-center gap-md w-250 mx-auto my-lg no-border bo-outline">
                     <span className="fs-lg d-inline-flex">
                         <MdOutlineHome/>
                     </span>
